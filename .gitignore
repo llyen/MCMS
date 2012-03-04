@@ -1,7 +1,0 @@
-/web/bundles/
-/app/bootstrap*
-/app/cache/*
-/app/logs/*
-/vendor/
-deps
-deps.lock
