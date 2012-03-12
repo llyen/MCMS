@@ -1,3 +1,28 @@
+McmsUsersBundle:
+    resource: "@McmsUsersBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
+login:
+    pattern:   /login
+    defaults:  { _controller: McmsUsersBundle:Security:login }
+login_check:
+    pattern:   /login_check
+
+logout:
+    pattern:	/logout
+
+register:
+    pattern:	/register
+    defaults:	{ _controller:McmsUsersBundle:Security:register }
+    requirements:
+        _method:	GET
+
+register_process:
+    pattern:	/register
+    defaults:	{ _controller:McmsUsersBundle:Security:registerProcess }
+    requirements:
+        _method:	POST
 # Internal routing configuration to handle ESI
 #_internal:
 #   resource: "@FrameworkBundle/Resources/config/routing/internal.xml"
