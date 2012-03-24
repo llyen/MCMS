@@ -24,6 +24,7 @@ class AppKernel extends Kernel
             new Mcms\TimetableBundle\McmsTimetableBundle(),
             new Mcms\MedicalHistoryBundle\McmsMedicalHistoryBundle(),
             new Mcms\PaymentBundle\McmsPaymentBundle(),
+            new Symfony\Bundle\DoctrineFixturesBundle\DoctrineFixturesBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

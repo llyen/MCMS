@@ -3,11 +3,12 @@
 namespace Mcms\PaymentBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * Mcms\PaymentBundle\Entity\Payment
  *
- * @ORM\Table()
+ * @ORM\Table(name="payments")
  * @ORM\Entity(repositoryClass="Mcms\PaymentBundle\Entity\PaymentRepository")
  */
 class Payment
@@ -35,6 +36,17 @@ class Payment
      * @ORM\Column(name="isPaid", type="boolean")
      */
     private $isPaid = false;
+
+    /**
+     * @var ArrayColection $products
+     * 
+     * @ORM\ManyToMany(targetEntity="Mcms\ProductBundle\Entity\Product")
+     * @ORM\JoinTable(name="payments_products",
+     *      joinColumns={@ORM\JoinColumn(name="payment_id", referencedColumnName="id")},
+     *      inverseJoinColumns={@ORM\JoinColumn(name="product_id", referencedColumnName="id")}
+     * )
+     */
+    private $products;
 
     /**
      * Get id
@@ -84,5 +96,15 @@ class Payment
     public function setIsPaid($value)
     {
         $this->isPaid = $value;
+    }
+
+    /**
+     * Get products under payment
+     * 
+     * @return ArrayCollection An Doctrine ArrayCollection of products.
+     */
+    public function getProducts()
+    {
+        return $this->products;
     }
 }
