@@ -9,6 +9,7 @@ use Doctrine\ORM\Mapping as ORM;
  *
  * @ORM\Table(name="medicalHistoryEntries")
  * @ORM\Entity(repositoryClass="Mcms\MedicalHistoryBundle\Entity\EntryRepository")
+ * @ORM\HasLifeCycleCallbacks
  */
 class Entry
 {
@@ -45,11 +46,11 @@ class Entry
     private $createdAt;
 
     /**
-     * @var datetime $editedAt
+     * @var datetime $updatedAt
      * 
-     * @ORM\Column(name="editedAt", type="datetime")
+     * @ORM\Column(name="updatedAt", type="datetime")
      */
-    private $editedAt;
+    private $updatedAt;
 
     /**
      * @var Strng $content
@@ -111,7 +112,7 @@ class Entry
     /**
      * Get creation date and time
      * 
-     * @return datetime Creation date and time.
+     * @return DateTime Creation date and time.
      */
     public function getCreatedAt()
     {
@@ -119,7 +120,10 @@ class Entry
     }
 
     /**
+     * @ORM\PrePersist
+     * 
      * Set creation date and time.
+     * Called automaticly.
      */
     public function setCreatedAt()
     {
@@ -127,21 +131,24 @@ class Entry
     }
 
     /**
-     * Get last edit date and time
+     * Get last update date and time
      * 
-     * @return datetime last edit date and time.
+     * @return DateTime last update date and time.
      */
-    public function getEditedAt()
+    public function getUpdateAt()
     {
-        return $this->editedAt;
+        return $this->updatedAt;
     }
 
     /**
+     * @ORM\PreUpdate
+     * 
      * Set last edit date and time.
+     * Caled automaticly.
      */
-    public function setEditedAt()
+    public function setUpdatedAt()
     {
-        $this->editedAt = new \DateTime();
+        $this->updatedAt = new \DateTime();
     }
 
     /**
