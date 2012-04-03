@@ -26,15 +26,7 @@ class LoadUserData extends AbstractFixture implements OrderedFixtureInterface,Co
 
     public function load(ObjectManager $manager)
     {
-        //Get sequence intial value
-        $sequence = $this->getReference('sequence')->getSeqValue();
-
     	$adminUser = new User();
-        $adminUser->setUsername($sequence);
-        $adminUser->setSalt();
-
-        $encoder = $this->container->get('security.encoder_factory')->getEncoder($adminUser);
-        $adminUser->setPassword($encoder->encodePassword($sequence, $adminUser->getSalt())); 
         
     	$adminUser->setFirstName("Jan");
     	$adminUser->setLastName("Kowalski");
@@ -47,6 +39,6 @@ class LoadUserData extends AbstractFixture implements OrderedFixtureInterface,Co
 
     public function getOrder()
     {
-    	return 2;
+    	return 1;
     }
 }

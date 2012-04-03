@@ -17,4 +17,14 @@
         </service>
     </services>
     -->
+    <parameters>
+        <parameter key="mcms_user.listener.class">Mcms\UserBundle\Listener\UserListener</parameter>
+    </parameters>
+
+    <services>
+        <service id="mcms_user.listener" class="%mcms_user.listener.class%">
+            <tag name="doctrine.event_listener" event="prePersist" method="prePersist" />
+            <argument type="service" id="security.encoder_factory" />
+        </service>
+    </services>
 </container>

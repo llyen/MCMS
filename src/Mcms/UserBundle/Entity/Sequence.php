@@ -9,6 +9,7 @@ use Doctrine\ORM\Mapping as ORM;
  *
  * @ORM\Table()
  * @ORM\Entity(repositoryClass="Mcms\UserBundle\Entity\SequenceRepository")
+ * @ORM\HasLifeCycleCallbacks
  */
 class Sequence
 {
@@ -73,5 +74,18 @@ class Sequence
         $this->setSeqValue($current);
 
         return $current;
+    }
+
+    /**
+     * @ORM\PrePersist
+     * 
+     * Generate intial sequence value 
+     */
+    public function initValue()
+    {
+        mt_srand((double)microtime()*1000000);
+        $seqSeed = mt_rand(10000000, 20000000);
+
+        $this->setSeqValue($seqSeed);
     }
 }

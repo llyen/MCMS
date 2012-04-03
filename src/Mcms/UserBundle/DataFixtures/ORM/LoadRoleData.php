@@ -16,8 +16,12 @@ class LoadRoleData extends AbstractFixture implements OrderedFixtureInterface
 	{
 		$adminRole = new Role();
 		$adminRole->setName("Administrator");
+			$manager->persist($adminRole);
 
-		$manager->persist($adminRole);
+		$patientRole = new Role();
+		$patientRole->setName("Patient");
+			$manager->persist($patientRole);
+			
 		$manager->flush();
 
 		$this->addReference('admin-role', $adminRole);
@@ -25,7 +29,7 @@ class LoadRoleData extends AbstractFixture implements OrderedFixtureInterface
 
 	public function getOrder()
 	{
-		return 3;
+		return 2;
 	}
 }
 

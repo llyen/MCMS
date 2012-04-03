@@ -24,6 +24,6 @@ class LoadUserRoleData extends AbstractFixture implements OrderedFixtureInterfac
 
 	public function getOrder()
 	{
-		return 4;
+		return 3;
 	}
 }
