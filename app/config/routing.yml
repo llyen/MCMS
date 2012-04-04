@@ -1,28 +1,38 @@
-McmsUsersBundle:
-    resource: "@McmsUsersBundle/Controller/"
+McmsPaymentBundle:
+    resource: "@McmsPaymentBundle/Controller/"
     type:     annotation
     prefix:   /
 
-login:
-    pattern:   /login
-    defaults:  { _controller: McmsUsersBundle:Security:login }
-login_check:
-    pattern:   /login_check
+McmsMedicalHistoryBundle:
+    resource: "@McmsMedicalHistoryBundle/Controller/"
+    type:     annotation
+    prefix:   /
 
-logout:
-    pattern:	/logout
+McmsTimetableBundle:
+    resource: "@McmsTimetableBundle/Controller/"
+    type:     annotation
+    prefix:   /
 
-register:
-    pattern:	/register
-    defaults:	{ _controller:McmsUsersBundle:Security:register }
-    requirements:
-        _method:	GET
+McmsProductBundle:
+    resource: "@McmsProductBundle/Controller/"
+    type:     annotation
+    prefix:   /
 
-register_process:
-    pattern:	/register
-    defaults:	{ _controller:McmsUsersBundle:Security:registerProcess }
-    requirements:
-        _method:	POST
+McmsEmployeeBundle:
+    resource: "@McmsEmployeeBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
+McmsPatientBundle:
+    resource: "@McmsPatientBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
+McmsUserBundle:
+    resource: "@McmsUserBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
 # Internal routing configuration to handle ESI
 #_internal:
 #   resource: "@FrameworkBundle/Resources/config/routing/internal.xml"
