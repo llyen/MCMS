@@ -17,7 +17,14 @@ class AppKernel extends Kernel
             new Symfony\Bundle\AsseticBundle\AsseticBundle(),
             new Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
             new JMS\SecurityExtraBundle\JMSSecurityExtraBundle(),
-            new Mcms\UsersBundle\McmsUsersBundle(),
+            new Mcms\UserBundle\McmsUserBundle(),
+            new Mcms\PatientBundle\McmsPatientBundle(),
+            new Mcms\EmployeeBundle\McmsEmployeeBundle(),
+            new Mcms\ProductBundle\McmsProductBundle(),
+            new Mcms\TimetableBundle\McmsTimetableBundle(),
+            new Mcms\MedicalHistoryBundle\McmsMedicalHistoryBundle(),
+            new Mcms\PaymentBundle\McmsPaymentBundle(),
+            new Symfony\Bundle\DoctrineFixturesBundle\DoctrineFixturesBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {
