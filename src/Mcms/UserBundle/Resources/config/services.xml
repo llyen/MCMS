@@ -1,0 +1,30 @@
+<?xml version="1.0" ?>
+
+<container xmlns="http://symfony.com/schema/dic/services"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+
+    <!--
+    <parameters>
+        <parameter key="mcms_user.example.class">Mcms\UserBundle\Example</parameter>
+    </parameters>
+
+    <services>
+        <service id="mcms_user.example" class="%mcms_user.example.class%">
+            <argument type="service" id="service_id" />
+            <argument>plain_value</argument>
+            <argument>%parameter_name%</argument>
+        </service>
+    </services>
+    -->
+    <parameters>
+        <parameter key="mcms_user.listener.class">Mcms\UserBundle\Listener\UserListener</parameter>
+    </parameters>
+
+    <services>
+        <service id="mcms_user.listener" class="%mcms_user.listener.class%">
+            <tag name="doctrine.event_listener" event="prePersist" method="prePersist" />
+            <argument type="service" id="security.encoder_factory" />
+        </service>
+    </services>
+</container>
