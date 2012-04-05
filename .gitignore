@@ -1,1 +1,7 @@
-/vendor/
+# Symfony directories
+vendor/*
+*/logs/
+*/cache/
+
+# Temp files
+*.*~

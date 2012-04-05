@@ -1,3 +1,38 @@
+McmsPaymentBundle:
+    resource: "@McmsPaymentBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
+McmsMedicalHistoryBundle:
+    resource: "@McmsMedicalHistoryBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
+McmsTimetableBundle:
+    resource: "@McmsTimetableBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
+McmsProductBundle:
+    resource: "@McmsProductBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
+McmsEmployeeBundle:
+    resource: "@McmsEmployeeBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
+McmsPatientBundle:
+    resource: "@McmsPatientBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
+McmsUserBundle:
+    resource: "@McmsUserBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
 # Internal routing configuration to handle ESI
 #_internal:
 #   resource: "@FrameworkBundle/Resources/config/routing/internal.xml"
