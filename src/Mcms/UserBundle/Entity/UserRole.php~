@@ -77,14 +77,4 @@ class UserRole
         $this->roleId = $roleId;
     }
 
-
-    /**
-     * Get roleId
-     *
-     * @return Mcms\UserBundle\Entity\Role 
-     */
-    public function getRoleId()
-    {
-        return $this->roleId;
-    }
 }

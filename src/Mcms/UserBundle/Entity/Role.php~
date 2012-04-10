@@ -1,15 +1,15 @@
 <?php
 
-namespace Mcms\UsersBundle\Entity;
+namespace Mcms\UserBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\Role\RoleInterface;
 
 /**
- * Mcms\UsersBundle\Entity\Role
+ * Mcms\UserBundle\Entity\Role
  *
  * @ORM\Table(name="roles")
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="Mcms\UserBundle\Entity\RoleRepository")
  */
 class Role implements RoleInterface
 {
@@ -30,6 +30,13 @@ class Role implements RoleInterface
     private $name;
 
     /**
+     * @var ArrayCollection $users
+     * 
+     * @ORM\OneToMany(targetEntity="UserRole", mappedBy="userId")
+     */
+    private $users;
+
+    /**
      * Get id
      *
      * @return integer 
@@ -40,7 +47,7 @@ class Role implements RoleInterface
     }
 
     /**
-     * Gets the role name.
+     * Get the role name.
      * 
      * @return string The role name.
      */
@@ -50,7 +57,7 @@ class Role implements RoleInterface
     }
 
     /**
-     * Sets the role name.
+     * Set the role name.
      * 
      * @param string $value The role name.
      */
@@ -60,12 +67,37 @@ class Role implements RoleInterface
     }
 
     /**
-     * Gets the role.Implementation of getRole from RoleInterface.
+     * Get the role.Implementation of getRole from RoleInterface.
      * 
      * @return string The role name.
      */
     public function getRole()
     {
         return $this->getName();
+    }
+    
+    public function __construct()
+    {
+        $this->users = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+    
+    /**
+     * Add users
+     *
+     * @param Mcms\UserBundle\Entity\UserRole $users
+     */
+    public function addUserRole(\Mcms\UserBundle\Entity\UserRole $users)
+    {
+        $this->users[] = $users;
+    }
+
+    /**
+     * Get users
+     *
+     * @return Doctrine\Common\Collections\Collection 
+     */
+    public function getUsers()
+    {
+        return $this->users;
     }
 }
