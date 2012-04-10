@@ -3,7 +3,6 @@
 namespace Mcms\UserBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Component\Security\Core\Role\RoleInterface;
 
 /**
@@ -12,7 +11,7 @@ use Symfony\Component\Security\Core\Role\RoleInterface;
  * @ORM\Table(name="roles")
  * @ORM\Entity(repositoryClass="Mcms\UserBundle\Entity\RoleRepository")
  */
-class Role implements RoleInterface, \Serializable
+class Role implements RoleInterface
 {
     /**
      * @var integer $id
@@ -33,7 +32,7 @@ class Role implements RoleInterface, \Serializable
     /**
      * @var ArrayCollection $users
      * 
-     * @ORM\OneToMany(targetEntity="UserRole", mappedBy="roleId")
+     * @ORM\OneToMany(targetEntity="UserRole", mappedBy="userId")
      */
     private $users;
 
@@ -79,7 +78,7 @@ class Role implements RoleInterface, \Serializable
     
     public function __construct()
     {
-        $this->users = new ArrayCollection();
+        $this->users = new \Doctrine\Common\Collections\ArrayCollection();
     }
     
     /**
@@ -100,23 +99,5 @@ class Role implements RoleInterface, \Serializable
     public function getUsers()
     {
         return $this->users;
-    }
-
-    public function serialize()
-    {
-        return serialize(array(
-            $this->id,
-            $this->name,
-            $this->users
-        ));
-    }
-
-    public function unserialize($data)
-    {
-        list(
-            $this->id,
-            $this->name,
-            $this->users
-        ) = unserialize($data);
     }
 }
