@@ -32,7 +32,7 @@ class Role implements RoleInterface
     /**
      * @var ArrayCollection $users
      * 
-     * @ORM\OneToMany(targetEntity="UserRole", mappedBy="User")
+     * @ORM\OneToMany(targetEntity="UserRole", mappedBy="userId")
      */
     private $users;
 
@@ -74,5 +74,30 @@ class Role implements RoleInterface
     public function getRole()
     {
         return $this->getName();
+    }
+    
+    public function __construct()
+    {
+        $this->users = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+    
+    /**
+     * Add users
+     *
+     * @param Mcms\UserBundle\Entity\UserRole $users
+     */
+    public function addUserRole(\Mcms\UserBundle\Entity\UserRole $users)
+    {
+        $this->users[] = $users;
+    }
+
+    /**
+     * Get users
+     *
+     * @return Doctrine\Common\Collections\Collection 
+     */
+    public function getUsers()
+    {
+        return $this->users;
     }
 }

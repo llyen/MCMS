@@ -13,8 +13,10 @@ use Symfony\Component\Security\Core\User\UserInterface;
  * @ORM\Entity(repositoryClass="Mcms\UserBundle\Entity\UserRepository")
  * @ORM\HasLifeCycleCallbacks
  */
-class User implements UserInterface
+class User implements UserInterface, \Serializable
 {
+    const DEFAULT_ROLE = 'ROLE_DEFAULT_USER';
+
     /**
      * @var integer $id
      *
@@ -62,7 +64,7 @@ class User implements UserInterface
     /**
      * @var ArrayCollection $userRoles
      * 
-     * @ORM\OneToMany(targetEntity="UserRole", mappedBy="Role")
+     * @ORM\OneToMany(targetEntity="UserRole", mappedBy="userId")
      */
     private $userRoles;
 
@@ -225,7 +227,15 @@ class User implements UserInterface
      */
     public function getRoles()
     {
-        return $this->getUserRoles()->toArray();
+        $roles = array();
+
+        foreach ($this->userRoles as $key => $value) {
+            $roles[$key] = $value->getRoleId()->getName();
+        }
+
+        $roles[] = static::DEFAULT_ROLE;
+
+        return array_unique($roles);
     }
 
     /**
@@ -240,7 +250,7 @@ class User implements UserInterface
     
     public function __construct()
     {
-        $this->userRoles = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->userRoles = new ArrayCollection();
     }
     
     /**
@@ -295,16 +305,6 @@ class User implements UserInterface
     }
 
     /**
-     * Get last update date and time
-     * 
-     * @return DateTime last update date and time.
-     */
-    public function getUpdateAt()
-    {
-        return $this->updatedAt;
-    }
-
-    /**
      * @ORM\PreUpdate
      * @ORM\PrePersist
      * 
@@ -314,5 +314,47 @@ class User implements UserInterface
     public function setUpdatedAt()
     {
         $this->updatedAt = new \DateTime();
+    }
+
+    /**
+     * Get updatedAt
+     *
+     * @return datetime 
+     */
+    public function getUpdatedAt()
+    {
+        return $this->updatedAt;
+    }
+
+    public function serialize()
+    {
+        return serialize(array(
+            $this->id,
+            $this->username,
+            $this->password,
+            $this->salt,
+            $this->firstName,
+            $this->lastName,
+            $this->userRoles,
+            $this->isActive,
+            $this->createdAt,
+            $this->updatedAt
+        ));
+    }
+
+    public function unserialize($data)
+    {
+        list(
+            $this->id,
+            $this->username,
+            $this->password,
+            $this->salt,
+            $this->firstName,
+            $this->lastName,
+            $this->userRoles,
+            $this->isActive,
+            $this->createdAt,
+            $this->updatedAt
+        ) = unserialize($data);
     }
 }

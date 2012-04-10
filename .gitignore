@@ -1,3 +1,9 @@
-/vendor/
-/app/logs/
-/app/cache/
+#BACKUP FILES#
+##############
+*.*~
+
+# Symfony directories#
+######################
+vendor/*
+*/logs/*
+*/cache/*

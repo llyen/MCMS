@@ -11,6 +11,7 @@ use Symfony\Component\Security\Core\User\UserInterface;
  *
  * @ORM\Table(name="users")
  * @ORM\Entity(repositoryClass="Mcms\UserBundle\Entity\UserRepository")
+ * @ORM\HasLifeCycleCallbacks
  */
 class User implements UserInterface
 {
@@ -61,7 +62,7 @@ class User implements UserInterface
     /**
      * @var ArrayCollection $userRoles
      * 
-     * @ORM\OneToMany(targetEntity="UserRole", mappedBy="Role")
+     * @ORM\OneToMany(targetEntity="UserRole", mappedBy="roleId")
      */
     private $userRoles;
 
@@ -71,6 +72,20 @@ class User implements UserInterface
      * @ORM\Column(name="isActive", type="boolean")
      */
     private $isActive = false;
+
+    /**
+     * @var DateTime $createdAt
+     * 
+     * @ORM\Column(name="createdAt", type="datetime")
+     */
+    private $createdAt;
+
+    /**
+     * @var DateTime $updatedAt
+     * 
+     * @ORM\Column(name="updatedAt", type="datetime")
+     */
+    private $updatedAt;
 
     /**
      * Get id
@@ -210,7 +225,8 @@ class User implements UserInterface
      */
     public function getRoles()
     {
-        return $this->getUserRoles()->toArray();
+        return $this->userRoles->toArray();
+        //return $this->getUserRoles()->toArray();
     }
 
     /**
@@ -236,5 +252,68 @@ class User implements UserInterface
     public function addUserRole(\Mcms\UserBundle\Entity\UserRole $userRoles)
     {
         $this->userRoles[] = $userRoles;
+    }
+
+    /**
+     * Set isActive
+     *
+     * @param boolean $isActive
+     */
+    public function setIsActive($isActive)
+    {
+        $this->isActive = $isActive;
+    }
+
+    /**
+     * Get isActive
+     *
+     * @return boolean 
+     */
+    public function getIsActive()
+    {
+        return $this->isActive;
+    }
+
+    /**
+     * Get creation date and time
+     * 
+     * @return DateTime Creation date and time.
+     */
+    public function getCreatedAt()
+    {
+        return $this->createdAt;
+    }
+
+    /**
+     * @ORM\PrePersist
+     * 
+     * Set creation date and time.
+     * Called automaticly.
+     */
+    public function setCreatedAt()
+    {
+        $this->createdAt = new \DateTime();
+    }
+
+    /**
+     * Get last update date and time
+     * 
+     * @return DateTime last update date and time.
+     */
+    public function getUpdateAt()
+    {
+        return $this->updatedAt;
+    }
+
+    /**
+     * @ORM\PreUpdate
+     * @ORM\PrePersist
+     * 
+     * Set last edit date and time.
+     * Caled automaticly.
+     */
+    public function setUpdatedAt()
+    {
+        $this->updatedAt = new \DateTime();
     }
 }
