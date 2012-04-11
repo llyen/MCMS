@@ -1,0 +1,55 @@
+<?php
+
+namespace Mcms\ProductBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Mcms\ProductBundle\Entity\Product
+ *
+ * @ORM\Table(name="products")
+ * @ORM\Entity(repositoryClass="Mcms\ProductBundle\Entity\ProductRepository")
+ */
+class Product
+{
+    /**
+     * @var integer $id
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+    /**
+     * @var integer $product
+     * 
+     * @ORM\OneToMany(targetEntity="Product", mappedBy="package")
+     */
+    private $product;
+
+    /**
+     * @var integer $package
+     * 
+     * @ORM\ManyToOne(targetEntity="Product", inversedBy="product")
+     * @ORM\JoinColumn(name="packageId", referencedColumnName="id")
+     */
+    private $package;
+
+    /**
+     * @var float $price
+     * 
+     * @ORM\Column(name="price", type="decimal", scale=2)
+     */
+    private $price;
+
+    /**
+     * Get id
+     *
+     * @return integer 
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+}

@@ -13,10 +13,8 @@ use Symfony\Component\Security\Core\User\UserInterface;
  * @ORM\Entity(repositoryClass="Mcms\UserBundle\Entity\UserRepository")
  * @ORM\HasLifeCycleCallbacks
  */
-class User implements UserInterface, \Serializable
+class User implements UserInterface
 {
-    const DEFAULT_ROLE = 'ROLE_DEFAULT_USER';
-
     /**
      * @var integer $id
      *
@@ -64,7 +62,7 @@ class User implements UserInterface, \Serializable
     /**
      * @var ArrayCollection $userRoles
      * 
-     * @ORM\OneToMany(targetEntity="UserRole", mappedBy="userId")
+     * @ORM\OneToMany(targetEntity="UserRole", mappedBy="roleId")
      */
     private $userRoles;
 
@@ -227,15 +225,8 @@ class User implements UserInterface, \Serializable
      */
     public function getRoles()
     {
-        $roles = array();
-
-        foreach ($this->userRoles as $key => $value) {
-            $roles[$key] = $value->getRoleId()->getName();
-        }
-
-        $roles[] = static::DEFAULT_ROLE;
-
-        return array_unique($roles);
+        return $this->userRoles->toArray();
+        //return $this->getUserRoles()->toArray();
     }
 
     /**
@@ -250,7 +241,7 @@ class User implements UserInterface, \Serializable
     
     public function __construct()
     {
-        $this->userRoles = new ArrayCollection();
+        $this->userRoles = new \Doctrine\Common\Collections\ArrayCollection();
     }
     
     /**
@@ -305,6 +296,16 @@ class User implements UserInterface, \Serializable
     }
 
     /**
+     * Get last update date and time
+     * 
+     * @return DateTime last update date and time.
+     */
+    public function getUpdateAt()
+    {
+        return $this->updatedAt;
+    }
+
+    /**
      * @ORM\PreUpdate
      * @ORM\PrePersist
      * 
@@ -314,47 +315,5 @@ class User implements UserInterface, \Serializable
     public function setUpdatedAt()
     {
         $this->updatedAt = new \DateTime();
-    }
-
-    /**
-     * Get updatedAt
-     *
-     * @return datetime 
-     */
-    public function getUpdatedAt()
-    {
-        return $this->updatedAt;
-    }
-
-    public function serialize()
-    {
-        return serialize(array(
-            $this->id,
-            $this->username,
-            $this->password,
-            $this->salt,
-            $this->firstName,
-            $this->lastName,
-            $this->userRoles,
-            $this->isActive,
-            $this->createdAt,
-            $this->updatedAt
-        ));
-    }
-
-    public function unserialize($data)
-    {
-        list(
-            $this->id,
-            $this->username,
-            $this->password,
-            $this->salt,
-            $this->firstName,
-            $this->lastName,
-            $this->userRoles,
-            $this->isActive,
-            $this->createdAt,
-            $this->updatedAt
-        ) = unserialize($data);
     }
 }
