@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title>{% block title %}Welcome!{% endblock %}</title>        
+    	<link href="{{ asset('css/style.css') }}" rel="stylesheet" type="text/css" />
+		{% block stylesheets %}{% endblock %}
+        <link rel="shortcut icon" href="{{ asset('favicon.ico') }}" />
+    </head>
+    <body class="bodygrey">
+	<div class="headerspace"></div>
+	<div class="header">	
+		<!-- logo -->
+		<a href=""><img src="images/logo.png" alt=""  /></a>    
+		<div class="tabmenu">
+			<ul>
+				<li class="current"><a href="main.html" class=""><span>Strona g³ówna</span></a></li>          
+				<li><a href="users.html" class=""><span>U¿ytkownicy</span></a></li>					
+			</ul>
+		</div><!-- tabmenu -->
+    
+		<div class="accountinfo">  	
+			<div class="info">
+				<h3>Testowy user</h3>
+				<small>test@test.test</small>
+				<p>
+					<a href="">Mój profil</a> <a href="main.html">Wyloguj</a>
+				</p>
+			</div>
+		</div><!-- accountinfo end -->
+	</div><!-- header end -->
+	
+	<div class="sidebar">
+		<div id="accordion">
+			{% block sidebar %}
+			{% endblock %}      
+		</div>	
+	</div><!-- leftmenu -->
+	<div class="maincontent">	
+		<div class="two_third maincontent_inner ">
+    	<div class="left"> 
+			{% block dashboard %}
+			{% endblock %}
+		<br clear="all" /> 
+			{% block content %}
+			{% endblock %}
+		</div><!-- left -->  
+		</div><!-- end two_third-->
+		
+		<div class="one_third last">
+    	<div class="right">
+		
+			</div><!--right-->
+    </div><!--one_third last-->
+	<br clear="all" />    
+	</div><!--maincontent-->
+        
+        {% block javascripts %}{% endblock %}
+		
+		<br />
+		
+<div class="footer footer_float">
+	<div class="footerinner">
+    	&copy;2012 Ocenzurowana stopka .
+    </div><!-- footerinner -->
+</div><!-- footer -->
+    </body>
+</html>
