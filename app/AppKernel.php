@@ -26,9 +26,13 @@ class AppKernel extends Kernel
             new Mcms\PaymentBundle\McmsPaymentBundle(),
             new Symfony\Bundle\DoctrineFixturesBundle\DoctrineFixturesBundle(),
 <<<<<<< HEAD
+<<<<<<< HEAD
             new Mcms\DashboardBundle\McmsDashboardBundle(),
 =======
 >>>>>>> 554be3d2ef3a9b83c56ec8975e45d2c96a15b8f4
+=======
+            new Mcms\DashboardBundle\McmsDashboardBundle(),
+>>>>>>> upstream/master
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

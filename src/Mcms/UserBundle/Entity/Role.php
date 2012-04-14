@@ -4,9 +4,13 @@ namespace Mcms\UserBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 <<<<<<< HEAD
+<<<<<<< HEAD
 use Doctrine\Common\Collections\ArrayCollection;
 =======
 >>>>>>> 554be3d2ef3a9b83c56ec8975e45d2c96a15b8f4
+=======
+use Doctrine\Common\Collections\ArrayCollection;
+>>>>>>> upstream/master
 use Symfony\Component\Security\Core\Role\RoleInterface;
 
 /**
@@ -16,10 +20,14 @@ use Symfony\Component\Security\Core\Role\RoleInterface;
  * @ORM\Entity(repositoryClass="Mcms\UserBundle\Entity\RoleRepository")
  */
 <<<<<<< HEAD
+<<<<<<< HEAD
 class Role implements RoleInterface, \Serializable
 =======
 class Role implements RoleInterface
 >>>>>>> 554be3d2ef3a9b83c56ec8975e45d2c96a15b8f4
+=======
+class Role implements RoleInterface, \Serializable
+>>>>>>> upstream/master
 {
     /**
      * @var integer $id
@@ -41,10 +49,14 @@ class Role implements RoleInterface
      * @var ArrayCollection $users
      * 
 <<<<<<< HEAD
+<<<<<<< HEAD
      * @ORM\OneToMany(targetEntity="UserRole", mappedBy="roleId")
 =======
      * @ORM\OneToMany(targetEntity="UserRole", mappedBy="User")
 >>>>>>> 554be3d2ef3a9b83c56ec8975e45d2c96a15b8f4
+=======
+     * @ORM\OneToMany(targetEntity="UserRole", mappedBy="roleId")
+>>>>>>> upstream/master
      */
     private $users;
 
@@ -91,10 +103,14 @@ class Role implements RoleInterface
     public function __construct()
     {
 <<<<<<< HEAD
+<<<<<<< HEAD
         $this->users = new ArrayCollection();
 =======
         $this->users = new \Doctrine\Common\Collections\ArrayCollection();
 >>>>>>> 554be3d2ef3a9b83c56ec8975e45d2c96a15b8f4
+=======
+        $this->users = new ArrayCollection();
+>>>>>>> upstream/master
     }
     
     /**
@@ -117,6 +133,9 @@ class Role implements RoleInterface
         return $this->users;
     }
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> upstream/master
 
     public function serialize()
     {
@@ -135,6 +154,9 @@ class Role implements RoleInterface
             $this->users
         ) = unserialize($data);
     }
+<<<<<<< HEAD
 =======
 >>>>>>> 554be3d2ef3a9b83c56ec8975e45d2c96a15b8f4
+=======
+>>>>>>> upstream/master
 }

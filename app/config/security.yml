@@ -42,6 +42,9 @@ security:
             algorithm:  sha1
             encode_as_base64:   false
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> upstream/master
             iterations: 1
 
     providers:
@@ -57,7 +60,11 @@ security:
 
     access_control:
         - { path: ^/admin, role: ROLE_ADMIN }
+<<<<<<< HEAD
         - { path: ^/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
 =======
             iterations: 1
 >>>>>>> 554be3d2ef3a9b83c56ec8975e45d2c96a15b8f4
+=======
+        - { path: ^/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+>>>>>>> upstream/master

@@ -7,21 +7,32 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 use Mcms\UserBundle\Form\Type\ChangePasswordFormType;
 use Mcms\UserBundle\Form\Model\ChangePassword;
 =======
 use Mcms\UserBundle\Entity\User;
 >>>>>>> 554be3d2ef3a9b83c56ec8975e45d2c96a15b8f4
+=======
+use Mcms\UserBundle\Form\Type\ChangePasswordFormType;
+use Mcms\UserBundle\Form\Model\ChangePassword;
+>>>>>>> upstream/master
 
 class ManageController extends Controller
 {
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 	/**
 	 * @Template("McmsUserBundle:Manage:changePasswordForm.html.twig")
 	 */
 =======
 >>>>>>> 554be3d2ef3a9b83c56ec8975e45d2c96a15b8f4
+=======
+	/**
+	 * @Template("McmsUserBundle:Manage:changePasswordForm.html.twig")
+	 */
+>>>>>>> upstream/master
 	public function changePasswordAction()
 	{
 		/**
@@ -29,16 +40,25 @@ class ManageController extends Controller
 		 * 2) Generate view
 		 */
 <<<<<<< HEAD
+<<<<<<< HEAD
 		$form = $this->createForm(new ChangePasswordFormType(), new ChangePassword());
 
 		return array('form'=>$form->createView());
 =======
 >>>>>>> 554be3d2ef3a9b83c56ec8975e45d2c96a15b8f4
+=======
+		$form = $this->createForm(new ChangePasswordFormType(), new ChangePassword());
+
+		return array('form'=>$form->createView());
+>>>>>>> upstream/master
 	}
 
 	public function changePasswordProcessAction()
 	{
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> upstream/master
 		$form = $this->createForm(new ChangePasswordFormType(), new ChangePassword());
 		$form->bindRequest($this->getRequest());
 
@@ -69,6 +89,7 @@ class ManageController extends Controller
             'form' => $form->createView()
         ));
 	
+<<<<<<< HEAD
 =======
 		/**
 		 * 1) Check whether form is valid or not
@@ -79,6 +100,8 @@ class ManageController extends Controller
 		 * 6) Show success page/message
 		 */
 >>>>>>> 554be3d2ef3a9b83c56ec8975e45d2c96a15b8f4
+=======
+>>>>>>> upstream/master
 	}
 
 	public function resetPasswordAction()
