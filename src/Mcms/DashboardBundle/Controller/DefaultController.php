@@ -12,7 +12,7 @@ class DefaultController extends Controller
      * @Route("/dash/dashboard")
      * @Template("McmsDashboardBundle:Administrator:admin.html.twig")
      */
-    public function indexAction($name)
+    public function indexAction()
     {
         return array('name' => $name);
     }
