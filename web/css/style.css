@@ -13,9 +13,39 @@ table, caption, tbody, tfoot, thead, tr, th, td {
 	padding: 0;
 	vertical-align: baseline;
 }
-/***GENERAL STYLES***/
+
+/***LOGIN***/
+ button[type=submit] { background: #4b6592 url(../images/buttonbg3.png) repeat-x top left; color: #fff; padding: 7px 20px; cursor: pointer; }
+ button[type=submit]  { -moz-border-radius: 3px; -webkit-border-radius: 3px; border-radius: 3px; border: 1px solid #395380; font-size: 12px; }
+ button [type=submit] { text-transform: uppercase; text-shadow: 1px 1px #395380; margin-left: 170px; font-family:Arial;}
+ button[type=submit]  { -moz-box-shadow: 1px 1px 2px #999; -webkit-box-shadow: 1px 1px 2px #999; box-shadow: 1px 1px 2px #999; margin: 20px; }
+ button[type=submit] :hover { background: #005681 url(../images/buttonbg3.png) repeat-x 0 -36px; }
+ button[type=submit] :active { -moz-box-shadow: inset 2px 2px 2px #12274c; -webkit-box-shadow: inset 2px 2px 2px #12274c; box-shadow: inset 2px 2px 2px #12274c; }
+.log_logo{float:left; margin:60px 0 0 0;}
+ #content{margin:100px auto;width:650px;min-height:350px; background: url(../images/blacktrans.png);;z-index:1;behaviour:url(border-radius.htc);box-shadow:0 0 9px 1px black;}
+#content{-moz-border-radius:8px;-webkit-border-radius:8px;-khtml-border-radius:8px;border-radius:8px;}
+#content>.log_form{width:300px; float:right; margin:70px 30px 0 0;}
+#content>.error_msg{}
+#content>.error_msg p{width:630px; background:#eee; text-align:center;padding:6px 0 6px 0; position:absolute;margin:20px 10px 0; color:#212121;font-weight:bold;}
+#content>.error_msg p{-moz-border-radius: 3px; -webkit-border-radius: 3px; border-radius: 3px;font-size: 12px;  -moz-box-shadow: 1px 1px 2px #999; -webkit-box-shadow: 1px 1px 2px #999; box-shadow: 1px 1px 2px #999;}
+ul.log_foot{list-style-type:none; color:white; margin:270px auto 5px;text-align:center;}
+ul.log_foot li{display:inline; margin:0 20px 0 20px;}
+ul.log_foot li a{color:white;text-decoration:none;}
+ input#username[type=text] { font-size: 12px; padding: 8px 5px; border: 1px solid #ccc; background: #fcfcfc; outline: none; }
+ input#username[type=text] { -moz-box-shadow: inset 1px 1px 3px #ccc; -webkit-box-shadow: inset 1px 1px 3px #ccc; box-shadow: inset 1px 1px 3px #ccc; }
+ input#username[type=text] { -moz-border-radius: 3px; -webkit-border-radius: 3px; border-radius: 3px; margin:20px 0 20px 20px; width:260px; padding:8px 0 8px 40px; }
+ input#username[type=text]{ border: 0; background: #eee url(../images/userfield.png) no-repeat; background-position: top left; width: 190px; margin-right: 10px; }
+ input#username[type=text]:focus { background-color: #fff; background-position: 0 -32px; }
+ input#password { font-size: 12px; padding: 8px 5px; border: 1px solid #ccc; background: #fcfcfc; outline: none; }
+ input#password { -moz-box-shadow: inset 1px 1px 3px #ccc; -webkit-box-shadow: inset 1px 1px 3px #ccc; box-shadow: inset 1px 1px 3px #ccc;width:260px; padding:8px 0 8px 40px; }
+ input#password { -moz-border-radius: 3px; -webkit-border-radius: 3px; border-radius: 3px; margin-left: 20px; }
+ input#password { border: 0; background: #eee url(../images/paswdfield.png) no-repeat; background-position: top left; width: 190px; margin-right: 10px; }
+ input#password:focus{ background-color: #fff; background-position: 0 -32px; }
+ label { width: 150px; float: left; text-align: left; padding-top: 5px; margin-right: 20px; }
+ /***GENERAL STYLES***/
 body { font-family: Arial; font-size: 12px; }
 body { background: #333; line-height: 21px; }
+body {background:url("../images/bg.jpg")no-repeat;}
 input, select, textarea, button { outline: none; font-family: A; font-size: 12px; }
 input, select, textarea, button { border: 1px solid #ccc; padding: 5px; }
 
