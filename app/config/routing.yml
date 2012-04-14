@@ -1,3 +1,8 @@
+McmsDashboardBundle:
+    resource: "@McmsDashboardBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
 McmsPaymentBundle:
     resource: "@McmsPaymentBundle/Controller/"
     type:     annotation
