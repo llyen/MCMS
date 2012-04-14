@@ -42,3 +42,18 @@ security:
             algorithm:  sha1
             encode_as_base64:   false
             iterations: 1
+
+    providers:
+        user:
+            entity: { class: McmsUserBundle:User, property: username }
+
+    firewalls:
+        mainFirewall:
+            pattern:    ^/
+            anonymous:  ~
+            form_login: ~
+            logout: ~
+
+    access_control:
+        - { path: ^/admin, role: ROLE_ADMIN }
+        - { path: ^/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }

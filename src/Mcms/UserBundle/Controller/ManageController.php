@@ -6,29 +6,58 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 
-use Mcms\UserBundle\Entity\User;
+use Mcms\UserBundle\Form\Type\ChangePasswordFormType;
+use Mcms\UserBundle\Form\Model\ChangePassword;
 
 class ManageController extends Controller
 {
 
+	/**
+	 * @Template("McmsUserBundle:Manage:changePasswordForm.html.twig")
+	 */
 	public function changePasswordAction()
 	{
 		/**
 		 * 1) Generate change password form
 		 * 2) Generate view
 		 */
+		$form = $this->createForm(new ChangePasswordFormType(), new ChangePassword());
+
+		return array('form'=>$form->createView());
 	}
 
 	public function changePasswordProcessAction()
 	{
-		/**
-		 * 1) Check whether form is valid or not
-		 * 2) Get current user object
-		 * 3) Get encoded user password - store it in variable (eg. oldPasswd)
-		 * 4) Compare oldPasswd with old password passed by user (first passwd provided by user have to be encoded)
-		 * 5) Store new password in DB
-		 * 6) Show success page/message
-		 */
+		$form = $this->createForm(new ChangePasswordFormType(), new ChangePassword());
+		$form->bindRequest($this->getRequest());
+
+		$formData = $form->getData();
+
+		if($form->isValid())
+		{
+			/**
+			 * @var User $user Current logged user
+			 */
+			$user = $this->get('security.context')->getToken()->getUser();
+
+			$factory = $this->container->get('security.encoder_factory');
+			$encoder = $factory->getEncoder($user);
+
+			$newPassword = $encoder->encodePassword($formData->getNewPassword(), $user->getSalt());
+
+			$user->setPassword($newPassword);
+
+			$em = $this->getDoctrine()->getEntityManager();
+			$em->persist($user);
+			$em->flush();
+
+			echo "SUCCESS";
+		}
+
+		return $this->render('McmsUserBundle:Manage:changePasswordForm.html.twig', array(
+            'form' => $form->createView()
+        ));
+	
 	}
 
 	public function resetPasswordAction()

@@ -6,11 +6,11 @@
 
     <!--
     <parameters>
-        <parameter key="mcms_users.example.class">Mcms\UsersBundle\Example</parameter>
+        <parameter key="mcms_dashboard.example.class">Mcms\DashboardBundle\Example</parameter>
     </parameters>
 
     <services>
-        <service id="mcms_users.example" class="%mcms_users.example.class%">
+        <service id="mcms_dashboard.example" class="%mcms_dashboard.example.class%">
             <argument type="service" id="service_id" />
             <argument>plain_value</argument>
             <argument>%parameter_name%</argument>

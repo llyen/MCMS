@@ -1,6 +1,6 @@
 <?php
 
-namespace Mcms\UsersBundle\Controller;
+namespace Mcms\DashboardBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
@@ -12,9 +12,8 @@ class DefaultController extends Controller
      * @Route("/hello/{name}")
      * @Template()
      */
-    public function indexAction($name="World")
+    public function indexAction($name)
     {
         return array('name' => $name);
     }
-
 }

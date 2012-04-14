@@ -1,7 +1,9 @@
-# Symfony directories
-vendor/*
-*/logs/
-*/cache/
-
-# Temp files
+#BACKUP FILES#
+##############
 *.*~
+
+# Symfony directories#
+######################
+vendor/*
+*/logs/*
+*/cache/*

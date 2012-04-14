@@ -1,6 +1,6 @@
 <?php
 
-namespace Mcms\UsersBundle\Tests\Controller;
+namespace Mcms\DashboardBundle\Tests\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
