@@ -1,8 +1,11 @@
+<<<<<<< HEAD
 McmsDashboardBundle:
     resource: "@McmsDashboardBundle/Controller/"
     type:     annotation
     prefix:   /
 
+=======
+>>>>>>> 554be3d2ef3a9b83c56ec8975e45d2c96a15b8f4
 McmsPaymentBundle:
     resource: "@McmsPaymentBundle/Controller/"
     type:     annotation
@@ -38,6 +41,7 @@ McmsUserBundle:
     type:     annotation
     prefix:   /
 
+<<<<<<< HEAD
 login:
     pattern: /login
     defaults: { _controller: McmsUserBundle:Security:login }
@@ -63,6 +67,8 @@ changePasswordProcess:
     requirements:
         _method:  POST
 
+=======
+>>>>>>> 554be3d2ef3a9b83c56ec8975e45d2c96a15b8f4
 # Internal routing configuration to handle ESI
 #_internal:
 #   resource: "@FrameworkBundle/Resources/config/routing/internal.xml"

@@ -13,10 +13,15 @@ use Symfony\Component\Security\Core\User\UserInterface;
  * @ORM\Entity(repositoryClass="Mcms\UserBundle\Entity\UserRepository")
  * @ORM\HasLifeCycleCallbacks
  */
+<<<<<<< HEAD
 class User implements UserInterface, \Serializable
 {
     const DEFAULT_ROLE = 'ROLE_DEFAULT_USER';
 
+=======
+class User implements UserInterface
+{
+>>>>>>> 554be3d2ef3a9b83c56ec8975e45d2c96a15b8f4
     /**
      * @var integer $id
      *
@@ -64,7 +69,11 @@ class User implements UserInterface, \Serializable
     /**
      * @var ArrayCollection $userRoles
      * 
+<<<<<<< HEAD
      * @ORM\OneToMany(targetEntity="UserRole", mappedBy="userId")
+=======
+     * @ORM\OneToMany(targetEntity="UserRole", mappedBy="Role")
+>>>>>>> 554be3d2ef3a9b83c56ec8975e45d2c96a15b8f4
      */
     private $userRoles;
 
@@ -227,6 +236,7 @@ class User implements UserInterface, \Serializable
      */
     public function getRoles()
     {
+<<<<<<< HEAD
         $roles = array();
 
         foreach ($this->userRoles as $key => $value) {
@@ -236,6 +246,9 @@ class User implements UserInterface, \Serializable
         $roles[] = static::DEFAULT_ROLE;
 
         return array_unique($roles);
+=======
+        return $this->getUserRoles()->toArray();
+>>>>>>> 554be3d2ef3a9b83c56ec8975e45d2c96a15b8f4
     }
 
     /**
@@ -250,7 +263,11 @@ class User implements UserInterface, \Serializable
     
     public function __construct()
     {
+<<<<<<< HEAD
         $this->userRoles = new ArrayCollection();
+=======
+        $this->userRoles = new \Doctrine\Common\Collections\ArrayCollection();
+>>>>>>> 554be3d2ef3a9b83c56ec8975e45d2c96a15b8f4
     }
     
     /**
@@ -305,6 +322,19 @@ class User implements UserInterface, \Serializable
     }
 
     /**
+<<<<<<< HEAD
+=======
+     * Get last update date and time
+     * 
+     * @return DateTime last update date and time.
+     */
+    public function getUpdateAt()
+    {
+        return $this->updatedAt;
+    }
+
+    /**
+>>>>>>> 554be3d2ef3a9b83c56ec8975e45d2c96a15b8f4
      * @ORM\PreUpdate
      * @ORM\PrePersist
      * 
@@ -315,6 +345,7 @@ class User implements UserInterface, \Serializable
     {
         $this->updatedAt = new \DateTime();
     }
+<<<<<<< HEAD
 
     /**
      * Get updatedAt
@@ -357,4 +388,6 @@ class User implements UserInterface, \Serializable
             $this->updatedAt
         ) = unserialize($data);
     }
+=======
+>>>>>>> 554be3d2ef3a9b83c56ec8975e45d2c96a15b8f4
 }

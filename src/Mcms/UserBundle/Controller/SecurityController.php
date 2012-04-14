@@ -6,8 +6,11 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 
+<<<<<<< HEAD
 use Symfony\Component\Security\Core\SecurityContext;
 
+=======
+>>>>>>> 554be3d2ef3a9b83c56ec8975e45d2c96a15b8f4
 class SecurityController extends Controller
 {
 	public function loginAction()
@@ -16,6 +19,7 @@ class SecurityController extends Controller
 		 * 1) Generate login form
 		 * 2) Generate and show view
 		 */
+<<<<<<< HEAD
 		$request = $this->getRequest();
 		$session = $request->getSession();
 
@@ -31,6 +35,8 @@ class SecurityController extends Controller
             'last_username' => $session->get(SecurityContext::LAST_USERNAME),
             'error'         => $error,
         ));
+=======
+>>>>>>> 554be3d2ef3a9b83c56ec8975e45d2c96a15b8f4
 	}
 
 	public function loginProcessAction()
