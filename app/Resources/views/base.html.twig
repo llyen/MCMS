@@ -2,12 +2,59 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        {% block stylesheets %}{% endblock %}
+        <title>{% block title %}Welcome!{% endblock %}</title>        
+    	<link href="{{ asset('css/style.css') }}" rel="stylesheet" type="text/css" />
+		{% block stylesheets %}{% endblock %}
         <link rel="shortcut icon" href="{{ asset('favicon.ico') }}" />
     </head>
-    <body>
-        {% block body %}{% endblock %}
+    <body class="bodygrey">
+	<div class="headerspace"></div>
+	<div class="header">	
+		<!-- logo -->
+		<a href=""><img src="images/logo.png" alt=""  /></a>    
+		<div class="tabmenu">
+			<ul>
+				<li class="current"><a href="main.html" class=""><span>Strona główna</span></a></li>          
+				<li><a href="users.html" class=""><span>Użytkownicy</span></a></li>					
+			</ul>
+		</div><!-- tabmenu -->
+    
+		<div class="accountinfo">  	
+			<div class="info">
+				<h3>Testowy user</h3>
+				<small>test@test.test</small>
+				<p>
+					<a href="">Mój profil</a> <a href="main.html">Wyloguj</a>
+				</p>
+			</div>
+		</div><!-- accountinfo end -->
+	</div><!-- header end -->
+	
+	<div class="sidebar">
+		<div id="accordion">
+			{% block sidebar %}
+			{% endblock %}      
+		</div>	
+	</div><!-- leftmenu -->
+	<div class="maincontent">	
+    	<div class="left"> 
+			{% block dashboard %}
+			{% endblock %}
+		<br clear="all" /> 
+			{% block content %}
+			{% endblock %}
+	</div><!-- left -->  
+	<br clear="all" />    
+</div><!--maincontent-->
+        
         {% block javascripts %}{% endblock %}
+		
+		<br />
+		
+<div class="footer footer_float">
+	<div class="footerinner">
+    	&copy;2012 Ocenzurowana stopka .
+    </div><!-- footerinner -->
+</div><!-- footer -->
     </body>
 </html>
