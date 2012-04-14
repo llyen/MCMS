@@ -20,6 +20,7 @@
     <parameters>
         <parameter key="mcms_user.listener.class">Mcms\UserBundle\Listener\UserListener</parameter>
         <parameter key="mcms_user.security.listener.class">Mcms\UserBundle\Listener\SecurityListener</parameter>
+        <parameter key="mcms_user.password.validator.class">Mcms\UserBundle\Validator\Constraint\UserPasswordValidator</parameter>
     </parameters>
 
     <services>
@@ -27,11 +28,18 @@
             <tag name="doctrine.event_listener" event="prePersist" method="prePersist" />
             <argument type="service" id="security.encoder_factory" />
         </service>
+
         <service id="mcms_user.security.listener" class="%mcms_user.security.listener.class%">
             <tag name="kernel.event_listener" event="security.interactive_login" method="onSecurityInteractiveLogin" />
             <tag name="kernel.event_listener" event="kernel.response" method="onKernelResponse" />
             <argument type="service" id="router" />
             <argument type="service" id="security.context" />
+        </service>
+
+        <service id="mcms_user.password.validator" class="%mcms_user.password.validator.class%">
+            <argument type="service" id="security.context" />
+            <argument type="service" id="security.encoder_factory" />
+            <tag name="validator.constraint_validator" alias="user_password_validator" />
         </service>
     </services>
 </container>

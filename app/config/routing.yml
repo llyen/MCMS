@@ -1,3 +1,8 @@
+McmsDashboardBundle:
+    resource: "@McmsDashboardBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
 McmsPaymentBundle:
     resource: "@McmsPaymentBundle/Controller/"
     type:     annotation
@@ -45,6 +50,18 @@ logout:
 
 admin_dashboard:
     pattern: /patient/new
+
+changePassword:
+    pattern: /change_password
+    defaults: { _controller: McmsUserBundle:Manage:changePassword }
+    requirements:
+        _method:  GET
+
+changePasswordProcess:
+    pattern: /change_password
+    defaults: { _controller: McmsUserBundle:Manage:changePasswordProcess }
+    requirements:
+        _method:  POST
 
 # Internal routing configuration to handle ESI
 #_internal:
