@@ -118,11 +118,11 @@ small { font-size: 11px; line-height: 12px; }
 #accordion h3 { font-size: 12px; color: #333; text-transform: uppercase; }
 #accordion h3.open { background: url(../images/arrow.png) no-repeat 10px -37px; }
 #accordion .content { display: none; margin: 10px 0 20px 0; }
-#accordion .content:last-child { padding: 0 15px; color: #333; }
+#accordion .content:last-child { padding: 0 0; color: #333; }
 
 
 .leftmenu { list-style: none; }
-.leftmenu li { display: block; margin-bottom: 1px; }
+.leftmenu li { display: block; margin-bottom: 1px; width:220px; }
 .leftmenu li a { font-size: 12px; display: block; padding: 5px 0 5px 40px; color: #333; }
 .leftmenu li a:hover { }
 .leftmenu li.current a { background-color: #eee; border-right: 0; color: #333; border-top: 1px solid #a6c0de; border-bottom: 1px solid #a6c0de; }
@@ -141,6 +141,18 @@ small { font-size: 11px; line-height: 12px; }
 .dashboard li a { -moz-border-radius: 3px; -webkit-border-radius: 3px; border-radius: 3px; -moz-box-shadow: 1px 1px 0 #fff; color: #069; }
 .dashboard li a span { font-size: 12px; display: block; margin-top: 10px; }
 .dashboard li a:hover { -moz-box-shadow: 0 0 4px #ddd; background: #fcfcfc; text-decoration: none; }
+
+/***MAIN CONTENT:windows***/
+.window1 { margin-bottom: 20px; -moz-box-shadow: 1px 1px 2px #ddd; -webkit-box-shadow: 1px 1px 2px #ddd; box-shadow: 1px 1px 2px #ddd; }
+.window1 h3 { font-size: 12px; color: #333; font-weight: normal; text-shadow: 1px 1px #fff; }
+.window1 h3 { -moz-border-radius: 3px 3px 0 0; -webkit-border-radius: 3px 3px 0 0; border-radius: 3px 3px 0 0;  }
+.window1 h3 { border: 1px solid #ddd; background: #eee url(../images/thead.png) repeat-x top left; }
+.window1 h3 span { padding: 10px 15px; display: block; }
+.window1 .inside { background: #fcfcfc; padding: 20px 15px; color: #666; overflow: hidden; border: 1px solid #ddd; border-top: 0; }
+.window1 .inside { -moz-border-radius: 0 0 3px 3px; -webkit-border-radius: 0 0 3px 3px; border-radius: 0 0 3px 3px; }
+.window1 .inside p { margin: 5px 0; }
+.window1 .inside p:first-child { margin-top: 0; }
+.window1 .inside label { display: block; padding: 0; width: 120px; margin-right: 15px; float: left; }
 
 /***MAIN CONTENT:FULL PAGE***/
 .fullpage { margin: 20px 15px; }
