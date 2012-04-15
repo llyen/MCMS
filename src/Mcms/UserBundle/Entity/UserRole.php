@@ -77,26 +77,11 @@ class UserRole
         $this->roleId = $roleId;
     }
 
-<<<<<<< HEAD
-<<<<<<< HEAD
 
     /**
      * Get roleId
      *
      * @return Mcms\UserBundle\Entity\Role 
-=======
-    /**
-     * Get roleId
-     *
-     * @return integer 
->>>>>>> 554be3d2ef3a9b83c56ec8975e45d2c96a15b8f4
-=======
-
-    /**
-     * Get roleId
-     *
-     * @return Mcms\UserBundle\Entity\Role 
->>>>>>> upstream/master
      */
     public function getRoleId()
     {
