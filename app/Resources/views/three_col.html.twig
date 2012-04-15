@@ -14,8 +14,8 @@
 		<a href=""><img src="images/logo.png" alt=""  /></a>    
 		<div class="tabmenu">
 			<ul>
-				<li class="current"><a href="main.html" class=""><span>Strona g≈Ç√≥wna</span></a></li>          
-				<li><a href="users.html" class=""><span>U≈ºytkownicy</span></a></li>					
+				<li class="current"><a href="main.html" class=""><span>Strona g≥Ûwna</span></a></li>          
+				<li><a href="users.html" class=""><span>Uøytkownicy</span></a></li>					
 			</ul>
 		</div><!-- tabmenu -->
     
@@ -24,7 +24,7 @@
 				<h3>Testowy user</h3>
 				<small>test@test.test</small>
 				<p>
-					<a href="">M√≥j profil</a> <a href="main.html">Wyloguj</a>
+					<a href="">MÛj profil</a> <a href="main.html">Wyloguj</a>
 				</p>
 			</div>
 		</div><!-- accountinfo end -->
@@ -37,15 +37,23 @@
 		</div>	
 	</div><!-- leftmenu -->
 	<div class="maincontent">	
+		<div class="two_third maincontent_inner ">
     	<div class="left"> 
 			{% block dashboard %}
 			{% endblock %}
 		<br clear="all" /> 
 			{% block content %}
 			{% endblock %}
-	</div><!-- left -->  
+		</div><!-- left -->  
+		</div><!-- end two_third-->
+		
+		<div class="one_third last">
+    	<div class="right">
+		
+			</div><!--right-->
+    </div><!--one_third last-->
 	<br clear="all" />    
-</div><!--maincontent-->
+	</div><!--maincontent-->
         
         {% block javascripts %}{% endblock %}
 		

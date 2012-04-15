@@ -1,3 +1,5 @@
+<<<<<<< HEAD
+<<<<<<< HEAD
 #BACKUP FILES#
 ##############
 *.*~
@@ -7,3 +9,23 @@
 vendor/*
 */logs/*
 */cache/*
+=======
+# Symfony directories
+vendor/*
+*/logs/
+*/cache/
+
+# Temp files
+*.*~
+>>>>>>> 554be3d2ef3a9b83c56ec8975e45d2c96a15b8f4
+=======
+#BACKUP FILES#
+##############
+*.*~
+
+# Symfony directories#
+######################
+vendor/*
+*/logs/*
+*/cache/*
+>>>>>>> upstream/master
