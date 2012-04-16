@@ -53,7 +53,7 @@ class RegistrationController extends Controller
         	/**
         	 * Connect User with patient
         	 */
-        	$patient->setUserId($user);
+        	$patient->setUser($user);
 
 			$em = $this->getDoctrine()->getEntityManager();
         	$em->persist($user);

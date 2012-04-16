@@ -37,7 +37,7 @@ class RegistrationController extends Controller
 			$user = $registration->getUser();
 			$employee = $registration->getEmployee();
 
-			$employee->setUserId($user);
+			$employee->setUser($user);
 
 			$em = $this->getDoctrine()->getEntityManager();
 			$em->persist($user);

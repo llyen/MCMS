@@ -15,8 +15,8 @@ class LoadUserRoleData extends AbstractFixture implements OrderedFixtureInterfac
 	public function load(ObjectManager $manager)
 	{
 		$userRoleAdmin = new UserRole();
-		$userRoleAdmin->setUserId($manager->merge($this->getReference('admin-user')));
-		$userRoleAdmin->setRoleId($manager->merge($this->getReference('admin-role')));
+		$userRoleAdmin->setUser($manager->merge($this->getReference('admin-user')));
+		$userRoleAdmin->setRole($manager->merge($this->getReference('admin-role')));
 
 		$manager->persist($userRoleAdmin);
         $manager->flush();

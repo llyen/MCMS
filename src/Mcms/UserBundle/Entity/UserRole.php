@@ -23,19 +23,18 @@ class UserRole
     private $id;
 
     /**
-     * @var integer $userId
+     * @var integer $user
      *
      * @ORM\ManyToOne(targetEntity="User")
      */
-    private $userId;
+    private $user;
 
     /**
-     * @var integer $roleId
+     * @var integer $role
      *
      * @ORM\ManyToOne(targetEntity="Role")
      */
-    private $roleId;
-
+    private $role;
 
     /**
      * Get id
@@ -48,43 +47,42 @@ class UserRole
     }
 
     /**
-     * Set userId
+     * Set user
      *
-     * @param integer $userId
+     * @param integer $user
      */
-    public function setUserId($userId)
+    public function setUser($user)
     {
-        $this->userId = $userId;
+        $this->user = $user;
     }
 
     /**
-     * Get userId
+     * Get user
      *
      * @return integer 
      */
-    public function getUserId()
+    public function getUser()
     {
-        return $this->userId;
+        return $this->user;
     }
 
     /**
-     * Set roleId
+     * Set role
      *
-     * @param integer $roleId
+     * @param integer $role
      */
-    public function setRoleId($roleId)
+    public function setRole($role)
     {
-        $this->roleId = $roleId;
+        $this->role = $role;
     }
 
-
     /**
-     * Get roleId
+     * Get role
      *
      * @return Mcms\UserBundle\Entity\Role 
      */
-    public function getRoleId()
+    public function getRole()
     {
-        return $this->roleId;
+        return $this->role;
     }
 }

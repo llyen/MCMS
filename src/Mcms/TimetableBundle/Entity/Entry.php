@@ -22,20 +22,20 @@ class Entry
     private $id;
 
     /**
-     * @var integer $patientId
+     * @var integer $patient
      * 
      * @ORM\ManyToOne(targetEntity="Mcms\PatientBundle\Entity\Patient")
-     * @ORM\JoinColumn(name="patientId", referencedColumnName="id")
+     * @ORM\JoinColumn(name="patient", referencedColumnName="id")
      */
-    private $patientId;
+    private $patient;
 
     /**
-     * @var integer $employeeId
+     * @var integer $employee
      * 
      * @ORM\ManyToOne(targetEntity="Mcms\EmployeeBundle\Entity\Employee")
-     * @ORM\JoinColumn(name="employeeId", referencedColumnName="id")
+     * @ORM\JoinColumn(name="employee", referencedColumnName="id")
      */
-    private $employeeId;
+    private $employee;
 
     /**
      * @var datetime $date
@@ -66,9 +66,9 @@ class Entry
      * 
      * @return integer The patient id
      */
-    public function getPatientId()
+    public function getPatient()
     {
-        return $this->patientId;
+        return $this->patient;
     }
 
     /**
@@ -76,9 +76,9 @@ class Entry
      *
      * @param integer $value The patient id
      */
-    public function setPatientId($value)
+    public function setPatient($value)
     {
-        $this->patientId = $value;
+        $this->patient = $value;
     }
 
     /**
@@ -86,9 +86,9 @@ class Entry
      * 
      * @return integer The employee id
      */
-    public function getEmployeeId()
+    public function getEmployee()
     {
-        return $this->employeeId;
+        return $this->employee;
     }
 
     /**
@@ -96,9 +96,9 @@ class Entry
      *
      * @param integer $value The employee id
      */
-    public function setEmployeeId($value)
+    public function setEmployee($value)
     {
-        $this->employeeId = $value;
+        $this->employee = $value;
     }
 
     /**

@@ -64,7 +64,7 @@ class User implements UserInterface, \Serializable
     /**
      * @var ArrayCollection $userRoles
      * 
-     * @ORM\OneToMany(targetEntity="UserRole", mappedBy="userId")
+     * @ORM\OneToMany(targetEntity="UserRole", mappedBy="user")
      */
     private $userRoles;
 
@@ -230,7 +230,7 @@ class User implements UserInterface, \Serializable
         $roles = array();
 
         foreach ($this->userRoles as $key => $value) {
-            $roles[$key] = $value->getRoleId()->getName();
+            $roles[$key] = $value->getRole()->getName();
         }
 
         $roles[] = static::DEFAULT_ROLE;
