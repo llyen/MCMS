@@ -1,0 +1,365 @@
+<<<<<<< HEAD
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>MCMS</title>
+<link rel="stylesheet" media="screen" href="css/style.css" />
+</head>
+
+<body class="bodygrey">
+<div class="headerspace"></div>
+<div class="header">	
+    <!-- logo -->
+	<a href=""><img src="images/logo.png" alt="Logo"  /></a>    
+    <div class="tabmenu">
+    	<ul>
+        	<li class="current"><a href="main.html" class=""><span>Strona główna</span></a></li>          
+            <li><a href="users.html" class=""><span>Użytkownicy</span></a></li>					
+        </ul>
+    </div><!-- tabmenu -->
+    
+    <div class="accountinfo">  	
+        <div class="info">
+        	<h3>Testowy user</h3>
+            <small>test@test.test</small>
+            <p>
+            	<a href="">Mój profil</a> <a href="main.html">Wyloguj</a>
+            </p>
+        </div>
+    </div><!-- accountinfo end -->
+</div><!-- header end -->
+
+<div class="sidebar">
+	<div id="accordion">
+        <h3 class="open">Menu główne</h3>
+        <div class="content" style="display: block;">
+        	<ul class="leftmenu">
+            	<li class="current"><a href="main.html" class="">Ogólne</a></li>
+                <li><a href="main.html" class="">Ogólne 1</a></li>
+                <li><a href="main.html" class="">Ogólne 2</a></li>
+                <li><a href="main.html" class="">Ogólne 3</a></li>                
+            </ul>
+        </div>
+        <h3 class="open">Przykładowy tekst</h3>
+        <div class="content" style="display: block;">tralalalalala</div>
+	</div>	
+</div><!-- leftmenu -->
+
+<div class="maincontent">	
+    	<div class="left">   	
+           
+            <ul class="dashboard">
+                <li><a href=""><img src="images/icons/icon1.png"/><span>Ikona 1</span></a></li>
+                <li><a href=""><img src="images/icons/icon1.png"/><span>Ikona 2</span></a></li>
+                <li><a href=""><img src="images/icons/icon1.png"/><span>Ikona 3</span></a></li>
+                <li><a href=""><img src="images/icons/icon1.png"/><span>Ikona 4</span></a></li>
+                <li><a href=""><img src="images/icons/icon1.png"/><span>Ikona 5</span></a></li>
+				<li><a href=""><img src="images/icons/icon1.png"/><span>Ikona 6</span></a></li>
+				<li><a href=""><img src="images/icons/icon1.png"/><span>Ikona 7</span></a></li>
+            </ul> <!-- edn dashboard-->
+                       
+            <div class="clear"></div>            
+            
+            	<h3><span>Formularz</span></h3>
+                <div class="content">
+                	<form id="form" action="" method="post">                
+                    <div class="form_default">                            
+                            <p>
+                                <label for="name">Imię</label>
+                                <input type="text" name="name"  id="name" class="sf" />
+                            </p>							
+							<p>
+                                <label for="name">Nazwisko</label>
+                                <input type="text" name="name"  id="name" class="sf" />
+                            </p>                            
+                            <p>
+                                <label for="email">E-mail</label>
+                                <input type="text" name="email"  id="email" class="sf" />
+                            </p>                            
+                            <p>
+                                <label for="location">Adres</label>
+                                <textarea name="location" class="mf" rows="" cols=""></textarea>
+                            </p>                            
+                            <p>
+                                <label for="gender" class="nopadding">Płeć</label>
+                                <input type="radio" name="gender" value="0" /> Mężczyzna &nbsp;&nbsp;&nbsp;&nbsp; <input type="radio" name="gender" value="1" /> Kobieta
+                            </p>                                                            
+                            <p>
+                                <label for="occupation">Typ usługi:</label>
+                                <select name="occupation" id="occupation">
+									  <option value="">Lekarz rodzinny</option>
+									  <option value="0">Dentysta</option>
+									  <option value="1">Laryngolog</option>
+									  <option value="2">Okulista</option>                                  
+                                </select>
+                            </p>                            
+                            <p>
+                                <button>Potwierdź</button>
+                            </p>        
+                    </div>
+                	</form><!--form-->                    
+                </div><!-- content -->
+            
+			
+			<div class="sTableOptions">           
+        </div><!--sTableOptions-->
+        <table cellpadding="0" cellspacing="0" class="sTableHead" width="100%">
+        	<colgroup>
+            	<col class="head0" width="5%" />
+                <col class="head1" width="25%" />
+                <col class="head0" width="25%" />
+                <col class="head1" width="25%" />
+                <col class="head0" width="20%" />
+            </colgroup>
+            <tr>
+            	<td align="center"><input type="checkbox" class="checkall" /></td>
+                <td>Imię i nazwisko</td>
+                <td>E-mail</td>
+                <td>Adres korespondencyjny</td>
+                <td align="center">Akcja</td>
+            </tr>
+        </table>        
+        <div class="sTableWrapper">
+            <table cellpadding="0" cellspacing="0" class="sTable" id="userlist" width="100%">
+                <colgroup>
+                    <col class="con0" width="5%" />
+                    <col class="con1" width="25%" />
+                    <col class="con0" width="25%" />
+                    <col class="con1" width="25%" />
+                    <col class="con0" width="20%" />
+                </colgroup>
+                <tr>
+                    <td align="center"><input type="checkbox" /></td>
+                    <td>Jan Kowalski</td>
+                    <td>jan@kowalski.com</td>
+                    <td>Poznań</td>
+                    <td align="center"><a href="">Edytuj</a> &nbsp; <a href="" class="deleteuser">Usuń</a></td>
+                </tr>
+                <tr>
+                    <td align="center"><input type="checkbox" /></td>
+                    <td>Adamn Mały</td>
+                    <td>maly@adas.hop</td>
+                    <td>Wisła nad Wartą</td>
+                    <td align="center"><a href="">Edytuj</a> &nbsp; <a href="" class="deleteuser">Usuń</a></td>
+                </tr>
+                <tr>
+                    <td align="center"><input type="checkbox" /></td>
+                    <td>Jupek Strupek</td>
+                    <td>lala@elel.lp</td>
+                    <td>Tadżykistan</td>
+                    <td align="center"><a href="">Edytuj</a> &nbsp; <a href="" class="deleteuser">Usuń</a></td>
+                </tr>
+                <tr>
+                    <td align="center"><input type="checkbox" /></td>
+                    <td>Dżastin Bober</td>
+                    <td>com@com.com</td>
+                    <td>Warszawa</td>
+                    <td align="center"><a href="">Edytuj</a> &nbsp; <a href="" class="deleteuser">Usuń</a></td>
+                </tr>
+                <tr>
+                    <td align="center"><input type="checkbox" /></td>
+                    <td>Karaś Szczupakowski</td>
+                    <td>rybka@lowisko.staw</td>
+                    <td>Wędkarzewice</td>
+                    <td align="center"><a href="">Edytuj</a> &nbsp; <a href="" class="deleteuser">Usuń</a></td>
+                </tr>
+            </table>
+	     </div><!--sTableWrapper-->            
+            <br />                        
+		</div><!-- left -->     
+    <br clear="all" />    
+</div><!--maincontent-->
+
+<br />
+<div class="footer footer_float">
+	<div class="footerinner">
+    	&copy;2012 Ocenzurowana stopka .
+    </div><!-- footerinner -->
+</div><!-- footer -->
+
+</body>
+</html>
+=======
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>MCMS</title>
+<link rel="stylesheet" media="screen" href="css/style.css" />
+</head>
+
+<body class="bodygrey">
+<div class="headerspace"></div>
+<div class="header">	
+    <!-- logo -->
+	<a href=""><img src="images/logo.png" alt="Logo"  /></a>    
+    <div class="tabmenu">
+    	<ul>
+        	<li class="current"><a href="main.html" class=""><span>Strona główna</span></a></li>          
+            <li><a href="users.html" class=""><span>Użytkownicy</span></a></li>					
+        </ul>
+    </div><!-- tabmenu -->
+    
+    <div class="accountinfo">  	
+        <div class="info">
+        	<h3>Testowy user</h3>
+            <small>test@test.test</small>
+            <p>
+            	<a href="">Mój profil</a> <a href="main.html">Wyloguj</a>
+            </p>
+        </div>
+    </div><!-- accountinfo end -->
+</div><!-- header end -->
+
+<div class="sidebar">
+	<div id="accordion">
+        <h3 class="open">Menu główne</h3>
+        <div class="content" style="display: block;">
+        	<ul class="leftmenu">
+            	<li class="current"><a href="main.html" class="">Ogólne</a></li>
+                <li><a href="main.html" class="">Ogólne 1</a></li>
+                <li><a href="main.html" class="">Ogólne 2</a></li>
+                <li><a href="main.html" class="">Ogólne 3</a></li>                
+            </ul>
+        </div>
+        <h3 class="open">Przykładowy tekst</h3>
+        <div class="content" style="display: block;">tralalalalala</div>
+	</div>	
+</div><!-- leftmenu -->
+
+<div class="maincontent">	
+    	<div class="left">   	
+           
+            <ul class="dashboard">
+                <li><a href=""><img src="images/icons/icon1.png"/><span>Ikona 1</span></a></li>
+                <li><a href=""><img src="images/icons/icon1.png"/><span>Ikona 2</span></a></li>
+                <li><a href=""><img src="images/icons/icon1.png"/><span>Ikona 3</span></a></li>
+                <li><a href=""><img src="images/icons/icon1.png"/><span>Ikona 4</span></a></li>
+                <li><a href=""><img src="images/icons/icon1.png"/><span>Ikona 5</span></a></li>
+				<li><a href=""><img src="images/icons/icon1.png"/><span>Ikona 6</span></a></li>
+				<li><a href=""><img src="images/icons/icon1.png"/><span>Ikona 7</span></a></li>
+            </ul> <!-- edn dashboard-->
+                       
+            <div class="clear"></div>            
+            
+            	<h3><span>Formularz</span></h3>
+                <div class="content">
+                	<form id="form" action="" method="post">                
+                    <div class="form_default">                            
+                            <p>
+                                <label for="name">Imię</label>
+                                <input type="text" name="name"  id="name" class="sf" />
+                            </p>							
+							<p>
+                                <label for="name">Nazwisko</label>
+                                <input type="text" name="name"  id="name" class="sf" />
+                            </p>                            
+                            <p>
+                                <label for="email">E-mail</label>
+                                <input type="text" name="email"  id="email" class="sf" />
+                            </p>                            
+                            <p>
+                                <label for="location">Adres</label>
+                                <textarea name="location" class="mf" rows="" cols=""></textarea>
+                            </p>                            
+                            <p>
+                                <label for="gender" class="nopadding">Płeć</label>
+                                <input type="radio" name="gender" value="0" /> Mężczyzna &nbsp;&nbsp;&nbsp;&nbsp; <input type="radio" name="gender" value="1" /> Kobieta
+                            </p>                                                            
+                            <p>
+                                <label for="occupation">Typ usługi:</label>
+                                <select name="occupation" id="occupation">
+									  <option value="">Lekarz rodzinny</option>
+									  <option value="0">Dentysta</option>
+									  <option value="1">Laryngolog</option>
+									  <option value="2">Okulista</option>                                  
+                                </select>
+                            </p>                            
+                            <p>
+                                <button>Potwierdź</button>
+                            </p>        
+                    </div>
+                	</form><!--form-->                    
+                </div><!-- content -->
+            
+			
+			<div class="sTableOptions">           
+        </div><!--sTableOptions-->
+        <table cellpadding="0" cellspacing="0" class="sTableHead" width="100%">
+        	<colgroup>
+            	<col class="head0" width="5%" />
+                <col class="head1" width="25%" />
+                <col class="head0" width="25%" />
+                <col class="head1" width="25%" />
+                <col class="head0" width="20%" />
+            </colgroup>
+            <tr>
+            	<td align="center"><input type="checkbox" class="checkall" /></td>
+                <td>Imię i nazwisko</td>
+                <td>E-mail</td>
+                <td>Adres korespondencyjny</td>
+                <td align="center">Akcja</td>
+            </tr>
+        </table>        
+        <div class="sTableWrapper">
+            <table cellpadding="0" cellspacing="0" class="sTable" id="userlist" width="100%">
+                <colgroup>
+                    <col class="con0" width="5%" />
+                    <col class="con1" width="25%" />
+                    <col class="con0" width="25%" />
+                    <col class="con1" width="25%" />
+                    <col class="con0" width="20%" />
+                </colgroup>
+                <tr>
+                    <td align="center"><input type="checkbox" /></td>
+                    <td>Jan Kowalski</td>
+                    <td>jan@kowalski.com</td>
+                    <td>Poznań</td>
+                    <td align="center"><a href="">Edytuj</a> &nbsp; <a href="" class="deleteuser">Usuń</a></td>
+                </tr>
+                <tr>
+                    <td align="center"><input type="checkbox" /></td>
+                    <td>Adamn Mały</td>
+                    <td>maly@adas.hop</td>
+                    <td>Wisła nad Wartą</td>
+                    <td align="center"><a href="">Edytuj</a> &nbsp; <a href="" class="deleteuser">Usuń</a></td>
+                </tr>
+                <tr>
+                    <td align="center"><input type="checkbox" /></td>
+                    <td>Jupek Strupek</td>
+                    <td>lala@elel.lp</td>
+                    <td>Tadżykistan</td>
+                    <td align="center"><a href="">Edytuj</a> &nbsp; <a href="" class="deleteuser">Usuń</a></td>
+                </tr>
+                <tr>
+                    <td align="center"><input type="checkbox" /></td>
+                    <td>Dżastin Bober</td>
+                    <td>com@com.com</td>
+                    <td>Warszawa</td>
+                    <td align="center"><a href="">Edytuj</a> &nbsp; <a href="" class="deleteuser">Usuń</a></td>
+                </tr>
+                <tr>
+                    <td align="center"><input type="checkbox" /></td>
+                    <td>Karaś Szczupakowski</td>
+                    <td>rybka@lowisko.staw</td>
+                    <td>Wędkarzewice</td>
+                    <td align="center"><a href="">Edytuj</a> &nbsp; <a href="" class="deleteuser">Usuń</a></td>
+                </tr>
+            </table>
+	     </div><!--sTableWrapper-->            
+            <br />                        
+		</div><!-- left -->     
+    <br clear="all" />    
+</div><!--maincontent-->
+
+<br />
+<div class="footer footer_float">
+	<div class="footerinner">
+    	&copy;2012 Ocenzurowana stopka .
+    </div><!-- footerinner -->
+</div><!-- footer -->
+
+</body>
+</html>
+>>>>>>> 554be3d2ef3a9b83c56ec8975e45d2c96a15b8f4
