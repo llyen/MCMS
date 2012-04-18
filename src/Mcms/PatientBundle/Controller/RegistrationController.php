@@ -13,29 +13,26 @@ class RegistrationController extends Controller
 {
 
 	/**
+	 * Displays a form to create new Patient account.
+	 * 
 	 * @Route("/patient/new")
 	 * @Template("McmsPatientBundle:Patient:register.html.twig")
 	 */
-	public function registerAction()
+	public function newAction()
 	{
 		$form = $this->createForm(new RegistrationType(), new Registration());
 
-		return array('form'=>$form->createView());
+		return array('form' => $form->createView());
 	}
 
 	/**
+	 * Creates a new Patient account.
+	 * 
 	 * @Route("/patient/create",name="createpatient")
 	 * @Template("McmsPatientBundle:Patient:register.html.twig")
 	 */
-	public function registerProcessAction()
+	public function createAction()
 	{
-		/**
-		 * 1) Validate form
-		 * 2) Create new user
-		 * 3) Create new patient
-		 * 4) Store user and patient in DB
-		 * 5) Show success page/message + printable page with details
-		 */
 		$form = $this->createForm(new RegistrationType(), new Registration());
 		$form->bindRequest($this->getRequest());
 
@@ -61,6 +58,7 @@ class RegistrationController extends Controller
         	$em->flush();
 
 		}
+
 		return array('form'=>$form->createView());
 	}
 }

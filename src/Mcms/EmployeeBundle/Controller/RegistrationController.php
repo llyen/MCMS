@@ -12,10 +12,12 @@ use Mcms\EmployeeBundle\Form\Model\Registration;
 class RegistrationController extends Controller
 {
 	/**
+	 * Displays a form to create new Employee account.
+	 * 
 	 * @Route("/employee/new")
 	 * @Template("McmsEmployeeBundle:Default:index.html.twig")
 	 */
-	public function registerAction()
+	public function newAction()
 	{
 		$form = $this->createForm(new RegistrationType(), new Registration());
 
@@ -23,9 +25,12 @@ class RegistrationController extends Controller
 	}
 
 	/**
+	 * Creates a new Employee account.
+	 * 
 	 * @Route("/employee/create", name="createemployee")
+	 * @Template("McmsEmployeeBundle:Default:index.html.twig")
 	 */
-	public function registerProcessAction()
+	public function createAction()
 	{
 		$form = $this->createForm(new RegistrationType(), new Registration());
 		$form->bindRequest($this->getRequest());

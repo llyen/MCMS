@@ -13,6 +13,8 @@ class ManageController extends Controller
 {
 
 	/**
+	 * Displays a form to change password.
+	 * 
 	 * @Template("McmsUserBundle:Manage:changePasswordForm.html.twig")
 	 */
 	public function changePasswordAction()
@@ -26,6 +28,9 @@ class ManageController extends Controller
 		return array('form'=>$form->createView());
 	}
 
+	/**
+	 * Edit current user password.
+	 */
 	public function changePasswordProcessAction()
 	{
 		$form = $this->createForm(new ChangePasswordFormType(), new ChangePassword());
