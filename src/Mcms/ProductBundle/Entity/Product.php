@@ -22,6 +22,13 @@ class Product
     private $id;
 
     /**
+     * @var String $name
+     * 
+     * @ORM\Column(name="name", type="string", length=40)
+     */
+    private $name;
+
+    /**
      * @var integer $product
      * 
      * @ORM\OneToMany(targetEntity="Product", mappedBy="package")
@@ -32,7 +39,7 @@ class Product
      * @var integer $package
      * 
      * @ORM\ManyToOne(targetEntity="Product", inversedBy="product")
-     * @ORM\JoinColumn(name="packageId", referencedColumnName="id")
+     * @ORM\JoinColumn(name="package", referencedColumnName="id")
      */
     private $package;
 
@@ -76,6 +83,26 @@ class Product
     public function setPrice($value)
     {
         $this->price = $value;
+    }
+
+    /**
+     * Get the name.
+     * 
+     * @return String The name.
+     */
+    public function getName()
+    {
+        return $this->name;
+    }
+
+    /**
+     * Set the name.
+     * 
+     * @param String $value The name.
+     */
+    public function setName($value)
+    {
+        $this->name = $value;
     }
 
     /**
