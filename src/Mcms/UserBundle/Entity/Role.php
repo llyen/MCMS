@@ -33,7 +33,7 @@ class Role implements RoleInterface, \Serializable
     /**
      * @var ArrayCollection $users
      * 
-     * @ORM\OneToMany(targetEntity="UserRole", mappedBy="roleId")
+     * @ORM\OneToMany(targetEntity="UserRole", mappedBy="role")
      */
     private $users;
 

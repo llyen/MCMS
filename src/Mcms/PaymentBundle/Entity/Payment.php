@@ -23,12 +23,12 @@ class Payment
     private $id;
 
     /**
-     * @var integer $patientId
+     * @var integer $patient
      * 
      * @ORM\ManyToOne(targetEntity="Mcms\PatientBundle\Entity\Patient")
-     * @ORM\JoinColumn(name="patientId", referencedColumnName="id")
+     * @ORM\JoinColumn(name="patient", referencedColumnName="id")
      */
-    private $patientId;
+    private $patient;
 
     /**
      * @var boolean $isPaid
@@ -63,9 +63,9 @@ class Payment
      * 
      * @return integer The patient id.
      */
-    public function getPatientId()
+    public function getPatient()
     {
-        return $this->patientId;
+        return $this->patient;
     }
 
     /**
@@ -73,7 +73,7 @@ class Payment
      * 
      * @param integer $value The patient id.
      */
-    public function setPatientId($value)
+    public function setPatient($value)
     {
         $this->patient = $value;
     }

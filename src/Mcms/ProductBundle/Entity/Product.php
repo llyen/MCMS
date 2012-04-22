@@ -22,19 +22,11 @@ class Product
     private $id;
 
     /**
-     * @var integer $product
+     * @var String $name
      * 
-     * @ORM\OneToMany(targetEntity="Product", mappedBy="package")
+     * @ORM\Column(name="name", type="string", length=40)
      */
-    private $product;
-
-    /**
-     * @var integer $package
-     * 
-     * @ORM\ManyToOne(targetEntity="Product", inversedBy="product")
-     * @ORM\JoinColumn(name="packageId", referencedColumnName="id")
-     */
-    private $package;
+    private $name;
 
     /**
      * @var float $price
@@ -51,11 +43,6 @@ class Product
     public function getId()
     {
         return $this->id;
-    }
-
-    public function __construct()
-    {
-        $this->product = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     /**
@@ -79,42 +66,22 @@ class Product
     }
 
     /**
-     * Add product
-     *
-     * @param Mcms\ProductBundle\Entity\Product $product
+     * Get the name.
+     * 
+     * @return String The name.
      */
-    public function addProduct(\Mcms\ProductBundle\Entity\Product $product)
+    public function getName()
     {
-        $this->product[] = $product;
+        return $this->name;
     }
 
     /**
-     * Get product
-     *
-     * @return Doctrine\Common\Collections\Collection 
+     * Set the name.
+     * 
+     * @param String $value The name.
      */
-    public function getProduct()
+    public function setName($value)
     {
-        return $this->product;
-    }
-
-    /**
-     * Set package
-     *
-     * @param Mcms\ProductBundle\Entity\Product $package
-     */
-    public function setPackage(\Mcms\ProductBundle\Entity\Product $package)
-    {
-        $this->package = $package;
-    }
-
-    /**
-     * Get package
-     *
-     * @return Mcms\ProductBundle\Entity\Product 
-     */
-    public function getPackage()
-    {
-        return $this->package;
+        $this->name = $value;
     }
 }

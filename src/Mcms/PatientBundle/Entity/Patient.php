@@ -22,12 +22,12 @@ class Patient
     private $id;
 
     /**
-     * @var integer $userId
+     * @var integer $user
      * 
      * @ORM\OneToOne(targetEntity="Mcms\UserBundle\Entity\User")
-     * @ORM\JoinColumn(name="userId", referencedColumnName="id")
+     * @ORM\JoinColumn(name="user", referencedColumnName="id")
      */
-    private $userId;
+    private $user;
 
     /**
      * @var String $pesel
@@ -79,9 +79,9 @@ class Patient
      * 
      * @return integer The user id
      */
-    public function getUserId()
+    public function getUser()
     {
-        return $this->userId;
+        return $this->user;
     }
 
     /**
@@ -89,9 +89,9 @@ class Patient
      * 
      * @param integer $value The user id.
      */
-    public function setUserId($value)
+    public function setUser($value)
     {
-        $this->userId = $value;
+        $this->user = $value;
     }
 
     /**
