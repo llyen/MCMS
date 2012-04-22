@@ -1,3 +1,21 @@
+#Routes for administrator only.
+AdminRoutes:
+    resource: "admin_routes.yml"
+    prefix:   /admin
+
+#Routes for patient only.
+PatientRoutes:
+    resource: "patient_routes.yml"
+    prefix:   /patient
+
+#Routes for employee only.
+EmployeeRoutes:
+    resource: "employee_routes.yml"
+    prefix:   /employee
+
+
+
+
 McmsDashboardBundle:
     resource: "@McmsDashboardBundle/Controller/"
     type:     annotation

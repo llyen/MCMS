@@ -1,0 +1,30 @@
+{% extends '::clean.html.twig' %}
+
+{% block body %}
+	<h1>{{ product.name }} details.</h1>
+
+	<table>
+		<thead>
+			<tr>
+				<th>Id</th>			
+				<th>Name</th>			
+				<th>Price</th>			
+			<tr>
+		</thead>
+
+		<tbody>
+			<tr>
+				<td>{{ product.id }}</td>
+				<td>{{ product.name }}</td>
+				<td>{{ product.price }}</td>
+			</tr>
+		</tbody>
+	</table>
+
+	<form action="{{ path('product_delete', { 'id': product.id }) }}" method="post">
+    	{{ form_widget(delete_form) }}
+        <button type="submit" onClick="return confirm('Are you sure you want to delete?')">Delete</button>
+    </form>
+
+	<a href="{{ path('products') }}">Back to List</a>
+{% endblock %}
