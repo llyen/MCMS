@@ -3,30 +3,26 @@
 namespace Mcms\ProductBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Mcms\ProductBundle\Entity\Product;
 use Mcms\ProductBundle\Form\Type\ProductType;
 
 /**
  * Product controller.
- *
- * @Route("/product")
  */
 class ManageController extends Controller
 {
 	/**
 	 * List all products.
 	 * 
-	 * @Route("/", name="products")	 * 
 	 * @Template("McmsProductBundle:Manage:listAllProducts.html.twig")
 	 */
 	public function productIndexAction()
 	{
 		$em = $this->getDoctrine()->getEntityManager();
 
-		$products = $em->getRepository('McmsProductBundle:Product')->findBy(array('package' => NULL));
+		$products = $em->getRepository('McmsProductBundle:Product')->findAll();
 		return array('products' => $products);
 	}
 
@@ -35,7 +31,6 @@ class ManageController extends Controller
 	 * 
 	 * @param integer $id Product id.
 	 * 
-	 * @Route("/{id}/show", name="product_show")
 	 * @Template("McmsProductBundle:Manage:showProduct.html.twig")
 	 */
 	public function productShowAction($id)
@@ -62,7 +57,6 @@ class ManageController extends Controller
 	 * 
 	 * @param integer $id Package id.
 	 * 
-	 * @Route("/new", name="product_new")
 	 * @Template("McmsProductBundle:Manage:newProduct.html.twig")
 	 */
 	public function productNewAction()
@@ -75,8 +69,6 @@ class ManageController extends Controller
 	/**
 	 * Creates a new Product.
 	 * 
-	 * @Route("/create", name="product_create")
-	 * @Method("post")
 	 * @Template("McmsProductBundle:Manage:newProduct.html.twig")
 	 */
 	public function productCreateAction()
@@ -103,7 +95,6 @@ class ManageController extends Controller
 	/**
 	 * Display a form to edit Product
 	 * 
-	 * @Route("/{id}/edit", name="product_edit")
 	 * @Template("McmsProductBundle:Manage:editProduct.html.twig")
 	 */
 	public function productEditAction($id)
@@ -130,8 +121,6 @@ class ManageController extends Controller
 	/**
 	 * Edits Product.
 	 * 
-	 * @Route("/{id}/update", name="product_update")
-	 * @Method("post")
 	 * @Template("McmsProductBundle:Manage:editProduct.html.twig")
 	 */
 	public function productUpdateAction($id)
@@ -168,9 +157,6 @@ class ManageController extends Controller
 
 	/**
 	 * Deletes a Product.
-	 * 
-	 * @Route("/{id}/delete", name="product_delete")
-	 * @Method("post")
 	 */
 	public function productDeleteAction($id)
 	{
