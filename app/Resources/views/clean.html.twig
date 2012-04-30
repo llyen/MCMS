@@ -7,6 +7,15 @@
         <link rel="shortcut icon" href="{{ asset('favicon.ico') }}" />
     </head>
     <body>
+        {% if app.session.hasFlash('notice') %}
+            <div class="flash-notice">
+                {{ app.session.flash('notice') }}
+            </div>
+        {% endif %}
+        <div style="float:right; background-color:#b3b3b3">
+            <b>{{ app.user.firstname }} {{ app.user.lastname }}</b>
+            <p><a href="{{ path('logout') }}">LOGOUT</a></p>
+        </div>
         {% block body %}{% endblock %}
         {% block javascripts %}{% endblock %}
     </body>

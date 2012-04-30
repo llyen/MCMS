@@ -1,0 +1,46 @@
+{% extends '::clean.html.twig' %}
+
+{% block body %}
+    <h1>{{ user.firstname }} {{ user.lastname }} details.</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Username</th>
+                <th>Firstname</th>
+                <th>Lastname</th>
+                <th>User roles</th>
+                <th>Active</th>          
+            <tr>
+        </thead>
+
+        <tbody>
+            <tr>
+                <td>{{ user.id }}</td>
+                    <td>{{ user.username }}</td>
+                    <td>{{ user.firstname }}</td>
+                    <td>{{ user.lastname }}</td>
+                    <td>
+                        {% for role in user.userRoles %}
+                            <p>{{ role.role.name }}</p>
+                        {% endfor %}
+                    </td>
+                    <td>
+                        {% if user.isactive %}
+                            TRUE
+                        {% else %}
+                            FALSE
+                        {% endif %}
+                    </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <form action="{{ path('user_password_reset', { 'id': user.id } )}}" method="post">
+        {{ form_widget(password_reset_form) }}
+        <button type="submit" onClick="return confirm('Are you sure you want to reset password?')">Password reset</button>
+    </form>
+
+    <a href="{{ path('users_list') }}">Back to list</a>
+{% endblock %}
