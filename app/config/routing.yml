@@ -71,13 +71,13 @@ admin_dashboard:
 
 changePassword:
     pattern: /change_password
-    defaults: { _controller: McmsUserBundle:Manage:changePassword }
+    defaults: { _controller: McmsUserBundle:Account:changePassword }
     requirements:
         _method:  GET
 
 changePasswordProcess:
     pattern: /change_password
-    defaults: { _controller: McmsUserBundle:Manage:changePasswordProcess }
+    defaults: { _controller: McmsUserBundle:Account:changePasswordProcess }
     requirements:
         _method:  POST
 
