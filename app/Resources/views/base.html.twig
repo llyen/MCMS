@@ -6,6 +6,8 @@
     	<link href="{{ asset('css/style.css') }}" rel="stylesheet" type="text/css" />
 		{% block stylesheets %}{% endblock %}
         <link rel="shortcut icon" href="{{ asset('favicon.ico') }}" />
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js" type="text/javascript" ></script>
+		<script src="{{ asset('js/jquery.dataTables.min.js') }}" type="text/javascript" ></script>
     </head>
     <body class="bodygrey">
 	<div class="headerspace"></div>
@@ -21,10 +23,10 @@
     
 		<div class="accountinfo">  	
 			<div class="info">
-				<h3>Testowy user</h3>
+				<h3>{{ app.user.firstname }} {{ app.user.lastname }}</h3>
 				<small>test@test.test</small>
 				<p>
-					<a href="">Mój profil</a> <a href="main.html">Wyloguj</a>
+					<a href="">Mój profil</a> <a href="{{ path('logout') }}">Wyloguj</a>
 				</p>
 			</div>
 		</div><!-- accountinfo end -->
@@ -47,7 +49,15 @@
 	<br clear="all" />    
 </div><!--maincontent-->
         
-        {% block javascripts %}{% endblock %}
+        {% block javascripts %}
+		<script>
+			jQuery(document).ready(function(){
+				jQuery('.message .close').click(function(){
+					jQuery(this).parent().fadeOut();
+				});
+			});
+		</script>
+	{% endblock %}
 		
 		<br />
 		
