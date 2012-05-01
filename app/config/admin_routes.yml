@@ -40,3 +40,22 @@ product_delete:
     requirements:
         _method:  POST
         id:   \d+
+
+
+#MANAGE USERS
+users_list:
+    pattern: /users
+    defaults: { _controller: McmsUserBundle:Manage:usersList }
+
+user_show:
+    pattern: /user/{id}/show
+    defaults: { _controller: McmsUserBundle:Manage:userShow }
+    requirements:
+        id: \d+
+
+user_password_reset:
+    pattern: /user/{id}/password_reset
+    defaults: { _controller: McmsUserBundle:Manage:userPasswordReset }
+    requirements:
+        _method: POST
+        id: \d+

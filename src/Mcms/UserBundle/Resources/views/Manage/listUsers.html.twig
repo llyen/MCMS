@@ -1,0 +1,41 @@
+{% extends '::clean.html.twig' %}
+
+{% block body %}
+    <h1>List with all users</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Username</th>
+                <th>Firstname</th>
+                <th>Lastname</th>
+                <th>User roles</th>
+                <th>Active</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            {% for user in users %}
+                <tr>
+                    <td><a href="{{ path('user_show', { 'id': user.id }) }}">{{ user.id }}</a></td>
+                    <td>{{ user.username }}</td>
+                    <td>{{ user.firstname }}</td>
+                    <td>{{ user.lastname }}</td>
+                    <td>
+                        {% for role in user.userRoles %}
+                            <p>{{ role.name }}</p>
+                        {% endfor %}
+                    </td>
+                    <td>
+                        {% if user.isactive %}
+                            TRUE
+                        {% else %}
+                            FALSE
+                        {% endif %}
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}
