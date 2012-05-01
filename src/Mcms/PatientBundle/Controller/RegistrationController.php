@@ -53,6 +53,15 @@ class RegistrationController extends Controller
         	$patient->setUser($user);
 
 			$em = $this->getDoctrine()->getEntityManager();
+
+			$role = $em->getRepository('McmsUserBundle:Role')->findOneByName('ROLE_PATIENT');
+			if (!$role)
+			{
+				throw $this->creteNewnotFoundException('Unable to find Patient role.');
+			}
+			
+			$user->getUserRoles()->add($role);
+
         	$em->persist($user);
         	$em->persist($patient);
         	$em->flush();

@@ -64,7 +64,11 @@ class User implements UserInterface, \Serializable
     /**
      * @var ArrayCollection $userRoles
      * 
-     * @ORM\OneToMany(targetEntity="UserRole", mappedBy="user")
+     * @ORM\ManyToMany(targetEntity="Role")
+     * @ORM\JoinTable(name="user_roles",
+     *     joinColumns={@ORM\JoinColumn(name="user", referencedColumnName="id")},
+     *     inverseJoinColumns={@ORM\JoinColumn(name="role", referencedColumnName="id")}
+     * )
      */
     private $userRoles;
 
@@ -227,15 +231,11 @@ class User implements UserInterface, \Serializable
      */
     public function getRoles()
     {
-        $roles = array();
-
-        foreach ($this->userRoles as $key => $value) {
-            $roles[$key] = $value->getRole()->getName();
-        }
+       $roles = $this->getUserRoles()->toArray();
 
         $roles[] = static::DEFAULT_ROLE;
 
-        return array_unique($roles);
+        return array_unique($roles); 
     }
 
     /**
@@ -253,16 +253,6 @@ class User implements UserInterface, \Serializable
         $this->userRoles = new ArrayCollection();
     }
     
-    /**
-     * Add userRoles
-     *
-     * @param Mcms\UserBundle\Entity\UserRole $userRoles
-     */
-    public function addUserRole(\Mcms\UserBundle\Entity\UserRole $userRoles)
-    {
-        $this->userRoles[] = $userRoles;
-    }
-
     /**
      * Set isActive
      *

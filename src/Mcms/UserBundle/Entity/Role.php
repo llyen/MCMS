@@ -31,13 +31,6 @@ class Role implements RoleInterface, \Serializable
     private $name;
 
     /**
-     * @var ArrayCollection $users
-     * 
-     * @ORM\OneToMany(targetEntity="UserRole", mappedBy="role")
-     */
-    private $users;
-
-    /**
      * Get id
      *
      * @return integer 
@@ -76,30 +69,10 @@ class Role implements RoleInterface, \Serializable
     {
         return $this->getName();
     }
-    
-    public function __construct()
-    {
-        $this->users = new ArrayCollection();
-    }
-    
-    /**
-     * Add users
-     *
-     * @param Mcms\UserBundle\Entity\UserRole $users
-     */
-    public function addUserRole(\Mcms\UserBundle\Entity\UserRole $users)
-    {
-        $this->users[] = $users;
-    }
 
-    /**
-     * Get users
-     *
-     * @return Doctrine\Common\Collections\Collection 
-     */
-    public function getUsers()
+    public function __toString()
     {
-        return $this->users;
+        return $this->name;
     }
 
     public function serialize()
@@ -107,7 +80,6 @@ class Role implements RoleInterface, \Serializable
         return serialize(array(
             $this->id,
             $this->name,
-            $this->users
         ));
     }
 
@@ -116,7 +88,6 @@ class Role implements RoleInterface, \Serializable
         list(
             $this->id,
             $this->name,
-            $this->users
         ) = unserialize($data);
     }
 }
