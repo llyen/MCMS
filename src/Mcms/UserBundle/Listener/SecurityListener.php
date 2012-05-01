@@ -40,9 +40,17 @@ class SecurityListener
 	 */
 	public function onSecurityInteractiveLogin(InteractiveLoginEvent $event)
 	{
-		if($this->security->isGranted('ROLE_ADMIN'))
+		$request = $event->getRequest();
+		$session = $request->getSession();
+
+		$target_path = $session->get('_security.target_path');
+
+		if($target_path=='')
 		{
-			$this->redirect = "admin_dashboard";
+			if($this->security->isGranted('ROLE_ADMIN'))
+			{
+				$this->redirect = "admin_dashboard";
+			}
 		}
 	}
 

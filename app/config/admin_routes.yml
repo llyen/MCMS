@@ -1,1 +1,42 @@
 #Here place only admin routes!!!
+
+# MANAGE PRODUCTS
+products:
+    pattern:    /product
+    defaults:   { _controller: McmsProductBundle:Manage:productindex }
+
+product_new:
+    pattern:    /product/new
+    defaults:  { _controller: McmsProductBundle:Manage:productNew }
+
+product_create:
+    pattern:    /product/create
+    defaults:   { _controller: McmsProductBundle:Manage:productCreate }
+    requirements:
+        _method:    POST
+
+product_show:
+    pattern:   /product/{id}/show
+    defaults:  { _controller: McmsProductBundle:Manage:productShow }
+    requirements:
+        id:   \d+
+
+product_edit:
+    pattern:   /product/{id}/edit
+    defaults:  { _controller: McmsProductBundle:Manage:productEdit }
+    requirements:
+        id:   \d+
+
+product_update:
+    pattern:    /product/{id}/update
+    defaults:   { _controller: McmsProductBundle:Manage:productUpdate }
+    requirements:
+        _method:    POST
+        id: \d+
+
+product_delete:
+    pattern:   /product/{id}/delete
+    defaults:  { _controller: McmsProductBundle:Manage:productDelete }
+    requirements:
+        _method:  POST
+        id:   \d+
