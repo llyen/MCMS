@@ -1,7 +1,8 @@
 {% extends '::base.html.twig' %}
-{% use '::formErrors.html.twig' %}
+{% form_theme form '::formErrors.html.twig' %}
+
 {% block content %}
-	{{ block('field_errors') }}
+	{{ form_errors(form.price) }}
 	<h1 class="pageTitle">Edycja produktu</h1>
 	<div class="window1">
 				<h3><span>{{ product.name }} </span><form action="{{ path('product_delete', { 'id': product.id }) }}" method="post">

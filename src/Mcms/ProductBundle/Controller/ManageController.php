@@ -78,28 +78,18 @@ class ManageController extends Controller
 		$form = $this->createForm(new ProductType(), $product);
 		$form->bindRequest($request);
 
-		$validator = $this->get('validator');
-    	$errors = $validator->validate($product);
-
-    	if(count($errors)>0)
-    	{
-    		return $this->render(
-    				'McmsProductBundle:Manage:newProduct.html.twig',
-    				array(
-    					'form' => $form->createView(),
-    					'errors' => $errors
-    				)
-    			);
-    	}
-    	else
-    	{
-    		$em = $this->getDoctrine()->getEntityManager();
+		if($form->isValid())
+		{
+			$em = $this->getDoctrine()->getEntityManager();
 			$em->persist($product);
 			$em->flush();
 
 			return $this->redirect($this->generateUrl('product_show', array('id' => $product->getId())));
-    	}
+		}
 
+		return array(
+            'form'   => $form->createView()
+        );
 	}
 
 	/**
@@ -148,32 +138,21 @@ class ManageController extends Controller
 		$form = $this->createForm(new ProductType(), $product);
 		$form->bindRequest($request);
 
-		$deleteForm = $this->createDeleteForm($id);
-
-		$validator = $this->get('validator');
-    	$errors = $validator->validate($product);
-
-    	if(count($errors)>0)
-    	{
-    		return $this->render(
-    				'McmsProductBundle:Manage:editProduct.html.twig',
-    				array(
-    					'product' => $product,
-    					'delete_form' => $deleteForm->createView(),
-    					'errors' => $errors,
-    					'form' => $form->createView()
-    				)
-    			);
-    	}
-    	else
-    	{
-    		
+		if($form->isValid())
+		{
 			$em->persist($product);
 			$em->flush();
 
 			return $this->redirect($this->generateUrl('product_show', array('id' => $product->getId())));
-    	}
+		}
 
+		$deleteForm = $this->createDeleteForm($id);
+
+		return array(
+			'product' => $product,
+			'form' => $form->createView(),
+			'delete_form' => $deleteForm->createView()
+		);
 	}
 
 	/**
