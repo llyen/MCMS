@@ -3,6 +3,7 @@
 namespace Mcms\ProductBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Mcms\ProductBundle\Entity\Product
@@ -32,6 +33,8 @@ class Product
      * @var float $price
      * 
      * @ORM\Column(name="price", type="decimal", scale=2)
+     * @Assert\Type(type="float", message="Wartość {{ value }} powinna być typu {{ type }}.")
+     * @Assert\Min(limit="0", message="Wartość w polu cena nie może być ujemna")
      */
     private $price;
 
