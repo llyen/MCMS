@@ -1,16 +1,25 @@
-{% extends '::clean.html.twig' %}
+{% extends '::base.html.twig' %}
 
-{% block body %}
-	<h1>Create new product.</h1>
-
-	{{ form_errors(form) }}
-	<form action="{{ path('product_create') }}" method="post" {{ form_enctype(form) }}>
-    	{{ form_row(form.name) }}
-    	{{ form_row(form.price) }}
-    	{{ form_rest(form) }} 
-    <p>
-        <button type="submit">Create</button>
-    </p>
-</form>
-
+{% block content %}
+	<div class="message msgerror">
+        <a class="close"></a>
+           {{ form_errors(form.price) }} 
+		   {{ form_errors(form.name) }} 
+    </div><!-- end alert messages-->
+	<h1 class="pageTitle">Utwórz nowy produkt</h1>
+    <div class="window1">
+	    <h3><span></span></h3>
+		<div class="inside">				
+				<form class="form_default" action="{{ path('product_create') }}" method="post" {{ form_enctype(form) }}>
+					<p>
+						{{ form_label(form.name) }}  {{ form_widget(form.name) }}</br></br>
+						{{ form_label(form.price) }}  {{ form_widget(form.price) }}
+						{{ form_rest(form) }} 
+					</p>
+					<p>
+						<button type="submit">Utwórz</button>
+					</p>					
+				</form>			
+		</div>
+    </div>
 {% endblock %}
