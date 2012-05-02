@@ -1,11 +1,7 @@
 {% extends '::base.html.twig' %}
-
+{% use '::formErrors.html.twig' %}
 {% block content %}
-	<div class="message msgerror">
-        <a class="close"></a>
-            {{ form_errors(form.price) }} 
-			{{ form_errors(form.name) }} 
-    </div><!-- end alert messages-->
+	{{ block('field_errors') }}
 	<h1 class="pageTitle">Edycja produktu</h1>
 	<div class="window1">
 				<h3><span>{{ product.name }} </span><form action="{{ path('product_delete', { 'id': product.id }) }}" method="post">

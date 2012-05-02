@@ -1,0 +1,4 @@
+{# app/Resources/helpers.html.twig #}
+{% macro tab(route,caption) %} 
+    <li{% if app.request.attributes.get('_route') == route %} class="current"{% endif %}><a href="{{ path(route) }}" class=""><span>{{ caption }}</span></a></li> 
+{% endmacro %
