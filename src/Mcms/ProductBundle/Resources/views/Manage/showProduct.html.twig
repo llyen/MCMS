@@ -1,30 +1,58 @@
-{% extends '::clean.html.twig' %}
+{% extends '::base.html.twig' %}
 
-{% block body %}
-	<h1>{{ product.name }} details.</h1>
-
-	<table>
-		<thead>
-			<tr>
-				<th>Id</th>			
-				<th>Name</th>			
-				<th>Price</th>			
-			<tr>
-		</thead>
-
-		<tbody>
+{% block stylesheets %}
+<script type="text/javascript">
+jQuery(document).ready(function() {
+	jQuery('#example').dataTable( {
+		"sPaginationType": "full_numbers"
+	});
+	
+});
+</script>
+{% endblock %}
+{% block content %}	
+<h1 class="pageTitle">Szczegóły produktu</h1>
+		<div class="tableOpt">
+        	<h4>{{ product.name }} <a href="{{ path('products') }}">
+<button style="float:right" type="submit">&laquo Wróć do listy produktów</button>
+</a></h4>	            
+        </div><!--end table Options-->
+			<table cellpadding="0" cellspacing="0" class="tableHead" width="100%" id="example">
+				<colgroup>
+					<col class="head1" width="25%" />
+					<col class="head0" width="25%" />
+					<col class="head1" width="25%" />
+					<col class="head0" width="25%" />              
+				</colgroup>
+				<tr>
+					<td>Id</td>
+					<td>Nazwa</td>
+					<td>Cena</td>
+					<td>Akcja</td>                
+				</tr>
+			</table>
+		<div class="tableWrapper">
+            <table cellpadding="0" cellspacing="0" class="table" width="100%">
+                <colgroup>
+                    <col class="con1" width="25%" />
+                    <col class="con0" width="25%" />
+                    <col class="con1" width="25%" />
+                    <col class="con0" width="25%" />                   
+                </colgroup>		
 			<tr>
 				<td>{{ product.id }}</td>
 				<td>{{ product.name }}</td>
 				<td>{{ product.price }}</td>
-			</tr>
-		</tbody>
-	</table>
+				<td>
+					<form action="{{ path('product_delete', { 'id': product.id }) }}" method="post">
+						{{ form_widget(delete_form) }}
+						<a href="" class="deletelink" onClick="return confirm('Czy na pewno chcesz usunąć wskazany produkt?')">Usuń</a>
+					</form>
+				</td>
+			</tr>		
+			</table>
 
-	<form action="{{ path('product_delete', { 'id': product.id }) }}" method="post">
-    	{{ form_widget(delete_form) }}
-        <button type="submit" onClick="return confirm('Are you sure you want to delete?')">Delete</button>
-    </form>
+		</div>
 
-	<a href="{{ path('products') }}">Back to List</a>
+		
 {% endblock %}

@@ -1,46 +1,66 @@
-{% extends '::clean.html.twig' %}
+{% extends '::base.html.twig' %}
 
-{% block body %}
-    <h1>{{ user.firstname }} {{ user.lastname }} details.</h1>
-
-    <table>
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Username</th>
-                <th>Firstname</th>
-                <th>Lastname</th>
-                <th>User roles</th>
-                <th>Active</th>          
-            <tr>
-        </thead>
-
-        <tbody>
-            <tr>
-                <td>{{ user.id }}</td>
-                    <td>{{ user.username }}</td>
-                    <td>{{ user.firstname }}</td>
-                    <td>{{ user.lastname }}</td>
-                    <td>
+{% block content %}	
+	<h1 class="pageTitle">Szczegóły użytkownika</h1>
+		<div class="tableOpt">
+			<h4>{{ user.firstname }} {{ user.lastname }} <a href="{{ path('users_list') }}">
+				<button style="float:right" type="submit">&laquo Wróć do listy użytkowników</button>
+				</a>
+				<form action="{{ path('user_password_reset', { 'id': user.id } )}}" method="post">
+					{{ form_widget(password_reset_form) }}
+					<button style="float:right; margin:-26px 5px 0 0;" type="submit" onClick="return confirm('Na pewno chcesz zresetować hasło?')">Resetuj hasło</button>
+				</form>
+			</h4>	            
+        </div><!--end table Options-->
+			<table cellpadding="0" cellspacing="0" class="tableHead" width="100%" id="example">
+				<colgroup>
+					<col class="head1" width="15%" />
+					<col class="head0" width="17%" />
+					<col class="head1" width="17%" />
+					<col class="head0" width="17%" /> 
+					<col class="head1" width="17%" />
+					<col class="head0" width="17%" /> 					
+				</colgroup>
+				<tr>
+					<td>Id</td>
+					<td>Login</td>
+					<td>Imię</td>
+					<td>Nazwisko</td>
+					<td>Rola</td>
+					<td>Aktywność</td> 					
+				</tr>
+			</table>
+		<div class="tableWrapper">
+            <table cellpadding="0" cellspacing="0" class="table" width="100%">
+                <colgroup>
+                    <col class="con1" width="15%" />
+                    <col class="con0" width="17%" />
+                    <col class="con1" width="17%" />
+                    <col class="con0" width="17%" />
+					<col class="con1" width="17%" />
+                    <col class="con0" width="17%" /> 					
+                </colgroup>		
+			<tr>
+				<td>{{ user.id }}</td>
+				<td>{{ user.username }}</td>
+				<td>{{ user.firstname}}</td>
+				<td>{{ user.lastname}}</td>
+				<td>
                         {% for role in user.userRoles %}
-                            <p>{{ role.name }}</p>
+                            <p>{{role.name }}</p>
                         {% endfor %}
-                    </td>
-                    <td>
+                </td>
+                <td>
                         {% if user.isactive %}
                             TRUE
                         {% else %}
                             FALSE
                         {% endif %}
-                    </td>
-            </tr>
-        </tbody>
-    </table>
+                </td>
+			</tr>		
+			</table>
+		</div>
+	
 
-    <form action="{{ path('user_password_reset', { 'id': user.id } )}}" method="post">
-        {{ form_widget(password_reset_form) }}
-        <button type="submit" onClick="return confirm('Are you sure you want to reset password?')">Password reset</button>
-    </form>
-
-    <a href="{{ path('users_list') }}">Back to list</a>
+		
 {% endblock %}
