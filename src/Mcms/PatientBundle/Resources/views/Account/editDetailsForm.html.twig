@@ -1,0 +1,11 @@
+{% extends '::clean.html.twig' %}
+
+{% block body %}
+    
+<form action="{{ path('patient_update')}}" method="POST" {{ form_enctype(form) }}>
+    {{form_errors(form)}}
+    {{ form_widget(form) }}
+    <button type="submit">Aktualizuj</button>
+</form>
+
+{% endblock %}

@@ -69,6 +69,14 @@ logout:
 admin_dashboard:
     pattern: /patient/new
 
+patient_edit:
+    pattern: /patient/edit
+    defaults: { _controller: McmsPatientBundle:Account:edit }
+
+patient_update:
+    pattern: /patient/update
+    defaults:  { _controller: McmsPatientBundle:Account:update }
+
 changePassword:
     pattern: /change_password
     defaults: { _controller: McmsUserBundle:Account:changePassword }

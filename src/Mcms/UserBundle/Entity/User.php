@@ -6,6 +6,9 @@ use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Component\Security\Core\User\UserInterface;
 
+use Mcms\PatientBundle\Entity\Patient;
+use Mcms\EmployeeBundle\Entity\Employee;
+
 /**
  * Mcms\UserBundle\Entity\User
  *
@@ -71,6 +74,20 @@ class User implements UserInterface, \Serializable
      * )
      */
     private $userRoles;
+
+    /**
+     * @var Patient $patient.
+     * 
+     * @ORM\OnetoOne(targetEntity="Mcms\PatientBundle\Entity\Patient", mappedBy="user")
+     */
+    private $patient;
+
+    /**
+     * @var Employee $employee.
+     * 
+     * @ORM\OnetoOne(targetEntity="Mcms\EmployeeBundle\Entity\Employee", mappedBy="user")
+     */
+    private $employee;
 
     /**
      * @var boolean $isActive
@@ -251,6 +268,46 @@ class User implements UserInterface, \Serializable
     public function __construct()
     {
         $this->userRoles = new ArrayCollection();
+    }
+
+    /**
+     * Get the patient.
+     * 
+     * @return Patient An Patient object related with user.
+     */
+    public function getPatient()
+    {
+        return $this->patient;
+    }
+
+    /**
+     * Set the patient.
+     * 
+     * @param Patient $value
+     */
+    public function setPatient(Patient $value)
+    {
+        $this->patient = $value;
+    }
+
+    /**
+     * Get the employee.
+     * 
+     * @return Employee An Employee object related with user
+     */
+    public function getEmployee()
+    {
+        return $this->employee;
+    }
+
+    /**
+     * Set the employee.
+     * 
+     * @param Employee $value
+     */
+    public function setEmployee(Employee $value)
+    {
+        $this->employee = $value;
     }
     
     /**
