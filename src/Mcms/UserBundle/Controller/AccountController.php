@@ -15,7 +15,7 @@ class AccountController extends Controller
 	/**
 	 * Displays a form to change password.
 	 * 
-	 * @Template("McmsUserBundle:Manage:changePasswordForm.html.twig")
+	 * @Template("McmsUserBundle:Account:changePasswordForm.html.twig")
 	 */
 	public function changePasswordAction()
 	{
@@ -59,26 +59,10 @@ class AccountController extends Controller
 			echo "SUCCESS";
 		}
 
-		return $this->render('McmsUserBundle:Manage:changePasswordForm.html.twig', array(
+		return $this->render('McmsUserBundle:Account:changePasswordForm.html.twig', array(
             'form' => $form->createView()
         ));
 	
-	}
-
-	public function resetPasswordAction()
-	{
-		/**
-		 * 1) Show confirmation page
-		 */
-	}
-
-	public function resetPasswordProcessAction()
-	{
-		/**
-		 * 1) Validate ???
-		 * 2) Create new password, store it in DB
-		 * 3) Show printable page
-		 */
 	}
 
 	public function editDetailsAction()

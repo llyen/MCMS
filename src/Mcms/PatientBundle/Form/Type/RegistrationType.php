@@ -18,6 +18,6 @@ class RegistrationType extends AbstractType
 
 	public function getName()
 	{
-		return 'registration';
+		return 'user_patient';
 	}
 }
