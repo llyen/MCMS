@@ -9,6 +9,7 @@
         <link rel="shortcut icon" href="{{ asset('favicon.ico') }}" />
 		<script src="{{ asset('js/jquery-1.7.2.min.js') }}" type="text/javascript" ></script>
 		<script src="{{ asset('js/jquery.dataTables.min.js') }}" type="text/javascript" ></script>
+		{% block javascripts_head %} {% endblock %}
     </head>
     <body>
 	<div id="header">
@@ -44,7 +45,7 @@
     	{% block footer %} &copy;2012 Ocenzurowana stopka. {% endblock %}
 	</div><!-- footer -->
 
-    {% block javascripts %}
+    {% block javascripts_body %}
 		<script>
 			jQuery(document).ready(function(){
 				jQuery('.message .close').click(function(){
