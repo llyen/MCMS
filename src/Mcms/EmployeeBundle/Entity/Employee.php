@@ -24,7 +24,7 @@ class Employee
     /**
      * @var integer $user
      * 
-     * @ORM\OneToOne(targetEntity="Mcms\UserBundle\Entity\User")
+     * @ORM\OneToOne(targetEntity="Mcms\UserBundle\Entity\User", inversedBy="user")
      * @ORM\JoinColumn(name="user", referencedColumnName="id")
      */
     private $user;
