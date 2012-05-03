@@ -12,42 +12,39 @@
     </head>
     <body>
 	<div id="header">
-		<!-- logo -->
-		<a href=""><img src="images/logo.png" alt="" /></a>    
-		<div id="tabmenu">
-			<ul>
-				<li class="current"><a href="main.html" class=""><span>Strona główna</span></a></li>          
-				<li><a href="users.html" class=""><span>Użytkownicy</span></a></li>					
-			</ul>
-		</div><!-- tabmenu -->
+		{% block header %}
+			<!-- logo -->
+			<a href=""><img src="images/logo.png" alt="" /></a>    
+			<div id="tabmenu">
+				<ul>
+					<li class="current"><a href="main.html" class=""><span>Strona główna</span></a></li>          
+					<li><a href="users.html" class=""><span>Użytkownicy</span></a></li>					
+				</ul>
+			</div><!-- tabmenu -->
     
-		<div id="account">
-			<h3>{{ app.user.firstname }} {{ app.user.lastname }}</h3>
-			<small>test@test.test</small>
-			<p>
-				<a href="">Mój profil</a> <a href="{{ path('logout') }}">Wyloguj</a>
-			</p>
-		</div><!-- account -->
+			<div id="account">
+				<h3>{{ app.user.firstname }} {{ app.user.lastname }}</h3>
+				<small>test@test.test</small>
+				<p>
+					<a href="">Mój profil</a> <a href="{{ path('logout') }}">Wyloguj</a>
+				</p>
+			</div><!-- account -->
+		{% endblock %}
 	</div><!-- header -->
 	
-	<div class="sidebar">
-		<div id="accordion">
-			{% block sidebar %}
-			{% endblock %}      
-		</div>	
-	</div><!-- leftmenu -->
-	<div class="maincontent">	
-    	<div class="left"> 
-			{% block dashboard %}
-			{% endblock %}
-		<br clear="all" /> 
-			{% block content %}
-			{% endblock %}
-	</div><!-- left -->  
-	<br clear="all" />    
-</div><!--maincontent-->
-        
-        {% block javascripts %}
+	<div id="sidebar">
+		{% block sidebar %} {% endblock %}      
+	</div><!-- sidebar -->
+
+	<div id="content">
+		{% block content %} {% endblock %}
+	</div><!-- content -->
+
+	<div id="footer">
+    	{% block footer %} &copy;2012 Ocenzurowana stopka. {% endblock %}
+	</div><!-- footer -->
+
+    {% block javascripts %}
 		<script>
 			jQuery(document).ready(function(){
 				jQuery('.message .close').click(function(){
@@ -56,11 +53,6 @@
 			});
 		</script>
 	{% endblock %}
-		
-		<br />
-		
-		<div id="footer">
-    		&copy;2012 Ocenzurowana stopka.
-		</div><!-- footer -->
-    </body>
+	
+	</body>
 </html>
