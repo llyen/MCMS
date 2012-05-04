@@ -1,0 +1,20 @@
+{# app/Resources/views/dashboard.html.twig #}
+{% extends '::base.html.twig' %}
+{% import '::helpers.html.twig' as helpers %}
+
+{% block stylesheets %}
+	{{ parent() }}
+	<link href="{{ asset('css/dashboard.css') }}" rel="stylesheet" type="text/css" />
+{% endblock %}
+
+{% block tabmenu %}
+	<ul>
+		{{ helpers.tab('users_list', 'Lista użytkowników') }}
+		{{ helpers.tab('products', 'Lista produktów') }}
+	</ul>
+{% endblock %}
+
+{% block content %}
+	{{ parent() }}
+	{# tutaj ewentualnie dashboard #}
+{% endblock %}

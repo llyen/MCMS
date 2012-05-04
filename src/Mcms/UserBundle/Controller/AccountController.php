@@ -59,7 +59,7 @@ class AccountController extends Controller
 			echo "SUCCESS";
 		}
 
-		return $this->render('McmsUserBundle:Account:changePasswordForm.html.twig', array(
+		return $this->render('McmsUserBundle::changePassword.html.twig', array(
             'form' => $form->createView()
         ));
 	

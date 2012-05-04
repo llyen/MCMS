@@ -15,7 +15,7 @@ class ManageController extends Controller
 	/**
 	 * List all users in application.
 	 * 
-	 * @Template("McmsUserBundle:Manage:listUsers.html.twig")
+	 * @Template("McmsUserBundle::list.html.twig")
 	 */
 	public function usersListAction()
 	{
@@ -31,7 +31,7 @@ class ManageController extends Controller
 	 * 
 	 * @param integer $id User id.
 	 * 
-	 * @Template("McmsUserBundle:Manage:showUser.html.twig")
+	 * @Template("McmsUserBundle::show.html.twig")
 	 */
 	public function userShowAction($id)
 	{

@@ -1,0 +1,28 @@
+/*
+ oneCol.css
+*/
+
+/* general */
+body { background: #333 url("../images/bg.jpg") no-repeat; }
+div#header { background: none; height: 0; }
+div#content { min-width: 0; margin: 60px auto; width: 650px; min-height: 350px; background: url("../images/blacktrans.png"); z-index:1; behaviour: url(border-radius.htc); box-shadow: 0 0 9px 1px black; -moz-border-radius:8px;-webkit-border-radius:8px;-khtml-border-radius:8px;border-radius:8px; }
+div#content > .error p { width: 630px; background: #eee; text-align: center; padding: 6px 0 6px 0; position: absolute; margin:20px 10px 0; color: #212121; font-weight:bold; -moz-border-radius: 3px; -webkit-border-radius: 3px; border-radius: 3px;font-size: 12px;  -moz-box-shadow: 1px 1px 2px #999; -webkit-box-shadow: 1px 1px 2px #999; box-shadow: 1px 1px 2px #999;}
+div#footer { background: none; position: relative; }
+
+/* log in */
+div#login-logo { float: left; margin: 60px 0 0 0; }
+
+div#login-form { width:300px; float:right; margin:70px 30px 0 0; }
+div#login-form button[type=submit] { background: #4b6592 url("../images/buttonbg3.png") repeat-x top left; color: #fff; padding: 7px 20px; cursor: pointer; -moz-border-radius: 3px; -webkit-border-radius: 3px; border-radius: 3px; border: 1px solid #395380; font-size: 12px; text-transform: uppercase; text-shadow: 1px 1px #395380; font-family: Arial; -moz-box-shadow: 1px 1px 2px #999; -webkit-box-shadow: 1px 1px 2px #999; box-shadow: 1px 1px 2px #999; margin: 15px 150px; }
+div#login-form button[type=submit] :hover { background: #005681 url("../images/buttonbg3.png") repeat-x 0 -36px; }
+div#login-form button[type=submit] :active { -moz-box-shadow: inset 2px 2px 2px #12274c; -webkit-box-shadow: inset 2px 2px 2px #12274c; box-shadow: inset 2px 2px 2px #12274c; }
+div#login-form input#username[type=text] { font-size: 12px; padding: 8px 5px; border: 1px solid #ccc; background: #fcfcfc; outline: none; -moz-box-shadow: inset 1px 1px 3px #ccc; -webkit-box-shadow: inset 1px 1px 3px #ccc; box-shadow: inset 1px 1px 3px #ccc; -moz-border-radius: 3px; -webkit-border-radius: 3px; border-radius: 3px; margin:20px 0 20px 20px; width:260px; padding:8px 0 8px 40px; border: 0; background: #eee url("../images/userfield.png") no-repeat; background-position: top left; width: 190px; margin-right: 10px; }
+div#login-form input#username[type=text]:focus { background-color: #fff; background-position: 0 -32px; }
+div#login-form input#password { font-size: 12px; padding: 8px 5px; border: 1px solid #ccc; background: #fcfcfc; outline: none; -moz-box-shadow: inset 1px 1px 3px #ccc; -webkit-box-shadow: inset 1px 1px 3px #ccc; box-shadow: inset 1px 1px 3px #ccc;width:260px; padding:8px 0 8px 40px; -moz-border-radius: 3px; -webkit-border-radius: 3px; border-radius: 3px; margin-left: 20px; border: 0; background: #eee url("../images/paswdfield.png") no-repeat; background-position: top left; width: 190px; margin-right: 10px; }
+div#login-form input#password:focus{ background-color: #fff; background-position: 0 -32px; }
+
+ul#login-footer { list-style-type: none; color: white; text-align: center; }
+ul#login-footer li { display: inline; margin: 0 20px 0 20px; }
+ul#login-footer li a { color: white; text-decoration: none; }
+
+label { width: 150px; float: left; text-align: left; padding-top: 5px; margin-right: 20px; }

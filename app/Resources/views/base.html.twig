@@ -1,56 +1,52 @@
-{% import '::helpers.html.twig' as helpers %}
+{# app/Resources/views/base.html.twig #}
 <!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-        <title>{% block title %}Welcome!{% endblock %}</title>        
+        <title> {% block title %} Welcome! {% endblock %} </title>        
     	<link href="{{ asset('css/style.css') }}" rel="stylesheet" type="text/css" />
-		{% block stylesheets %}{% endblock %}
+		{% block stylesheets %} {% endblock %}
         <link rel="shortcut icon" href="{{ asset('favicon.ico') }}" />
-		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js" type="text/javascript" ></script>
+		<script src="{{ asset('js/jquery-1.7.2.min.js') }}" type="text/javascript" ></script>
 		<script src="{{ asset('js/jquery.dataTables.min.js') }}" type="text/javascript" ></script>
+		{% block javascripts_head %} {% endblock %}
     </head>
-    <body class="bodygrey">
-	<div class="headerspace"></div>
-	<div class="header">	
-		<!-- logo -->
-		<a href=""><img src="images/logo.png" alt=""  /></a>    
-		<div class="tabmenu">
-			<ul>
-				{{ helpers.tab('users_list','Lista użytkowników') }}
-				{{ helpers.tab('products', 'Lista produktów') }}			
-			</ul>
-		</div><!-- tabmenu -->
-    
-		<div class="accountinfo">  	
-			<div class="info">
+    <body>
+	<div id="header">
+		{% block header %}
+			<!-- logo -->
+			<a href=""><img src="images/logo.png" alt="" /></a>    
+			<div id="tabmenu">
+				{% block tabmenu %}
+					<ul>
+						<li class="current"><a href="main.html" class=""><span>Strona główna</span></a></li>          
+						<li><a href="users.html" class=""><span>Użytkownicy</span></a></li>					
+					</ul>
+				{% endblock %}
+			</div><!-- tabmenu -->
+			<div id="account">
 				<h3>{{ app.user.firstname }} {{ app.user.lastname }}</h3>
 				<small>test@test.test</small>
 				<p>
 					<a href="">Mój profil</a> <a href="{{ path('logout') }}">Wyloguj</a>
 				</p>
-			</div>
-		</div><!-- accountinfo end -->
-	</div><!-- header end -->
+			</div><!-- account -->
+		{% endblock %}
+	</div><!-- header -->
 	
-	<div class="sidebar">
-		<div id="accordion">
-			{% block sidebar %}
-			{% endblock %}      
-		</div>	
-	</div><!-- leftmenu -->
-	<div class="maincontent">	
-    	<div class="left"> 
-			{% block dashboard %}
-			{% endblock %}
-		<br clear="all" /> 
-			{% block content %}
-			{% endblock %}
-	</div><!-- left -->  
-	<br clear="all" />    
-</div><!--maincontent-->
-        
-        {% block javascripts %}
+	<div id="sidebar">
+		{% block sidebar %} {% endblock %}      
+	</div><!-- sidebar -->
+
+	<div id="content">
+		{% block content %} {% endblock %}
+	</div><!-- content -->
+
+	<div id="footer">
+    	{% block footer %} &copy;2012 Ocenzurowana stopka. {% endblock %}
+	</div><!-- footer -->
+
+    {% block javascripts_body %}
 		<script>
 			jQuery(document).ready(function(){
 				jQuery('.message .close').click(function(){
@@ -59,13 +55,6 @@
 			});
 		</script>
 	{% endblock %}
-		
-		<br />
-		
-<div class="footer footer_float">
-	<div class="footerinner">
-    	&copy;2012 Ocenzurowana stopka .
-    </div><!-- footerinner -->
-</div><!-- footer -->
-    </body>
+	
+	</body>
 </html>

@@ -1,0 +1,50 @@
+{# src/Mcms/UserBundle/Resources/views/index.html.twig #}
+{% extends '::oneCol.html.twig' %}
+
+{% block title %} Logowanie {% endblock %}
+
+{% block javascripts_head %}
+	<script type="text/javascript">		
+		jQuery(document).ready(function(){	
+			jQuery('#username, #password').focusout(function(){
+				if(jQuery(this).val() != '') {
+					jQuery(this).css({backgroundPosition: "0 -32px"});	
+				} else {
+					jQuery(this).css({backgroundPosition: "0 0"});	
+				}
+			});
+		
+			jQuery('#username, #password').focusin(function(){
+				if(jQuery(this).val() == '') {
+					jQuery(this).css({backgroundPosition: "0 -32px"});	
+				}
+			});
+		});
+	</script>
+{% endblock %}
+
+
+{% block content %}	
+	{% if error %}
+		<div class="error"><p>{{ error.message }}</p></div>
+	{% endif %}
+	<div id="login-logo"><img src="{{ asset('images/log_logo.png') }}"></div>
+	<div id="login-form">
+		<form action="{{ path('login_check') }}" method="post">				
+			<input type="text" id="username" name="_username" value="{{ last_username }}" />
+			<br />				
+			<input type="password" id="password" name="_password" />
+			<br />
+			<button type="submit">Zaloguj</button>
+		</form>
+	</div>
+{% endblock %}
+
+{% block footer %}
+	<ul id="login-footer">
+		<li><a href="#">Warunki użytkowania</a></li>				
+		<li><a href="#">Regulamin</a></li>
+		<li><a href="#">Pomoc</a></li>
+		<li><a href="#">Copyright 2012 MCMS</a></li>
+	</ul>
+{% endblock %}
