@@ -16,7 +16,7 @@ class ManageController extends Controller
 	/**
 	 * List all products.
 	 * 
-	 * @Template("McmsProductBundle:Manage:listAllProducts.html.twig")
+	 * @Template("McmsProductBundle::list.html.twig")
 	 */
 	public function productIndexAction()
 	{
@@ -31,7 +31,7 @@ class ManageController extends Controller
 	 * 
 	 * @param integer $id Product id.
 	 * 
-	 * @Template("McmsProductBundle:Manage:showProduct.html.twig")
+	 * @Template("McmsProductBundle::show.html.twig")
 	 */
 	public function productShowAction($id)
 	{
@@ -57,7 +57,7 @@ class ManageController extends Controller
 	 * 
 	 * @param integer $id Package id.
 	 * 
-	 * @Template("McmsProductBundle:Manage:newProduct.html.twig")
+	 * @Template("McmsProductBundle::new.html.twig")
 	 */
 	public function productNewAction()
 	{
@@ -69,7 +69,7 @@ class ManageController extends Controller
 	/**
 	 * Creates a new Product.
 	 * 
-	 * @Template("McmsProductBundle:Manage:newProduct.html.twig")
+	 * @Template("McmsProductBundle::new.html.twig")
 	 */
 	public function productCreateAction()
 	{
@@ -95,7 +95,7 @@ class ManageController extends Controller
 	/**
 	 * Display a form to edit Product
 	 * 
-	 * @Template("McmsProductBundle:Manage:editProduct.html.twig")
+	 * @Template("McmsProductBundle::edit.html.twig")
 	 */
 	public function productEditAction($id)
 	{
@@ -121,7 +121,7 @@ class ManageController extends Controller
 	/**
 	 * Edits Product.
 	 * 
-	 * @Template("McmsProductBundle:Manage:editProduct.html.twig")
+	 * @Template("McmsProductBundle::edit.html.twig")
 	 */
 	public function productUpdateAction($id)
 	{
