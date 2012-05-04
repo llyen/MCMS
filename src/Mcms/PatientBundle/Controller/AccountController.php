@@ -13,7 +13,7 @@ class AccountController extends Controller
     /**
      * Display form to change User and Patient details.
      * 
-     * @Template("McmsPatientBundle:Account:editDetailsForm.html.twig")
+     * @Template("McmsPatientBundle::editDetails.html.twig")
      */
     public function editAction()
     {
@@ -35,7 +35,7 @@ class AccountController extends Controller
     /**
      * Edits User and Patient details.
      * 
-     * @Template("McmsPatientBundle:Account:editDetailsForm.html.twig")
+     * @Template("McmsPatientBundle::editDetails.html.twig")
      */
     public function updateAction()
     {

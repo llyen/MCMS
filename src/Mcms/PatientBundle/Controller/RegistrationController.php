@@ -16,7 +16,7 @@ class RegistrationController extends Controller
 	 * Displays a form to create new Patient account.
 	 * 
 	 * @Route("/patient/new")
-	 * @Template("McmsPatientBundle:Patient:register.html.twig")
+	 * @Template("McmsPatientBundle::register.html.twig")
 	 */
 	public function newAction()
 	{
@@ -29,7 +29,7 @@ class RegistrationController extends Controller
 	 * Creates a new Patient account.
 	 * 
 	 * @Route("/patient/create",name="createpatient")
-	 * @Template("McmsPatientBundle:Patient:register.html.twig")
+	 * @Template("McmsPatientBundle::register.html.twig")
 	 */
 	public function createAction()
 	{
