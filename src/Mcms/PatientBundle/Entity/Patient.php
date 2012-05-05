@@ -193,4 +193,14 @@ class Patient
     {
         $this->city = $value;
     }
+
+    /**
+     * Gets patient first and last name
+     * 
+     * @return String Patients first and last name.
+     */
+    public function __toString()
+    {
+        return (String)$this->user;
+    }
 }
