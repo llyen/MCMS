@@ -51,6 +51,11 @@ class SecurityListener
 			{
 				$this->redirect = "admin_dashboard";
 			}
+
+			if($this->security->isGranted('ROLE_PATIENT'))
+			{
+				$this->redirect = "patient_dashboard";
+			}
 		}
 	}
 

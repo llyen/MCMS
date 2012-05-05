@@ -1,0 +1,11 @@
+{# src/Mcsm/DashboardBundle/Resources/views/patientIndex.html.twig #}
+{% extends '::dashboard.html.twig' %}
+
+{% block title %}Patient Dashboard{% endblock %}
+
+{% block content %}
+    <div>
+        <h2>My timetable</h2>
+        {% render "McmsTimetableBundle:Default:showPatientEntries" with { 'patient': app.user.patient } %}
+    </div>
+{% endblock %}
