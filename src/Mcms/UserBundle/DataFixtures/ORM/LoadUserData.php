@@ -26,14 +26,27 @@ class LoadUserData extends AbstractFixture implements OrderedFixtureInterface,Co
 
     public function load(ObjectManager $manager)
     {
-    	$adminUser = new User();
+    	$admin = new User();
         
-    	$adminUser->setFirstName("Jan");
-    	$adminUser->setLastName("Kowalski");
-        $adminUser->getUserRoles()->add($this->getReference('admin-role'));
+    	$admin->setFirstName("Jan");
+    	$admin->setLastName("Kowalski");
+        $admin->setUsername('admin');
+        $admin->setPassword('admin');
+        $admin->getUserRoles()->add($this->getReference('admin-role'));
 
-    	$manager->persist($adminUser);
-    	$manager->flush($adminUser);
+        $patient = new User();
+
+        $patient->setFirstName('Tadeusz');
+        $patient->setLastName('Morzy');
+        $patient->setUsername('patient');
+        $patient->setPassword('patient');
+        $patient->getUserRoles()->add($this->getReference('patient-role'));
+
+    	$manager->persist($admin);
+        $manager->persist($patient);
+    	$manager->flush();
+
+        $this->addReference('patient', $patient);
     }
 
     public function getOrder()

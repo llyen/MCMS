@@ -39,11 +39,21 @@ class UserListener
 				$sequence = $sequence[0];
 			}
 
-        	$user->setUsername($sequence->nextVal());
+			if(!$user->getUsername())
+        	{
+        		$user->setUsername($sequence->nextVal());
+        	}
         	$user->setSalt();
 
         	$encoder = $this->encoderFactory->getEncoder($user);
-        	$user->setPassword($encoder->encodePassword($sequence->getSeqValue(), $user->getSalt()));
+        	if(!$password = $user->getPassword())
+        	{
+        		$user->setPassword($encoder->encodePassword($sequence->getSeqValue(), $user->getSalt()));
+        	}
+        	else
+        	{
+        		$user->setPassword($encoder->encodePassword($password, $user->getSalt()));	
+        	}
 		}
 	}
 }
