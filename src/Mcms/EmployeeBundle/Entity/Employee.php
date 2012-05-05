@@ -85,4 +85,14 @@ class Employee
     {
         $this->position = $value;
     }
+
+    /**
+     * Gets employee first and last name
+     * 
+     * @return String Employees first and last name.
+     */
+    public function __toString()
+    {
+        return(String)$this->user;
+    }
 }

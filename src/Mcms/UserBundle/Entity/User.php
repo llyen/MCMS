@@ -404,4 +404,9 @@ class User implements UserInterface, \Serializable
             $this->updatedAt
         ) = unserialize($data);
     }
+
+    public function __toString()
+    {
+        return $this->firstName.' '.$this->lastName;
+    }
 }
