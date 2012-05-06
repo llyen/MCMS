@@ -11,10 +11,38 @@ class PatientController extends Controller
     /**
      * Base patient dashboard view
      * 
-     * @Template("McmsDashboardBundle::patientIndex.html.twig")
+     * @Template("McmsDashboardBundle:Patient:patientIndex.html.twig")
      */
     public function indexAction()
     {
         return array();
+    }
+
+    /**
+     * Shows list of all employees
+     * 
+     * @Template("McmsDashboardBundle:Patient:listOfEmployees.html.twig")
+     */
+    public function listOfEmployeesAction()
+    {
+        $employees = $this->get('employee_controller')->createList();
+        
+        return array(
+            'employees' => $employees
+        );
+    }
+
+    /**
+     * Shows information about selected employee
+     * 
+     * @Template("McmsDashboardBundle:Patient:showEmployee.html.twig")
+     */
+    public function showEmployeeAction($id)
+    {
+        $employee = $this->get('employee_controller')->showSingle($id);
+
+        return array(
+            'employee' => $employee
+        );
     }
 }

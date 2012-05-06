@@ -1,0 +1,10 @@
+{# src/Mcms/DashboardBundle/Resources/views/Patient/showEmployee.html.twig #}
+{% extends '::dashboard.html.twig' %}
+
+{% block title %}{{ employee }} - Dane{% endblock %}
+
+{% block content %}
+    <p><b>Imie: </b>{{ employee.firstname }}</p>
+    <p><b>Nazwisko: </b>{{ employee.lastname }}</p>
+    <p><a href="#">TERMINARZ</a></p>
+{% endblock %}
