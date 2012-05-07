@@ -8,3 +8,17 @@ patient.showEmployee:
     defaults: { _controller: McmsDashboardBundle:Patient:showEmployee }
     requirements:
         id: \d+
+
+patient.showEmployeeTimetable:
+    pattern: /employee/{id}/timetable
+    defaults: { _controller: McmsDashboardBundle:Patient:showEmployeeTimetable }
+    requirements:
+        id: \d+
+
+patient.showTimetable:
+    pattern: /timetable
+    defaults: { _controller: McmsDashboardBundle:Patient:showTimetable }
+
+patient.showMyAccount:
+    pattern: /myAccount
+    defaults: { _controller: McmsDashboardBundle:Patient:showMyAccount }

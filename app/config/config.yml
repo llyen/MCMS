@@ -62,6 +62,10 @@ jms_security_extra:
 services:
     employee_controller:
         class: Mcms\EmployeeBundle\Controller\EmployeeController
-        arguments: []
         calls:
-              - [ setContainer, [ @service_container ] ]
+            - [ setContainer, [ @service_container ] ]
+
+    timetable_controller:
+        class: Mcms\TimetableBundle\Controller\TimetableController
+        calls:
+            - [ setContainer, [ @service_container ] ]

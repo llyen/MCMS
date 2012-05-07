@@ -6,5 +6,5 @@
 {% block content %}
     <p><b>Imie: </b>{{ employee.firstname }}</p>
     <p><b>Nazwisko: </b>{{ employee.lastname }}</p>
-    <p><a href="#">TERMINARZ</a></p>
+    <p><a href="{{ path('patient.showEmployeeTimetable', { id: employee.id }) }}">TERMINARZ</a></p>
 {% endblock %}

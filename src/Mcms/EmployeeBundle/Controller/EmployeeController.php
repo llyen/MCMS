@@ -12,7 +12,7 @@ class EmployeeController extends Controller
      * 
      * @return Array The employees list.
      */
-    public function createList()
+    public function listAction()
     {
         $em = $this->getDoctrine()->getEntityManager();
 
@@ -24,7 +24,7 @@ class EmployeeController extends Controller
     /**
      * Finds and returns all information about certan employee
      */
-    public function showSingle($id)
+    public function showAction($id)
     {
         $em = $this->getDoctrine()->getEntityManager();
 

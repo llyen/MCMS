@@ -1,0 +1,12 @@
+{# src/Mcms/DashboardBundle/Resources/views/Patient/showMyAccount.html.twig #}
+{% extends '::dashboard.html.twig' %}
+
+{% block title %}Moje konto{% endblock %}
+
+{% block content %}
+    <p><b>Imie: </b>{{ user.firstname }}</p>
+    <p><b>Nazwisko: </b>{{ user.lastname }}</p>
+    <p><b>Pesel: </b>{{ user.patient.pesel }}</p>
+    <p><b>Address1: </b>{{ user.patient.address1 }}</p>
+    <p><b>Address2: </b>{{ user.patient.address2 }}</p>
+{% endblock %}
