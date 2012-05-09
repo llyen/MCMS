@@ -2,10 +2,35 @@
 {% extends '::dashboard.html.twig' %}
 
 {% block title %}Patient Dashboard{% endblock %}
-
+{%block javascript_head%}{% endblock %}
 {% block content %}
-    <div>
-        <h2>My timetable</h2>
+<h1 class="pageTitle">My timetable</h1>
+    <div id='calendar'></div>
+	<div id="event_edit_container">
+		<form>
+			<input type="hidden" />
+			<ul>
+				<li>
+					<span>Data: </span><span class="date_holder"></span> 
+				</li>
+				<li>
+					<label for="start">Poczatek: </label><select name="start"><option value="">Wybierz godzine poczatkowa</option></select>
+				</li>
+				<li>
+					<label for="end">Koniec: </label><select name="end"><option value="">Wybierz godzine koncowa</option></select>
+				</li>
+				<li>
+					<label for="title">Tytul: </label><input type="text" name="title" />
+				</li>
+				<li>
+					<label for="body">Tresc: </label><textarea name="body"></textarea>
+				</li>
+			</ul>
+		</form>
+	</div>	
+	
+	<div>
+   
         {% render "McmsTimetableBundle:Default:showPatientEntries" with { 'patient': app.user.patient } %}
     </div>
 {% endblock %}
