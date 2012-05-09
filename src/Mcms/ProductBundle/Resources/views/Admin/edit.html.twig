@@ -5,12 +5,12 @@
 	{{ form_errors(form.price) }}
 	<h1 class="pageTitle">Edycja produktu</h1>
 	<div class="window1">
-				<h3><span>{{ product.name }} </span><form action="{{ path('product_delete', { 'id': product.id }) }}" method="post">
-				{{ form_widget(delete_form) }}
+				<h3><span>{{ product.name }} </span><form action="{{ path('admin.productDelete', { 'id': product.id }) }}" method="post">
+				{{ form_widget(deleteForm) }}
 				<button style="float:right; margin:-41px 25px 0 0" type="submit" onClick="return confirm('Czy na pewno chcesz usunąć wskazany produkt?')">Usuń</button>
 			</form></h3>
 		<div class="inside">			
-			<form class="form_default" action="{{ path('product_update',{ 'id': product.id }) }}" method="post" {{ form_enctype(form) }}>
+			<form class="form_default" action="{{ path('admin.productUpdate',{ 'id': product.id }) }}" method="post" {{ form_enctype(form) }}>
 				<p>	
 					{{ form_label(form.name) }}  {{ form_widget(form.name) }}</br></br>
 					{{ form_label(form.price) }}  {{ form_widget(form.price) }}					

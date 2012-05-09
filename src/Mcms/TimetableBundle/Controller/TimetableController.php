@@ -38,4 +38,22 @@ class TimetableController extends Controller
         return $entries;
     }
 
+    /**
+     * List all entries
+     * @Template("McmsTimetableBundle::showEntries.html.twig")
+     * @param Array $params An array with Patient,Employe
+     */
+    public function listAction(Patient $patient = null, Employee $employee = null)
+    {
+        $em = $this->getDoctrine()->getEntityManager();
+
+        $entries = $em->getRepository('McmsTimetableBundle:Entry')->findBy(array(
+            'patient' => $patient ? $patient->getId() : null,
+            'employee' => $employee ? $employee->getId() : null
+        ));
+
+        return array('entries' => $entries);
+    }
+
+
 }

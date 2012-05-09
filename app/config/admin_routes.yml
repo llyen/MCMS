@@ -1,42 +1,42 @@
 #Here place only admin routes!!!
 
 # MANAGE PRODUCTS
-products:
+admin.productList:
     pattern:    /product
-    defaults:   { _controller: McmsProductBundle:Manage:productindex }
+    defaults:   { _controller: McmsProductBundle:Product:list, roleTheme: Admin }
 
-product_new:
+admin.productNew:
     pattern:    /product/new
-    defaults:  { _controller: McmsProductBundle:Manage:productNew }
+    defaults:  { _controller: McmsProductBundle:Product:new }
 
-product_create:
+admin.productCreate:
     pattern:    /product/create
-    defaults:   { _controller: McmsProductBundle:Manage:productCreate }
+    defaults:   { _controller: McmsProductBundle:Product:create }
     requirements:
         _method:    POST
 
-product_show:
+admin.productShow:
     pattern:   /product/{id}/show
-    defaults:  { _controller: McmsProductBundle:Manage:productShow }
+    defaults:  { _controller: McmsProductBundle:Product:show, roleTheme: Admin }
     requirements:
         id:   \d+
 
-product_edit:
+admin.productEdit:
     pattern:   /product/{id}/edit
-    defaults:  { _controller: McmsProductBundle:Manage:productEdit }
+    defaults:  { _controller: McmsProductBundle:Product:edit }
     requirements:
         id:   \d+
 
-product_update:
+admin.productUpdate:
     pattern:    /product/{id}/update
-    defaults:   { _controller: McmsProductBundle:Manage:productUpdate }
+    defaults:   { _controller: McmsProductBundle:Product:update }
     requirements:
         _method:    POST
         id: \d+
 
-product_delete:
+admin.productDelete:
     pattern:   /product/{id}/delete
-    defaults:  { _controller: McmsProductBundle:Manage:productDelete }
+    defaults:  { _controller: McmsProductBundle:Product:delete }
     requirements:
         _method:  POST
         id:   \d+

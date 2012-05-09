@@ -22,3 +22,7 @@ patient.showTimetable:
 patient.showMyAccount:
     pattern: /myAccount
     defaults: { _controller: McmsDashboardBundle:Patient:showMyAccount }
+
+patient.productsList:
+    pattern: /product
+    defaults: { _controller: McmsProductBundle:Product:list, theme: Patient }
