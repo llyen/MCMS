@@ -1,0 +1,14 @@
+{# src/Mcms/DashboardBundle/Resources/views/Patient/showEmployeeTimetable.html.twig #}
+{% extends '::dashboard.html.twig' %}
+
+{% block title %}{{ employee }} - Terminarz{% endblock %}
+
+{% block content %}
+    {% if entries %}
+        {% for entry in entries %}
+            {{ entry.date }} | {{ entry.comment }}
+        {% endfor %}
+    {% else %}
+        Brak wpisów w terminarzu {{ employee }}
+    {% endif %}
+{% endblock %}

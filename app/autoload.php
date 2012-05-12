@@ -5,6 +5,8 @@ use Doctrine\Common\Annotations\AnnotationRegistry;
 
 $loader = new UniversalClassLoader();
 $loader->registerNamespaces(array(
+    'Knp\\Component'      => __DIR__.'/../vendor/knp-components/src',
+    'Knp\\Bundle'         => __DIR__.'/../vendor/bundles',
     'Symfony'          => array(__DIR__.'/../vendor/symfony/src', __DIR__.'/../vendor/bundles'),
     'Sensio'           => __DIR__.'/../vendor/bundles',
     'JMS'              => __DIR__.'/../vendor/bundles',

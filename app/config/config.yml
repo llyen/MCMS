@@ -58,3 +58,14 @@ swiftmailer:
 jms_security_extra:
     secure_controllers:  true
     secure_all_services: false
+
+services:
+    employee_controller:
+        class: Mcms\EmployeeBundle\Controller\EmployeeController
+        calls:
+            - [ setContainer, [ @service_container ] ]
+
+    timetable_controller:
+        class: Mcms\TimetableBundle\Controller\TimetableController
+        calls:
+            - [ setContainer, [ @service_container ] ]
