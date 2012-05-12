@@ -1,5 +1,28 @@
 #Here place only admin routes!!!
 
+#PROFILE MANAGE
+admin.profile:
+    pattern:    /profile
+    defaults:   { _controller: McmsUserBundle:User:profile, roleTheme: Admin }
+
+admin.editProfile:
+    pattern:    /profile/edit
+    defaults:   { _controller: McmsUserBundle:User:editProfile, roleTheme: Admin }
+
+admin.updateProfile:
+    pattern:    /profile/update
+    defaults:   { _controller: McmsUserBundle:User:updateProfile, roleTheme: Admin }
+    requirements:
+        _method:    POST
+
+admin.changePassword:
+    pattern:    /profile/changePassword
+    defaults:   { _controller: McmsUserBundle:User:changePassword, roleTheme: Admin }
+
+admin.updatePassword:
+    pattern:    /profile/updatePassword
+    defaults:   { _controller: McmsUserBundle:User:updatePassword, roleTheme: Admin}
+
 # MANAGE PRODUCTS
 admin.productList:
     pattern:    /product
