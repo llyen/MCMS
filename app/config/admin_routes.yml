@@ -25,8 +25,8 @@ admin.updatePassword:
 
 # MANAGE PRODUCTS
 admin.productList:
-    pattern:    /product
-    defaults:   { _controller: McmsProductBundle:Product:list, roleTheme: Admin }
+    pattern:    /products/{page}
+    defaults:   { _controller: McmsProductBundle:Product:list, page: 1, roleTheme: Admin }
 
 admin.productNew:
     pattern:    /product/new
