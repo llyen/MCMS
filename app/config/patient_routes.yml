@@ -1,1 +1,28 @@
 #Here place only patient routes!!!
+patient.listOfEmployees:
+    pattern: /listOfEmployees
+    defaults: { _controller: McmsDashboardBundle:Patient:listOfEmployees }
+
+patient.showEmployee:
+    pattern: /employee/{id}/show
+    defaults: { _controller: McmsDashboardBundle:Patient:showEmployee }
+    requirements:
+        id: \d+
+
+patient.showEmployeeTimetable:
+    pattern: /employee/{id}/timetable
+    defaults: { _controller: McmsDashboardBundle:Patient:showEmployeeTimetable }
+    requirements:
+        id: \d+
+
+patient.showTimetable:
+    pattern: /timetable
+    defaults: { _controller: McmsDashboardBundle:Patient:showTimetable }
+
+patient.showMyAccount:
+    pattern: /myAccount
+    defaults: { _controller: McmsDashboardBundle:Patient:showMyAccount }
+
+patient.productsList:
+    pattern: /product
+    defaults: { _controller: McmsProductBundle:Product:list, theme: Patient }

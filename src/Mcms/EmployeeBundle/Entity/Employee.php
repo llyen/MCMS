@@ -24,7 +24,7 @@ class Employee
     /**
      * @var integer $user
      * 
-     * @ORM\OneToOne(targetEntity="Mcms\UserBundle\Entity\User", inversedBy="user")
+     * @ORM\OneToOne(targetEntity="Mcms\UserBundle\Entity\User", inversedBy="employee")
      * @ORM\JoinColumn(name="user", referencedColumnName="id")
      */
     private $user;
@@ -94,5 +94,21 @@ class Employee
     public function __toString()
     {
         return(String)$this->user;
+    }
+
+    public function getFirstname()
+    {
+
+        return $this->user->getFirstname();
+    }
+
+    public function getLastname()
+    {
+        return $this->user->getLastname();
+    }
+
+    public function getUsername()
+    {
+        return $this->user->getUsername();
     }
 }

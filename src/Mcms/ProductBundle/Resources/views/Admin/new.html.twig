@@ -7,7 +7,7 @@
     <div class="window1">
 	    <h3><span></span></h3>
 		<div class="inside">				
-				<form class="form_default" action="{{ path('product_create') }}" method="post" {{ form_enctype(form) }}>
+				<form class="form_default" action="{{ path('admin.productCreate') }}" method="post" {{ form_enctype(form) }}>
 					<p>
 						{{ form_label(form.name) }}  {{ form_widget(form.name) }}</br></br>
 						{{ form_label(form.price) }}  {{ form_widget(form.price) }}

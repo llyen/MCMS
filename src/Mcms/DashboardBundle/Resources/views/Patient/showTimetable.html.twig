@@ -1,0 +1,15 @@
+{# /src/Mcms/DashboardBundle/Resources/views/Patient/showTimetable.html.twig #}
+{% extends '::dashboard.html.twig' %}
+
+{% block title %}Mój terminarz{% endblock %}
+
+{% block content %}
+    <p>Moj ({{ user }}) terminarz</p>
+    {% if entries %}
+        {% for entry in entries %}
+            {{ entry.date }} | {{ entry.comment }}
+        {% endfor %}
+    {% else %}
+        Brak wpisów w terminarzu
+    {% endif %}
+{% endblock %}

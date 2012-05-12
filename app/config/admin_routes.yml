@@ -1,42 +1,65 @@
 #Here place only admin routes!!!
 
-# MANAGE PRODUCTS
-products:
-    pattern:    /product
-    defaults:   { _controller: McmsProductBundle:Manage:productindex }
+#PROFILE MANAGE
+admin.profile:
+    pattern:    /profile
+    defaults:   { _controller: McmsUserBundle:User:profile, roleTheme: Admin }
 
-product_new:
-    pattern:    /product/new
-    defaults:  { _controller: McmsProductBundle:Manage:productNew }
+admin.editProfile:
+    pattern:    /profile/edit
+    defaults:   { _controller: McmsUserBundle:User:editProfile, roleTheme: Admin }
 
-product_create:
-    pattern:    /product/create
-    defaults:   { _controller: McmsProductBundle:Manage:productCreate }
+admin.updateProfile:
+    pattern:    /profile/update
+    defaults:   { _controller: McmsUserBundle:User:updateProfile, roleTheme: Admin }
     requirements:
         _method:    POST
 
-product_show:
+admin.changePassword:
+    pattern:    /profile/changePassword
+    defaults:   { _controller: McmsUserBundle:User:changePassword, roleTheme: Admin }
+
+admin.updatePassword:
+    pattern:    /profile/updatePassword
+    defaults:   { _controller: McmsUserBundle:User:updatePassword, roleTheme: Admin}
+
+# MANAGE PRODUCTS
+admin.productList:
+    pattern:    /product
+    defaults:   { _controller: McmsProductBundle:Product:list, roleTheme: Admin }
+
+admin.productNew:
+    pattern:    /product/new
+    defaults:  { _controller: McmsProductBundle:Product:new }
+
+admin.productCreate:
+    pattern:    /product/create
+    defaults:   { _controller: McmsProductBundle:Product:create }
+    requirements:
+        _method:    POST
+
+admin.productShow:
     pattern:   /product/{id}/show
-    defaults:  { _controller: McmsProductBundle:Manage:productShow }
+    defaults:  { _controller: McmsProductBundle:Product:show, roleTheme: Admin }
     requirements:
         id:   \d+
 
-product_edit:
+admin.productEdit:
     pattern:   /product/{id}/edit
-    defaults:  { _controller: McmsProductBundle:Manage:productEdit }
+    defaults:  { _controller: McmsProductBundle:Product:edit }
     requirements:
         id:   \d+
 
-product_update:
+admin.productUpdate:
     pattern:    /product/{id}/update
-    defaults:   { _controller: McmsProductBundle:Manage:productUpdate }
+    defaults:   { _controller: McmsProductBundle:Product:update }
     requirements:
         _method:    POST
         id: \d+
 
-product_delete:
+admin.productDelete:
     pattern:   /product/{id}/delete
-    defaults:  { _controller: McmsProductBundle:Manage:productDelete }
+    defaults:  { _controller: McmsProductBundle:Product:delete }
     requirements:
         _method:  POST
         id:   \d+
