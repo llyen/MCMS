@@ -20,7 +20,13 @@ class ProductController extends Controller
 	{
 		$em = $this->getDoctrine()->getEntityManager();
 
-		$products = $em->getRepository('McmsProductBundle:Product')->findAll();
+		$productsList = $em->getRepository('McmsProductBundle:Product')->findAll();
+
+		$paginator = $this->get('knp_paginator');
+		$request = $this->getRequest();
+
+
+		$products = $paginator->paginate($productsList, $request->get('page'), 2);
 
 		return $this->render('McmsProductBundle:'.$roleTheme.':list.html.twig',array(
 			'products' => $products

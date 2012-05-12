@@ -25,4 +25,4 @@ patient.showMyAccount:
 
 patient.productsList:
     pattern: /product
-    defaults: { _controller: McmsProductBundle:Product:list, theme: Patient }
+    defaults: { _controller: McmsProductBundle:Product:list, roleTheme: Patient }

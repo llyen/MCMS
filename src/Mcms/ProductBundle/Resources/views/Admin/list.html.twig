@@ -18,6 +18,7 @@ $(document).ready(function() {
         </div>
 {% endblock %}
 {% block content %}
+{{ products.setUsedRoute('admin.productList') }}
 <h1 class="pageTitle">Lista produktów</h1>
 	<div class="tableOpt">
 		<h4>Lista produktów
@@ -56,6 +57,7 @@ $(document).ready(function() {
 				</tr>
 			{% endfor %}
 		</table>		
-	</div>	
-	
+	</div>
+    	
+	{{ products.render()|raw }}
 {% endblock %}
