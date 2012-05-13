@@ -3,10 +3,16 @@
 
 {% block title %}{{ app.user }} - Edit Profile{% endblock %}
 {% block content %}
-    <form action="{{ path('admin.updateProfile') }}" method="post" {{ form_enctype(form) }}>
+<h1 class="pageTitle">Edycja profilu</h1>
+<div class="window1">
+	<h3><span></span></h3>
+	<div class="inside">
+    <form class="form_default" action="{{ path('admin.updateProfile') }}" method="post" {{ form_enctype(form) }}>
         {{ form_errors(form) }}
         {{ form_widget(form) }}
 
         <input type="submit" />
     </form>
+</div>
+</div>
 {% endblock %}

@@ -4,7 +4,13 @@
 {% block title %}{{ employee }} - Dane{% endblock %}
 
 {% block content %}
+<h1 class="pageTitle">Dane pracownika</h1>
+<div class="window1">
+	<h3><span></span></h3>
+	<div class="inside">
     <p><b>Imie: </b>{{ employee.firstname }}</p>
     <p><b>Nazwisko: </b>{{ employee.lastname }}</p>
     <p><a href="{{ path('patient.showEmployeeTimetable', { id: employee.id }) }}">TERMINARZ</a></p>
+	</div>
+</div>
 {% endblock %}

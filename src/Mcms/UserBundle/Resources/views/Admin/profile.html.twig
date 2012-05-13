@@ -4,7 +4,17 @@
 {% block title %}{{app.user}} - Profile{% endblock %}
 
 {% block content %}
-    <h1>{{app.user}} Profile</h1>
-    <p><a href="{{ path('admin.editProfile') }}">Edit profile</a></p>
-    <p><a href="{{ path('admin.changePassword') }}">Change password</a></p>
+    <h1 class="pageTitle">{{app.user}} Profile</h1>
+	<div class="window1">
+	<h3><span style="height:20px;"></span></h3>
+		<div class="inside">
+		
+		
+		<ul class="dashboard">
+		<li><a href="{{ path('admin.editProfile') }}"><img src="{{ asset('images/icons/edit_big.png') }}"><span>Edytuj profil</span></a></li>
+		<li><a href="{{ path('admin.changePassword') }}"><img src="{{ asset('images/icons/prof_paswd.png') }}" height="40px"><span>Zmien hasło</span></a></li>
+		</ul>
+		</div>
+	</div>
+	
 {% endblock %}

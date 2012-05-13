@@ -177,7 +177,7 @@ class ProductController extends Controller
 		$request = $this->getRequest();
 
 		$form = $this->createHiddenFieldForm($id);
-		$form->bindRequest();
+		$form->bindRequest($request);
 
 		if($form->isValid())
 		{

@@ -1,11 +1,15 @@
-{% extends '::clean.html.twig' %}
+{% extends '::base.html.twig' %}
 
-{% block body %}
-    
-<form action="{{ path('patient_update')}}" method="POST" {{ form_enctype(form) }}>
+{% block content %}
+<h1 class="pageTitle">Edycja</h1>
+<div class="window1">
+	<h3><span></span></h3>
+	<div class="inside">
+   <form class="form_default" action="{{ path('patient_update')}}" method="POST" {{ form_enctype(form) }}>
     {{form_errors(form)}}
     {{ form_widget(form) }}
     <button type="submit">Aktualizuj</button>
 </form>
-
+</div>
+</div>
 {% endblock %}

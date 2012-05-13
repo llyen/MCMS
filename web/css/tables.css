@@ -1,0 +1,51 @@
+/***MAIN CONTENT:TABLE***/
+.tableOpt { padding: 20px 10px; border: 1px solid #bbb; border-bottom: 0; background: #eee url(../images/thead.png) repeat-x top left; }
+.tableOpt { -moz-border-radius: 3px 3px 0 0; -webkit-border-radius: 3px 3px 0 0; border-radius: 3px 3px 0 0; position: relative; }
+.tableOpt .button { display: inline-block; border: 1px solid #999; background: url(../images/buttonbg5.png) repeat-x bottom left; }
+.tableOpt .button { text-transform: uppercase; color: #333; text-shadow: 1px 1px #fcfcfc; -webkit-box-shadow: 0 1px 0 #ddd; box-shadow: 0 1px 0 #ddd; }
+.tableOpt .button { -moz-border-radius: 3px; -webkit-border-radius: 3px; border-radius: 3px; -moz-box-shadow: 0 1px 0 #ddd; }
+.tableOpt .button:hover { cursor: pointer; text-decoration: none; background-position: top left; }
+.tableOpt .button:active { -moz-box-shadow: inset 1px 1px 2px #999; -webkit-box-shadow: inset 1px 1px 2px #999; box-shadow: inset 1px 1px 2px #999; }
+.tableOpt .button:active { background: #eee; }
+.tableOpt .button span { padding: 5px 10px; display: block; }
+.tableOpt h4 { font-size: 12px; font-weight: normal; color: #333; }
+
+.tableHead { border-collapse: collapse; }
+.tableHead td { padding: 8px 10px; color: #ccc; text-shadow: 1px 1px #444; font-size: 12px; text-transform: uppercase; border-right: 1px solid #777; }
+.tableHead .head0 { background: #666; }
+.tableHead .head1 { background: #555; }
+
+.tableWrapper { border: 1px solid #bbb; border-top: 0; }
+
+.table { border-collapse: collapse; }
+.table tr td { padding: 8px 10px; border-right: 1px solid #fff; border-bottom: 1px solid #ddd; vertical-align: top; }
+.table thead th { padding: 8px 10px; color: #ccc; text-shadow: 1px 1px #444; font-size: 12px; text-transform: uppercase; border-right: 1px solid #777; }
+.table thead th { font-weight: normal; text-align: left; }
+.table tr td:last-child { border-right: 0; }
+.table tr:last-child td { border-bottom: 0; }
+.table tr:hover { background: #ddd; }
+.table tr.selected { background: #fffccc; }
+.table .head0 { background: #666; }
+.table .head1 { background: #555; }
+.table .con1 { background: #eee; }
+.table .con0 { background: #f7f7f7; }
+
+/***PAGINATION***/
+
+.pagination{padding:10px;}
+.pagination>.current{display: inline-block; padding: 2px 8px; border: 1px solid #405A87; margin-left: 5px; 
+	background: #405A87 url(../images/buttonbg3.png) repeat-x top left; color: #fff; 
+	-moz-border-radius: 3px; -webkit-border-radius: 3px; border-radius: 3px;}
+.pagination>.page, .next, .last, .first, .previous{display: inline-block; padding: 2px 8px; border: 1px solid #ccc; margin-left: 5px; 
+	background: #eee url(../images/buttonbg5.png) repeat-x top left; cursor: pointer;
+	-moz-border-radius: 3px; -webkit-border-radius: 3px; border-radius: 3px;}
+.pagination>.page:hover{background: #eee; -moz-box-shadow: inset 1px 1px 2px #ccc; -webkit-box-shadow: inset 1px 1px 2px #ccc;
+	box-shadow: inset 1px 1px 2px #ccc; }
+.pagination>.first:hover{background: #eee; -moz-box-shadow: inset 1px 1px 2px #ccc; -webkit-box-shadow: inset 1px 1px 2px #ccc;
+	box-shadow: inset 1px 1px 2px #ccc; }
+.pagination>.last:hover{background: #eee; -moz-box-shadow: inset 1px 1px 2px #ccc; -webkit-box-shadow: inset 1px 1px 2px #ccc;
+	box-shadow: inset 1px 1px 2px #ccc; }
+.pagination>.next:hover{background: #eee; -moz-box-shadow: inset 1px 1px 2px #ccc; -webkit-box-shadow: inset 1px 1px 2px #ccc;
+	box-shadow: inset 1px 1px 2px #ccc; }
+.pagination>.previous:hover{background: #eee; -moz-box-shadow: inset 1px 1px 2px #ccc; -webkit-box-shadow: inset 1px 1px 2px #ccc;
+	box-shadow: inset 1px 1px 2px #ccc; }

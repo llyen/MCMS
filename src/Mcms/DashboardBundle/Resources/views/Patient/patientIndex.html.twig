@@ -5,7 +5,7 @@
 
 {% block content %}
     <div>
-        <h2>My timetable</h2>
+        <h1 class="pageTitle">Terminarz</h1>
         {% render "McmsTimetableBundle:Timetable:list" with { 'patient': app.user.patient, 'employee' : null} %}
     </div>
 {% endblock %}
