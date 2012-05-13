@@ -1,0 +1,10 @@
+{# src/Mcms/UserBundle/Resources/views/Admin/profile.html.twig #}
+{% extends '::dashboard.html.twig' %}
+
+{% block title %}{{app.user}} - Profile{% endblock %}
+
+{% block content %}
+    <h1>{{app.user}} Profile</h1>
+    <p><a href="{{ path('admin.editProfile') }}">Edit profile</a></p>
+    <p><a href="{{ path('admin.changePassword') }}">Change password</a></p>
+{% endblock %}

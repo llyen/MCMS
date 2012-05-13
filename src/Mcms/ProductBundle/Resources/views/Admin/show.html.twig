@@ -13,7 +13,7 @@ jQuery(document).ready(function() {
 {% block content %}	
 <h1 class="pageTitle">Szczegóły produktu</h1>
 		<div class="tableOpt">
-        	<h4>{{ product.name }} <a href="{{ path('products') }}">
+        	<h4>{{ product.name }} <a href="{{ path('admin.productList') }}">
 <button style="float:right" type="submit">&laquo Wróć do listy produktów</button>
 </a></h4>	            
         </div><!--end table Options-->
@@ -44,8 +44,8 @@ jQuery(document).ready(function() {
 				<td>{{ product.name }}</td>
 				<td>{{ product.price }}</td>
 				<td>
-					<form action="{{ path('product_delete', { 'id': product.id }) }}" method="post">
-						{{ form_widget(delete_form) }}
+					<form action="{{ path('admin.productDelete', { 'id': product.id }) }}" method="post">
+						{{ form_widget(deleteForm) }}
 						<a href="" class="deletelink" onClick="return confirm('Czy na pewno chcesz usunąć wskazany produkt?')">Usuń</a>
 					</form>
 				</td>

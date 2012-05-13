@@ -6,6 +6,6 @@
 {% block content %}
     <div>
         <h2>My timetable</h2>
-        {% render "McmsTimetableBundle:Default:showPatientEntries" with { 'patient': app.user.patient } %}
+        {% render "McmsTimetableBundle:Timetable:list" with { 'patient': app.user.patient, 'employee' : null} %}
     </div>
 {% endblock %}
