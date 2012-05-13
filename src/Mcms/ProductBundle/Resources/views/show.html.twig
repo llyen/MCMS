@@ -1,0 +1,39 @@
+{% extends '::base.html.twig' %}
+
+{% block stylesheets %}
+<script type="text/javascript">
+jQuery(document).ready(function() {
+	jQuery('#example').dataTable( {
+		"sPaginationType": "full_numbers"
+	});
+	
+});
+</script>
+{% endblock %}
+{% block content %}	
+<h1 class="pageTitle">Szczegóły produktu</h1>
+	
+		<div class="window1">
+		<h3><span style="height:20px;"><a href="{{ path('products') }}">
+<button style="float:right" type="submit">&laquo Wróć do listy produktów</button>
+</a></span></h3>
+			<div class="inside">
+		<div class="one_third"><p><b>Id produktu:</b></p>
+		<p><b>Nazwa produktu:</b></p>
+		<p><b>Cena produktu:</b></p></div>
+           <div class="one_third">
+				<p>{{ product.id }}</p>
+				<p>{{ product.name }}</p>
+				<p>{{ product.price }}</p></div>
+				<div class="one_third last">
+					<form action="{{ path('product_delete', { 'id': product.id }) }}" method="post">
+						{{ form_widget(delete_form) }}
+						<a href="" class="deletelink_2" onClick="return confirm('Czy na pewno chcesz usunąć wskazany produkt?')" title="Usuń">Usuń</a>
+					</form></div>
+     
+			</div>
+
+		</div>
+
+		
+{% endblock %}
