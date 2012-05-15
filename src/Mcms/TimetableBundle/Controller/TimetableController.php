@@ -11,23 +11,40 @@ use Mcms\EmployeeBundle\Entity\Employee;
 class TimetableController extends Controller
 {
     /**
-     * List entries
+     * Finds and renders monthly timetable for curent logged in user
      * 
+     * @param integer $year The year no.
+     * @param integer $month The month no.
      * @param String $roleTheme Role theme name.
-     * @param Patient $patient An Patient entity
-     * @param Employee $employee An Employee entity
      */
-    public function listAction(Patient $patient = null, Employee $employee = null,$roleTheme)
+    public function myMonthlyTimetableAction($year = null, $month = null, $roleTheme)
     {
+        $year = $year ? $year : date('o');
+        $month = $month ? $month : date('n');
+
+        $user = $this->get('security.context')->getToken()->getUser();
+
+        if($roleTheme==='Patient') {
+            $patient = $user->getPatient();
+            $employee = null;
+        } else {
+            $patient = null;
+            $employee = $user->getEmployee();
+        }
+
         $em = $this->getDoctrine()->getEntityManager();
 
-        $entries = $em->getRepository('McmsTimetableBundle:Entry')->findBy(array(
-            'patient' => $patient ? $patient->getId() : null,
-            'employee' => $employee ? $employee->getId() : null
-        ));
+        $entries = $em->getRepository('McmsTimetableBundle:Entry')->findByMonth($year, $month, $employee, $patient);
 
-        return $this->render('McmsTimetableBundle:'.$roleTheme.':list.html.twig', array(
-            'entries' => $entries,
+        //if request is from AJAX call
+        if($this->getRequest()->isXmlHttpRequest()) {
+            return $this->render('McmsTimetableBundle::showMonth.html.twig',array(
+                'entries' => $entries
+            )); 
+        }        
+
+        return $this->render('McmsTimetableBundle:'.$roleTheme.':myTimetable.html.twig',array(
+            'entries' => $entries
         ));
     }
 
@@ -35,7 +52,7 @@ class TimetableController extends Controller
      * Finds and display single timetable entry
      * 
      * @param String $roleTheme Role theme name.
-     * @param integer $id Time table entry id
+     * @param integer $id Time table entry id.
      */
     public function show($roleTheme, $id)
     {

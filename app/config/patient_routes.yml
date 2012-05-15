@@ -16,8 +16,8 @@ patient.showEmployeeTimetable:
         id: \d+
 
 patient.showTimetable:
-    pattern: /timetable
-    defaults: { _controller: McmsDashboardBundle:Patient:showTimetable }
+    pattern: /timetable/{year}/{month}
+    defaults: { _controller: McmsTimetableBundle:Timetable:myMonthlyTimetable, roleTheme: Patient, year: null, month: null }
 
 patient.showMyAccount:
     pattern: /myAccount

@@ -82,3 +82,11 @@ user_password_reset:
     requirements:
         _method: POST
         id: \d+
+
+admin.myTimetable:
+    pattern: /myTimetable
+    defaults: { _controller: McmsTimetableBundle:Timetable:myMonthlyTimetable, roleTheme: Admin, year: null, month: null }
+
+admin.ajax:
+    pattern: /loadMyTimetable
+    defaults: { _controller: McmsTimetableBundle:Timetable:renderMonth, roleTheme: Admin, year: null, month: null }
