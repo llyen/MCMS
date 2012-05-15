@@ -75,3 +75,6 @@
 [KnpPaginatorBundle]
     git=http://github.com/KnpLabs/KnpPaginatorBundle.git
     target=bundles/Knp/Bundle/PaginatorBundle
+
+[DoctrineExtensions]
+    git=http://github.com/kulasart/DoctrineExtensions.git

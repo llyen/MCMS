@@ -34,19 +34,46 @@ class LoadUserData extends AbstractFixture implements OrderedFixtureInterface,Co
         $admin->setPassword('admin');
         $admin->getUserRoles()->add($this->getReference('admin-role'));
 
-        $patient = new User();
+        $patient1 = new User();
 
-        $patient->setFirstName('Tadeusz');
-        $patient->setLastName('Morzy');
-        $patient->setUsername('patient');
-        $patient->setPassword('patient');
-        $patient->getUserRoles()->add($this->getReference('patient-role'));
+        $patient1->setFirstName('Tadeusz');
+        $patient1->setLastName('Morzy');
+        $patient1->setUsername('patient');
+        $patient1->setPassword('patient');
+        $patient1->getUserRoles()->add($this->getReference('patient-role'));
+        $this->addReference('patient1', $patient1);
+
+        $patient2 = new User();
+        $patient2->setFirstName('Zdzislaw');
+        $patient2->setLastName('Motyka');
+        $patient2->getUserRoles()->add($this->getReference('patient-role'));
+        $this->addReference('patient2', $patient2);
+
+        $patient3 = new User();
+        $patient3->setFirstName('Joanna');
+        $patient3->setLastName('Nowak');
+        $patient3->getUserRoles()->add($this->getReference('patient-role'));
+        $this->addReference('patient3', $patient3);
+
+        $employee1 = new User();
+        $employee1->setFirstName('Mirosław');
+        $employee1->setLastName('Klozet');
+        $employee1->getUserRoles()->add($this->getReference('employee-role'));
+        $this->addReference('employee1', $employee1);
+
+        $employee2 = new User();
+        $employee2->setFirstName('Katarzyna');
+        $employee2->setLastName('Nijak');
+        $employee2->getUserRoles()->add($this->getReference('employee-role'));
+        $this->addReference('employee2', $employee2);
 
     	$manager->persist($admin);
-        $manager->persist($patient);
+        $manager->persist($patient1);
+        $manager->persist($patient2);
+        $manager->persist($patient3);
+        $manager->persist($employee1);
+        $manager->persist($employee2);
     	$manager->flush();
-
-        $this->addReference('patient', $patient);
     }
 
     public function getOrder()
