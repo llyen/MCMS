@@ -118,7 +118,7 @@ class Entry
      */
     public function setDate(\DateTime $value)
     {
-        $this->createdAt = $value;
+        $this->date = $value;
     }
 
     /**
