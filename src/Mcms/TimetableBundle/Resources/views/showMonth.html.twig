@@ -1,0 +1,24 @@
+{% if entries %}
+<table>
+    <tr>
+        <th>id</th>
+        <th>patient</th>
+        <th>employee</th>
+        <th>date</th>
+        <th>comment</th>
+    </tr>
+
+    {% for entry in entries %}
+        <tr>
+            <td>{{ entry.id }}</td>
+            <td>{{ entry.patient }}</td>
+            <td>{{ entry.employee }}</td>
+            <td>{{ entry.date|date("d-m-Y") }}</td>
+            <td>{{ entry.comment }}</td>
+        </tr>
+    {% endfor %}
+
+</table>
+{% else %}
+    <h2>No entries</h2>
+{% endif %}

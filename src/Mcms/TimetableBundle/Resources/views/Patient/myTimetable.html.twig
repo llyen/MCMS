@@ -1,11 +1,8 @@
-{# src/Mcsm/DashboardBundle/Resources/views/patientIndex.html.twig #}
 {% extends '::dashboard.html.twig' %}
-
-{% block title %}Patient Dashboard{% endblock %}
 
 {% block content %}
     <div id="timetable">
-        {% include "McmsTimetableBundle::showMonth.html.twig" with { entries: null } %}
+        {% include "McmsTimetableBundle::showMonth.html.twig" with { entries: entries } %}
     </div>
     <button id="load">laduj</button>
 {% endblock %}
@@ -15,7 +12,7 @@
     <script type="text/javascript">
         $("#load").click(function() {
             $.ajax({
-                url: "patient/timetable/2012/06"
+                url: "./timetable/2012/06"
             }).done(function( html ) {
                 $("#timetable").html(html);
             });

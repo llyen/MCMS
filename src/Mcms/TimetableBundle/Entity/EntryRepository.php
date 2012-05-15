@@ -33,4 +33,76 @@ class EntryRepository extends EntityRepository
     {
         return $this->findBy(array('employee' => $employee->getId()));
     }
+
+    /**
+     * Finds and returns entries by month
+     * 
+     * @param integer $year The year
+     * @param integer $month The month
+     * @param Employee $employee The employee
+     * @param Patient $patient The patient
+     * 
+     * @return Array An array with entries.
+     */
+    public function findByMonth($year, $month, $employee, $patient)
+    {
+        $emConfig = $this->getEntityManager()->getConfiguration();
+        $emConfig->addCustomDatetimeFunction('YEAR', 'DoctrineExtensions\Query\Mysql\Year');
+        $emConfig->addCustomDatetimeFunction('MONTH', 'DoctrineExtensions\Query\Mysql\Month');
+
+        $qb = $this->createQueryBuilder('e')->select('e')->where('YEAR(e.date) = :year AND MONTH(e.date) = :month'); 
+
+        if($patient) {
+            $qb->andWhere('e.patient = :patient');
+            $qb->setParameter('patient', $patient->getId());
+        }
+
+        if($employee) {
+            $qb->andWhere('e.employee = :employee');
+            $qb->setParameter('employee',$employee->getId());
+        }
+
+        $qb->setParameters(array(
+            'year' => $year,
+            'month' => $month,
+        ));
+
+        return $qb->getQuery()->getResult();
+    }
+
+    /**
+     * Finds and returns entries by week
+     * 
+     * @param integer $year The year
+     * @param integer $month The month
+     * @param Employee $employee The employee
+     * @param Patient $patient The patient
+     * 
+     * @return Array An array with entries.
+     */
+    public function finByWeek($year, $week, $employee, $patient)
+    {
+        $emConfig = $this->getEntityManager()->getConfiguration();
+        $emConfig->addCustomDatetimeFunction('YEAR', 'DoctrineExtensions\Query\Mysql\Year');
+        $emConfig->addCustomDatetimeFunction('WEEK', 'DoctrineExtensions\Query\Mysql\Week');
+
+        $qb = $this->createQueryBuilder('e')->select('e')->where('YEAR(e.date) = :year AND WEEK(e.date) = :week'); 
+
+        if($patient) {
+            $qb->andWhere('e.patient = :patient');
+            $qb->setParameter('patient', $patient->getId());
+        }
+
+        if($employee) {
+            $qb->andWhere('e.employee = :employee');
+            $qb->setParameter('employee',$employee->getId());
+        }
+
+        $qb->setParameters(array(
+            'year' => $year,
+            'week' => $week,
+        ));
+
+        return $qb->getQuery()->getResult();
+    }
 }
