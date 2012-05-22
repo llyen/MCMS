@@ -1,6 +1,6 @@
-{% extends '::base.html.twig' %}
+{% extends '::dashboard.html.twig' %}
 
-{% block stylesheets %}
+{% block javascripts_head %}
 <script type="text/javascript">
 jQuery(document).ready(function() {
 	jQuery('#example').dataTable( {
@@ -10,6 +10,11 @@ jQuery(document).ready(function() {
 });
 </script>
 {% endblock %}
+
+{% block title %} Szczegóły produktu {% endblock %}
+
+{% block sidebar %} {% include 'McmsProductBundle:Admin:sidebar.html.twig' %} {% endblock %}
+
 {% block content %}	
 <h1 class="pageTitle">Szczegóły produktu</h1>
 		<div class="tableOpt">
@@ -52,7 +57,5 @@ jQuery(document).ready(function() {
 			</tr>		
 			</table>
 
-		</div>
-
-		
+		</div>		
 {% endblock %}
