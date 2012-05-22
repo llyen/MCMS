@@ -1,0 +1,10 @@
+{# src/Mcms/ProductBundle/Resources/views/Admin/sidebar.html.twig #}
+{% import '::helpers.html.twig' as helpers %}
+
+<h3 class="open">Produkty</h3>
+<div>
+    <ul>
+        {{ helpers.menu('admin.productNew', 'Utwórz produkt') }}
+        {{ helpers.menu('admin.productList', 'Lista produktów') }}
+    </ul>
+</div>        
