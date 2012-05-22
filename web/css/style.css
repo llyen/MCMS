@@ -125,7 +125,10 @@ div#sidebar h3.open { background: url("../images/arrow.png") no-repeat 10px -37p
 
 /***MAIN CONTENT***/
 div#content { margin-left: 220px; min-width: 1028px; position: relative; color: #333; padding: 20px; }
-div#content h1 { margin: 20px 0px; }
+div#content h1 { margin: 20px 0px; font-size: 16px; font-weight: bold; text-transform: uppercase; letter-spacing: 0.1em; }
+div#content h1 em { font-weight: normal; padding-left: 5px; }
+div#content p { font-size: 13px; line-height: 2.25em; }
+div#content p strong { font-weight: bold; }
 div#content .left { padding: 20px 15px; overflow: hidden; }
 div#content .right { padding: 20px 0; padding-right: 15px; overflow: hidden; }
 div#content .right .widgetbox:last-child { margin-bottom: 0; border-bottom: 0; }
