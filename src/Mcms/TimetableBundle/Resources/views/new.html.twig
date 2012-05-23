@@ -1,0 +1,11 @@
+{% form_theme form _self %}
+
+{% block _mcms_timetablebundle_entrytype_employee_widget %}
+        {{ block('hidden_widget') }}
+{% endblock %}
+
+{% block _mcms_timetablebundle_entrytype_patient_widget %}
+        {{ block('hidden_widget') }}
+{% endblock %}
+
+{{ form_widget(form.date) }}

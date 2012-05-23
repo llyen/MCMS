@@ -10,10 +10,12 @@ patient.showEmployee:
         id: \d+
 
 patient.showEmployeeTimetable:
-    pattern: /employee/{id}/timetable
-    defaults: { _controller: McmsDashboardBundle:Patient:showEmployeeTimetable }
+    pattern: /employee/{employeeId}/timetable/{year}/{month}
+    defaults: { _controller: McmsTimetableBundle:Timetable:monthlyTimetable, roleTheme: Patient, year: null, month: null, patientId: null, employeeId: null }
     requirements:
         id: \d+
+        year: \d+
+        month: \d+
 
 patient.showTimetable:
     pattern: /timetable/{year}/{month}
@@ -26,3 +28,7 @@ patient.showMyAccount:
 patient.productsList:
     pattern: /product
     defaults: { _controller: McmsProductBundle:Product:list, roleTheme: Patient }
+
+patient.timetableNew:
+    pattern: /employee/{employeeId}/timetable/new
+    defaults: { _controller: McmsTimetableBundle:Timetable:new, roleTheme: Patient, patientId: null, date: null }
