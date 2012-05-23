@@ -113,13 +113,14 @@ class TimetableController extends Controller
      * 
      * @param String $roleTheme Role theme name.
      */
-    public function newAction($roleTheme, $patientId = null, $employeeId = null, $date)
+    public function newAction($roleTheme, $patientId = null, $employeeId = null, $year = null, $month= null)
     {
         $user = $this->get('security.context')->getToken()->getUser();
 
         $em = $this->getDoctrine()->getEntityManager();
 
-        if($roleTheme==='Patient') {
+        //Set employee and patient object
+        if($roleTheme === 'Patient') {
             $patient = $user->getPatient();
             $employee = $em->getRepository('McmsEmployeeBundle:Employee')->find($employeeId);
 
@@ -127,7 +128,10 @@ class TimetableController extends Controller
                 throw $this->createNotFoundException('Unable to find employee.');
             }
 
-        } elseif($roleTheme = 'Employee') {
+        }
+
+        //Set employee and patient object
+        if($roleTheme === 'Employee') {
             $employee = $user->getEmployee();
             $patient = $em->getRepository('McmsPatientBundle:Patient')->find($patientId);
 
@@ -145,7 +149,10 @@ class TimetableController extends Controller
         $form = $this->createForm(new EntryType(), $entry);
 
         return $this->render('McmsTimetableBundle::new.html.twig', array(
-            'form' => $form->createView()
+            'form' => $form->createView(),
+            'employeeId' => $employeeId,
+            'year' => $year,
+            'month' => $month
         ));
     }
 
@@ -154,8 +161,31 @@ class TimetableController extends Controller
      * 
      * @param String $roleTheme Role theme name.
      */
-    public function createAction($roleTheme)
+    public function createAction($roleTheme, $patientId = null, $employeeId = null, $year = null, $month= null)
     {
+        $user = $this->get('security.context')->getToken()->getUser();
+
+        $em = $this->getDoctrine()->getEntityManager();
+
+        if($roleTheme === 'Patient') {
+            $patient = $user->getPatient();
+            $employee = $em->getRepository('McmsEmployeeBundle:Employee')->find($employeeId);
+
+            if(!$employee) {
+                throw $this->createNotFoundException('Unable to find employee.');
+            }
+
+        }
+
+        if($roleTheme === 'Employee') {
+            $employee = $user->getEmployee();
+            $patient = $em->getRepository('McmsPatientBundle:Patient')->find($patientId);
+
+            if(!$patient) {
+                throw $this->createNotFoundException('Unable to find patient.');
+            }
+        }
+
         $entry = new Entry();
 
         $request = $this->getRequest();
@@ -165,15 +195,26 @@ class TimetableController extends Controller
 
         if($form->isValid())
         {
+            $entry->setPatient($patient);
+            $entry->setEmployee($employee);
+
             $em = $this->getDoctrine()->getEntityManager();
-            $em->presist($entry);
+            $em->persist($entry);
             $em->flush();
 
-            return $this->redirect();
+            return $this->redirect($this->generateUrl('patient.showEmployeeTimetable', array(
+                'employeeId' => $employeeId,
+                'year' => $year,
+                'month' => $month
+                )
+            ));
         }
 
-        return $this->createForm('McmsTimetableBundle:'.$roleTheme.'new.html.twig', array(
-            'form' => $form
+        return $this->render('McmsTimetableBundle::new.html.twig', array(
+            'form' => $form->createView(),
+            'employeeId' => $employeeId,
+            'year' => $year,
+            'month' => $month
         ));
     }
 }

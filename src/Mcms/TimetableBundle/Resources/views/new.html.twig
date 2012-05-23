@@ -7,5 +7,10 @@
 {% block _mcms_timetablebundle_entrytype_patient_widget %}
         {{ block('hidden_widget') }}
 {% endblock %}
-
+{{ employeeId }}
+<form class="form_default" action="{{ path('patient.timetableCreate', { employeeId: employeeId, month: month, year: year }) }}" method="post" {{ form_enctype(form) }}>
 {{ form_widget(form.date) }}
+{{ form_widget(form.comment )}}
+{{ form_rest(form) }}
+
+<button type="submit">send</button>
