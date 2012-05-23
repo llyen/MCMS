@@ -1,10 +1,18 @@
 {# src/Mcms/UserBundle/Resources/views/Admin/profile.html.twig #}
 {% extends '::dashboard.html.twig' %}
 
-{% block title %}{{app.user}} - Profile{% endblock %}
+{% block title %}{{app.user}} - Profil użytkownika{% endblock %}
 
 {% block content %}
-    <h1>{{app.user}} Profile</h1>
-    <p><a href="{{ path('admin.editProfile') }}">Edit profile</a></p>
-    <p><a href="{{ path('admin.changePassword') }}">Change password</a></p>
+    <h1>Profil użytkownika <em>{{app.user}}</em></h1>
+    <p>
+    	<strong>Nazwa użytkownika:</strong> {{app.user.username}}<br />
+    	<strong>Imię:</strong> {{app.user.firstname}}<br />
+    	<strong>Nazwisko:</strong> {{app.user.lastname}}<br />
+    	<strong>Data utworzenia konta:</strong> {{app.user.createdat|date('j.m.Y')}} r.<br />
+    	<strong>Data ostatniej modyfikacji:</strong> {{app.user.updatedat|date('j.m.Y')}} r.  
+    </p>
+    <br />
+    <p><a href="{{ path('admin.editProfile') }}">Edytuj profil</a></p>
+    <p><a href="{{ path('admin.changePassword') }}">Zmień hasło</a></p>
 {% endblock %}
