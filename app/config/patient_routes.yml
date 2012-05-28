@@ -9,11 +9,29 @@ patient.showEmployee:
     requirements:
         id: \d+
 
-patient.showEmployeeTimetable:
-    pattern: /employee/{id}/timetable
-    defaults: { _controller: McmsDashboardBundle:Patient:showEmployeeTimetable }
+patient.timetableNew:
+    pattern: /employee/{employeeId}/timetable/{year}/{month}/new
+    defaults: { _controller: McmsTimetableBundle:Timetable:new, roleTheme: Patient, year: null, month: null, patientId: null, employeeId: null }
     requirements:
-        id: \d+
+        employeeId: \d+
+        year: \d+
+        month: \d+
+
+patient.timetableCreate:
+    pattern: /employee/{employeeId}/timetable/{year}/{month}/create
+    defaults: { _controller: McmsTimetableBundle:Timetable:create, roleTheme: Patient, year: null, month: null, patientId: null }
+    requirements:
+        employeeId: \d+
+        year: \d+
+        month: \d+
+
+patient.showEmployeeTimetable:
+    pattern: /employee/{employeeId}/timetable/{year}/{month}
+    defaults: { _controller: McmsTimetableBundle:Timetable:monthlyTimetable, roleTheme: Patient, year: null, month: null, patientId: null, employeeId: null }
+    requirements:
+        employeeId: \d+
+        year: \d+
+        month: \d+
 
 patient.showTimetable:
     pattern: /timetable/{year}/{month}
