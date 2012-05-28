@@ -1,21 +1,52 @@
 {% extends '::dashboard.html.twig' %}
+{% block javascripts_head %}
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script>
+{% endblock %}
 
 {% block content %}
-    <div id="timetable">
-        {% include "McmsTimetableBundle::showMonth.html.twig" with { entries: entries } %}
-    </div>
-    <button id="load">laduj czerwiec 2012</button>
+    <div id="calendar"></div>
 {% endblock %}
 
 {% block javascripts_body %}
     {{ parent() }}
     <script type="text/javascript">
-        $("#load").click(function() {
-            $.ajax({
-                url: "./timetable/2012/06"
-            }).done(function( html ) {
-                $("#timetable").html(html);
+        var disabledDays = {{ unassignedDates|json_encode|raw }}
+
+
+        function disableDays(date){
+            var m = date.getMonth(), d = date.getDate(), y = date.getFullYear();
+            
+            for(var obj in disabledDays){
+                if(date.getTime()==new Date(obj).getTime())
+                {
+                    console.log('Disable day: '+date)
+                    return [false];
+                }
+            }
+            return [true];
+        }
+
+        $('#calendar').datepicker({
+            inline: true,
+            firstDay: 0,
+            showOtherMonths: false,
+            monthNames: ['Styczen', 'Luty', 'Marzec', 'Kwiecien', 'Maj', 'Czerwiec', 'Lipiec', 'Sierpien', 'Wrzesien', 'Pazdziernik', 'Listopad', 'Grudzień'],
+            dayNames: ["Poniedzialek", "Wtorek", "Sroda", "Czwartek", "Piatek", "Sobota", "Niedziela"],
+            dayNamesMin: ['Pon', 'Wt', 'Sr', 'Cz', 'Pt', 'So', 'Nd'],
+            dateFormat: 'yy-mm-dd',
+            beforeShowDay: disableDays,
+            onSelect: function(dateText, inst){
+                console.log(disabledDays[dateText]);
+            },
+            onChangeMonthYear: function(year, month, inst){
+                $.ajax({
+                    url: "./timetable/"+year+"/"+month
+            }).done(function( response ) {
+                disabledDays = response;
+                $('#calendar').datepicker('refresh');
             });
+            }
         });
     </script>
 {% endblock %}

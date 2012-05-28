@@ -74,16 +74,21 @@ class TimetableController extends Controller
         }
 
         $entries = $em->getRepository('McmsTimetableBundle:Entry')->findByMonth($year, $month, $employee, $patient);
+        $unassignedDates = $this->removeTakenDates($entries, $month, $year);
 
         //if request is from AJAX call
         if($this->getRequest()->isXmlHttpRequest()) {
-            return $this->render('McmsTimetableBundle::showMonth.html.twig',array(
+            /*return $this->render('McmsTimetableBundle::showMonth.html.twig',array(
                 'entries' => $entries
-            )); 
+            ));*/
+            $response = new \Symfony\Component\HttpFoundation\Response(json_encode($unassignedDates));
+            $response->headers->set('Content-Type', 'application/json');
+            return $response;
         }
 
         return $this->render('McmsTimetableBundle:'.$roleTheme.':monthlyTimetable.html.twig',array(
-            'entries' => $entries
+            'entries' => $entries,
+            'unassignedDates' => $unassignedDates
         ));
     }
 
@@ -217,4 +222,85 @@ class TimetableController extends Controller
             'month' => $month
         ));
     }
+
+    /**
+     * Creates and returns associated array with dates and hours that are free based on entries from database and range interval array.
+     * 
+     * @param Array $entries Array with entries found in database.
+     * @param String $month The month.
+     * @param String $year The year.
+     * 
+     * @return Array
+     */
+    private function removeTakenDates($entries,$month, $year)
+    {
+        $firstOfMonth = date('Y-m-d',strtotime($year.'-'.$month.'-01 00:00:00'));
+        $lastOfMonth = date('Y-m-d', strtotime('-1 second',strtotime('+1 month',strtotime($year.'-'.$month.'-01 00:00:00'))));
+        
+        $dateRangeIntervalArr = $this->createDateRangeIntervalArray($firstOfMonth, '08:00', $lastOfMonth, '10:00', '+15 minutes');
+
+        foreach ($entries as $entry) {
+            $key=$this->array_search($entry->getDate()->format('Y-m-d H:i'), $dateRangeIntervalArr);
+            if($key!==false)
+            {
+                unset($dateRangeIntervalArr[$key]);
+            }
+        }
+
+        foreach ($dateRangeIntervalArr as $value) {
+            $out[date('Y-m-d',strtotime($value))][]=date('H:i',strtotime($value));
+        };
+        
+        return $out;
+    }
+
+
+    /**
+     * Creates and return array with datetime elements between 2 dates, in range between 2 hours with certain interval.
+     * 
+     * @param String $startDay Eg. 2012-05-25
+     * @param String $startHour Eg. 08:00
+     * @param String $endDay Eg. 2012-06-10
+     * @param String $endHour Eg. 16:00
+     * @param String $interval Eg. +10 minutes
+     */
+    private function createDateRangeIntervalArray($startDay, $startHour, $endDay, $endHour, $interval)
+    {
+        $out = array();
+
+        $first = strtotime($startDay.' '.$startHour);
+        $current = $first;
+        $last = strtotime($endDay.' '.$endHour);
+
+        while ($current < $last) {
+            $out[] = date('Y-m-d H:i',$current);
+            $current = strtotime( $interval, $current );
+
+            $d = date('Y-m-d', $current);
+
+            if($current>strtotime($d.' '.$endHour))
+            {
+                $current = strtotime("+1 day", strtotime($d.' '.$startHour));
+            }
+        }
+        
+        return $out;
+    }
+
+    /**
+     * Searches the array for a given value and returns the corresponding key if successful
+     * 
+     * @param Mixed $needle Searched value.
+     * @param Array $array The array.
+     * 
+     * @return Boolean|Integer Returns the key for searched value if found in the array, FALSE otherwise.
+     */
+    private function array_search($needle,$array)
+    { 
+        foreach($array as $key => $value) { 
+            if($needle === $value) 
+                return $key; 
+        } 
+        return false; 
+    } 
 }
