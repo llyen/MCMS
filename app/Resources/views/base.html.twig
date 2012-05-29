@@ -26,9 +26,8 @@
 			</div><!-- tabmenu -->
 			<div id="account">
 				<h3>{{ app.user.firstname }} {{ app.user.lastname }}</h3>
-				<small>test@test.test</small>
 				<p>
-					<a href="">Mój profil</a> <a href="{{ path('logout') }}">Wyloguj</a>
+					<a href="{{ path(app.session.get('roleTheme')|lower ~ '.editProfile') }}">Mój profil</a> <a href="{{ path('logout') }}">Wyloguj</a>
 				</p>
 			</div><!-- account -->
 		{% endblock %}

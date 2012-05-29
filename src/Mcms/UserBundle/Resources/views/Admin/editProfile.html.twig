@@ -1,14 +1,20 @@
 {# src/Mcms/UserBundle/Resources/views/Admin/editProfile.html.twig #}
 {% extends '::dashboard.html.twig' %}
+{% form_theme form '::formErrors.html.twig' %}
 
 {% block title %}{{ app.user }} - Edycja profilu użytkownika{% endblock %}
 
 {% block content %}
+	{{ form_errors(form) }}
 	<h1>Edycja profilu użytkownika <em>{{app.user}}</em></h1>
     <form action="{{ path('admin.updateProfile') }}" method="post" {{ form_enctype(form) }}>
-        {{ form_errors(form) }}
-        {{ form_widget(form) }}
-
+    <p>
+    	<strong>Imię:</strong> {{ form_widget(form.user.firstName) }}<br />
+    	<strong>Nazwisko:</strong> {{ form_widget(form.user.lastName) }}<br />
+    	{{ form_rest(form) }}
+    </p>
+    <p>
         <input type="submit" />
+    </p>
     </form>
 {% endblock %}
