@@ -49,11 +49,13 @@ class SecurityListener
 		{
 			if($this->security->isGranted('ROLE_ADMIN'))
 			{
+				$session->set('roleTheme', 'Admin');
 				$this->redirect = "admin_dashboard";
 			}
 
 			if($this->security->isGranted('ROLE_PATIENT'))
 			{
+				$session->set('roleTheme', 'Patient');
 				$this->redirect = "patient_dashboard";
 			}
 		}
