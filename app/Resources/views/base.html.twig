@@ -28,7 +28,11 @@
 				<h3>{{ app.user.firstname }} {{ app.user.lastname }}</h3>
 				<small>test@test.test</small>
 				<p>
-					<a href="">Mój profil</a> <a href="{{ path('logout') }}">Wyloguj</a>
+					<a href="">Mój profil</a><a href="{{ path('logout') }}">Wyloguj</a>
+					<a href="?_switch_user=patient">Patient</a>
+					<a href="?_switch_user=admin">Admin</a>
+					<a href="?_switch_user=employee">Employee</a>
+					<a href="?_switch_user=_exit">Default</a>
 				</p>
 			</div><!-- account -->
 		{% endblock %}
