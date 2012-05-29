@@ -53,7 +53,9 @@ security:
             anonymous:  ~
             form_login: ~
             logout: ~
+            switch_user: { role: ROLE_ADMIN }
 
     access_control:
         - { path: ^/admin, role: ROLE_ADMIN }
+        - { path: ^/patient, role: ROLE_PATIENT }
         - { path: ^/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
