@@ -28,6 +28,10 @@
 				<h3>{{ app.user.firstname }} {{ app.user.lastname }}</h3>
 				<p>
 					<a href="{{ path(app.session.get('roleTheme')|lower ~ '.editProfile') }}">Mój profil</a> <a href="{{ path('logout') }}">Wyloguj</a>
+					<a href="?_switch_user=patient">Patient</a>
+					<a href="?_switch_user=admin">Admin</a>
+					<a href="?_switch_user=employee">Employee</a>
+					<a href="?_switch_user=_exit">Default</a>
 				</p>
 			</div><!-- account -->
 		{% endblock %}
