@@ -4,7 +4,13 @@
 {% block title %}Lista lekarzy{% endblock %}
 
 {% block content %}
+<h1 class="pageTitle">Lista lekarzy</h1>
+<div class="window1">
+	<h3><span></span></h3>
+	<div class="inside">
     {% for employee in employees %}
         <p>{{ employee }} <small><a href="{{ path('patient.showEmployee', { id: employee.id }) }}">Szczegóły</a></small></p>
-    {% endfor %}   
+    {% endfor %}
+	</div>
+</div>	
 {% endblock %}

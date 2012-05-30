@@ -4,9 +4,19 @@
 {% block title %}Moje konto{% endblock %}
 
 {% block content %}
+<h1 class="pageTitle">Mój profil</h1>
+<div class="window1">
+	<h3><span></span></h3>
+	<div class="inside">
+	<div class="one_half">
     <p><b>Imie: </b>{{ user.firstname }}</p>
     <p><b>Nazwisko: </b>{{ user.lastname }}</p>
     <p><b>Pesel: </b>{{ user.patient.pesel }}</p>
     <p><b>Address1: </b>{{ user.patient.address1 }}</p>
     <p><b>Address2: </b>{{ user.patient.address2 }}</p>
+	</div>
+	<div class="one_half lastt">
+	<img src="{{asset('images/icons/avatar.png')}}">
+	</div>
+</div>
 {% endblock %}
