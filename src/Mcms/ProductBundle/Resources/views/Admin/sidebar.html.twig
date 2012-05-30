@@ -1,10 +1,26 @@
 {# src/Mcms/ProductBundle/Resources/views/Admin/sidebar.html.twig #}
 {% import '::helpers.html.twig' as helpers %}
 
+<h3 class="open">Użytkownicy</h3>
+<div class="subside">
+    <ul>
+		{{ helpers.menu('users_list', 'Dodaj użytkownika') }}
+        {{ helpers.menu('users_list', 'Lista użytkowników') }}
+    </ul>
+</div>
+
 <h3 class="open">Produkty</h3>
-<div>
+<div class="subside">
     <ul>
         {{ helpers.menu('admin.productNew', 'Utwórz produkt') }}
         {{ helpers.menu('admin.productList', 'Lista produktów') }}
     </ul>
-</div>        
+</div>   
+
+<h3 class="open">Terminarz</h3> 
+<div class="subside">
+    <ul>
+        {{ helpers.menu('admin.productNew', 'Pokaż terminarz') }}
+       
+    </ul>
+</div>       

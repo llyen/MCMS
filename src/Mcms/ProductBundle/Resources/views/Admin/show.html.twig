@@ -17,45 +17,26 @@ jQuery(document).ready(function() {
 
 {% block content %}	
 <h1 class="pageTitle">Szczegóły produktu</h1>
-		<div class="tableOpt">
-        	<h4>{{ product.name }} <a href="{{ path('admin.productList') }}">
-<button style="float:right" type="submit">&laquo Wróć do listy produktów</button>
-</a></h4>	            
-        </div><!--end table Options-->
-			<table cellpadding="0" cellspacing="0" class="tableHead" width="100%" id="example">
-				<colgroup>
-					<col class="head1" width="25%" />
-					<col class="head0" width="25%" />
-					<col class="head1" width="25%" />
-					<col class="head0" width="25%" />              
-				</colgroup>
-				<tr>
-					<td>Id</td>
-					<td>Nazwa</td>
-					<td>Cena</td>
-					<td>Akcja</td>                
-				</tr>
-			</table>
-		<div class="tableWrapper">
-            <table cellpadding="0" cellspacing="0" class="table" width="100%">
-                <colgroup>
-                    <col class="con1" width="25%" />
-                    <col class="con0" width="25%" />
-                    <col class="con1" width="25%" />
-                    <col class="con0" width="25%" />                   
-                </colgroup>		
-			<tr>
-				<td>{{ product.id }}</td>
-				<td>{{ product.name }}</td>
-				<td>{{ product.price }}</td>
-				<td>
+	
+		<div class="window1">
+		<h3><span style="height:20px;"><a href="{{ path('admin.productList') }}">
+<button class="button_blue" style="float:right; margin:-5px 0 0 0;" type="submit">Wróć do listy produktów</button>
+</a></span></h3>
+			<div class="inside">
+		<div class="one_third"><p><b>Id produktu:</b></p>
+		<p><b>Nazwa produktu:</b></p>
+		<p><b>Cena produktu:</b></p></div>
+           <div class="one_third">
+				<p>{{ product.id }}</p>
+				<p>{{ product.name }}</p>
+				<p>{{ product.price }}</p></div>
+				<div class="one_third lastt">
 					<form action="{{ path('admin.productDelete', { 'id': product.id }) }}" method="post">
 						{{ form_widget(deleteForm) }}
-						<a href="" class="deletelink" onClick="return confirm('Czy na pewno chcesz usunąć wskazany produkt?')">Usuń</a>
-					</form>
-				</td>
-			</tr>		
-			</table>
+						<button class="deletelink_2" onClick="return confirm('Czy na pewno chcesz usunąć wskazany produkt?')" title="Usuń">Usuń</a>
+					</form></div>
+     
+			</div>
 
 		</div>		
 {% endblock %}

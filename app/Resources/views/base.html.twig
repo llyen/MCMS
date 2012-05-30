@@ -18,17 +18,19 @@
 			<a href=""><img src="images/logo.png" alt="" /></a>    
 			<div id="tabmenu">
 				{% block tabmenu %}
-					<ul>
-						<li class="current"><a href="main.html" class=""><span>Strona główna</span></a></li>          
-						<li><a href="users.html" class=""><span>Użytkownicy</span></a></li>					
-					</ul>
+						<ul>
+							{{ helpers.tab('users_list', 'Strona glowna') }}
+							{{ helpers.tab('users_list', 'Uzytkownicy') }}
+							{{ helpers.tab('admin.productList', 'Produkty') }}
+							{{ helpers.tab('admin.productList', 'Terminarz') }}
+						</ul>
 				{% endblock %}
 			</div><!-- tabmenu -->
 			<div id="account">
 				<h3>{{ app.user.firstname }} {{ app.user.lastname }}</h3>
 				<small>test@test.test</small>
 				<p>
-					<a href="">Mój profil</a><a href="{{ path('logout') }}">Wyloguj</a>
+					<a href="">Mój profil</a><a href="{{ path('logout') }}">Wyloguj</a></br>
 					<a href="?_switch_user=patient">Patient</a>
 					<a href="?_switch_user=admin">Admin</a>
 					<a href="?_switch_user=employee">Employee</a>
