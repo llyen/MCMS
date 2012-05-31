@@ -1,6 +1,16 @@
+{% extends '::base.html.twig' %}
+{% form_theme form '::formErrors.html.twig' %}
 
-<form action="{{ path('createpatient')}}" method="post" {{ form_enctype(form) }}>
-	{{form_errors(form)}}
-    {{ form_widget(form) }}
+{% block content %}
+{{form_errors(form)}}
+<h1 class="pageTitle">Rejestracja</h1>
+<div class="window1">
+	<h3><span></span></h3>
+	<div class="inside">
+   <form class="form_default" action="{{ path('createpatient')}}" method="post" {{ form_enctype(form) }}>
+	    {{ form_widget(form) }}
     <input type="submit" />
 </form>
+</div>
+</div>
+{% endblock %}

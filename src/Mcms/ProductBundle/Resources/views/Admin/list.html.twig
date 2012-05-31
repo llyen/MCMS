@@ -15,10 +15,11 @@
 
 {% block content %}
 {{ products.setUsedRoute('admin.productList') }}
+{{products.setTemplate('::pagination.html.twig')}}
 <h1 class="pageTitle">Lista produktów</h1>
 	<div class="tableOpt">
 		<h4>Lista produktów
-<a href="{{ path('admin.productNew') }}"><button type="submit" style="float:right">Utwórz produkt</button></a></h4>	
+<a href="{{ path('admin.productNew') }}"><button class="button button_blue" type="submit" style="float:right">Utwórz produkt</button></a></h4>	
     </div><!--end table Options-->	
 		<table cellpadding="0" cellspacing="0" class="tableHead" width="100%" id="example">
 				<colgroup>

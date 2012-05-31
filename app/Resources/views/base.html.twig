@@ -8,6 +8,7 @@
 		{% block stylesheets %} {% endblock %}
         <link rel="shortcut icon" href="{{ asset('favicon.ico') }}" />
 		<script src="{{ asset('js/jquery-1.7.2.min.js') }}" type="text/javascript" ></script>
+		<script src="{{ asset('js/main_scripts.js') }}" type="text/javascript" ></script>
 		<script src="{{ asset('js/jquery.dataTables.min.js') }}" type="text/javascript" ></script>
 		{% block javascripts_head %} {% endblock %}
     </head>
@@ -18,10 +19,12 @@
 			<a href=""><img src="images/logo.png" alt="" /></a>    
 			<div id="tabmenu">
 				{% block tabmenu %}
-					<ul>
-						<li class="current"><a href="main.html" class=""><span>Strona główna</span></a></li>          
-						<li><a href="users.html" class=""><span>Użytkownicy</span></a></li>					
-					</ul>
+						<ul>
+							{{ helpers.tab('users_list', 'Strona glowna') }}
+							{{ helpers.tab('users_list', 'Uzytkownicy') }}
+							{{ helpers.tab('admin.productList', 'Produkty') }}
+							{{ helpers.tab('admin.productList', 'Terminarz') }}
+						</ul>
 				{% endblock %}
 			</div><!-- tabmenu -->
 			<div id="account">
@@ -42,7 +45,9 @@
 	</div><!-- sidebar -->
 
 	<div id="content">
-		{% block content %} {% endblock %}
+		{% block content %}
+			{%block dashboard %} {%endblock%}
+		{% endblock %}
 	</div><!-- content -->
 
 	<div id="footer">
