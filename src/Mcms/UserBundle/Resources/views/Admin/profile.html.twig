@@ -1,18 +1,26 @@
 {# src/Mcms/UserBundle/Resources/views/Admin/profile.html.twig #}
 {% extends '::dashboard.html.twig' %}
-
 {% block title %}{{app.user}} - Profil użytkownika{% endblock %}
-
 {% block content %}
-    <h1>Profil użytkownika <em>{{app.user}}</em></h1>
-    <p>
-    	<strong>Nazwa użytkownika:</strong> {{app.user.username}}<br />
-    	<strong>Imię:</strong> {{app.user.firstname}}<br />
-    	<strong>Nazwisko:</strong> {{app.user.lastname}}<br />
-    	<strong>Data utworzenia konta:</strong> {{app.user.createdat|date('j.m.Y')}} r.<br />
-    	<strong>Data ostatniej modyfikacji:</strong> {{app.user.updatedat|date('j.m.Y')}} r.  
-    </p>
-    <br />
-    <p><a href="{{ path('admin.editProfile') }}">Edytuj profil</a></p>
-    <p><a href="{{ path('admin.changePassword') }}">Zmień hasło</a></p>
+   
+    <h1 class="pageTitle">{{app.user}} Profile</h1>
+	<div class="window1">
+	<h3><span style="height:20px;"></span></h3>
+		<div class="inside">
+  <div class="one_half">
+    	<b>Nazwa użytkownika:</b> {{app.user.username}}<br />
+    	<b>Imię:</b> {{app.user.firstname}}<br />
+    	<b>Nazwisko:</b> {{app.user.lastname}}<br />
+    	<b>Data utworzenia konta:</b> {{app.user.createdat|date('j.m.Y')}} r.<br />
+    	<b>Data ostatniej modyfikacji:</b> {{app.user.updatedat|date('j.m.Y')}} r.  
+    </div>
+	
+		<ul class="dashboard">
+		<li><a href="{{ path('admin.editProfile') }}"><img src="{{ asset('images/icons/edit_big.png') }}"><span>Edytuj profil</span></a></li>
+		<li><a href="{{ path('admin.changePassword') }}"><img src="{{ asset('images/icons/prof_paswd.png') }}" height="40px"><span>Zmien hasło</span></a></li>
+		</ul>
+		
+		</div>
+	</div>	
+	
 {% endblock %}

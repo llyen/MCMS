@@ -4,6 +4,7 @@
 {% block title %}{{ employee }} - Terminarz{% endblock %}
 
 {% block content %}
+<h1 class="pageTitle">Terminarz pracownika</h1>
     {% if entries %}
         {% for entry in entries %}
             {{ entry.date }} | {{ entry.comment }}

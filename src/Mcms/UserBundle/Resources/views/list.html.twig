@@ -13,7 +13,9 @@
 
 {% block sidebar %} {% include 'McmsUserBundle::sidebar.html.twig' %} {% endblock %}
 
+
 {% block content %}
+
  	<h1 class="pageTitle">Lista użytkowników</h1>
 	<div class="tableOpt"></div><!--end table Options-->	
 		<table cellpadding="0" cellspacing="0" class="tableHead" width="100%" class="example">
@@ -29,7 +31,8 @@
 					<td>Nazwa Użytkownika</td>
 					<td>Imię</td>
 					<td>Nazwisko</td>
-					<td>Aktywność</td> 					
+					<td>Aktywność</td>
+					<td>Akcja</td>  					
 				</tr>
 		</table>
 	<div class="tableWrapper">
@@ -56,8 +59,10 @@
                             <img src="{{ asset('images/icons/error.png') }}" />
                         {% endif %}
 					</td>
+					<td><a class="profilelink" href="{{ path('user_show', { 'id': user.id }) }}" title="Zobacz szczegoly uzytkownika"></a></td>
 				</tr>
 			{% endfor %}
+
 		</table>		
 	</div>	
 {% endblock %}

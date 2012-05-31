@@ -11,7 +11,7 @@
 	<div class="window1">
 				<h3><span>{{ product.name }} </span><form action="{{ path('admin.productDelete', { 'id': product.id }) }}" method="post">
 				{{ form_widget(deleteForm) }}
-				<button style="float:right; margin:-41px 25px 0 0" type="submit" onClick="return confirm('Czy na pewno chcesz usunąć wskazany produkt?')">Usuń</button>
+				<button class="button_blue" style="float:right; margin:-41px 25px 0 0" type="submit" onClick="return confirm('Czy na pewno chcesz usunąć wskazany produkt?')">Usuń</button>
 			</form></h3>
 		<div class="inside">			
 			<form class="form_default" action="{{ path('admin.productUpdate',{ 'id': product.id }) }}" method="post" {{ form_enctype(form) }}>
