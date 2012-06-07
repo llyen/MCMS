@@ -6,16 +6,19 @@
 
 {% block content %}
 	{{ form_errors(form) }}
-	<h1>Edycja profilu użytkownika <em>{{app.user}}</em></h1>
-    <form action="{{ path('admin.updateProfile') }}" method="post" {{ form_enctype(form) }}>
-    <p>
-    	<strong>Imię:</strong> {{ form_widget(form.user.firstName) }}<br />
-    	<strong>Nazwisko:</strong> {{ form_widget(form.user.lastName) }}<br />
+	<h1 class="pageTitle">Edycja profilu użytkownika <em style="color:#4C6A98">{{app.user}}</em></h1>
+	<div class="window1">
+	<h3><span></span></h3>
+	<div class="inside">
+    <form class="fomr_default" action="{{ path('admin.updateProfile') }}" method="post" {{ form_enctype(form) }}>
+    
+    	<label>Imię:</label> {{ form_widget(form.user.firstName) }}<br />
+    	<label>Nazwisko:</label> {{ form_widget(form.user.lastName) }}<br />
     	{{ form_rest(form) }}
-    </p>
-    <p>
+    
+   
         <input type="submit" />
-    </p>
+    
     </form>
 </div>
 </div>

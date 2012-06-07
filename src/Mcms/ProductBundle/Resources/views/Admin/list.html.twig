@@ -50,7 +50,7 @@
 					<td><a href="{{ path('admin.productShow', { 'id': product.id }) }}">{{ product.id }}</a></td>
 					<td>{{ product.name }}</td>
 					<td>{{ product.price }}</td>
-					<td><a class="editlink" href="{{ path('admin.productEdit', { 'id': product.id }) }}">Edytuj</a></td>
+					<td><a class="profilelink" href="{{ path('admin.productShow', { 'id': product.id }) }}">{{ product.id }}</a><a class="editlink" href="{{ path('admin.productEdit', { 'id': product.id }) }}">Edytuj</a></td>
 				</tr>
 			{% endfor %}
 		</table>		
