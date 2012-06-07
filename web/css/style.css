@@ -76,15 +76,12 @@ div#header div#tabmenu ul li.current a span { text-shadow: 1px 1px #fcfcfc; }
 div#sidebar { padding: 20px 0 20px 0; width: 220px; display: block; float: left; }
 div#sidebar h3 { background: url("../images/arrow.png") no-repeat 10px 6px; padding-left: 30px; font-size: 12px; color: #333; text-transform: uppercase; }
 div#sidebar h3.open { background: url("../images/arrow.png") no-repeat 10px -37px; }
-div#sidebar>.subside{margin:5px 45px;}
-div#sidebar>.subside li{list-style-type:circle;}
-
-.leftmenu { list-style: none; }
-.leftmenu li { display: block; margin-bottom: 1px; width:220px; }
-.leftmenu li a { font-size: 12px; display: block; padding: 5px 0 5px 40px; color: #333; }
-.leftmenu li a:hover { }
-.leftmenu li.current a { background-color: #eee; border-right: 0; color: #333; border-top: 1px solid #a6c0de; border-bottom: 1px solid #a6c0de; }
-.leftmenu li.current a:hover { text-decoration: none; }
+div#sidebar>.subside ul{}
+div#sidebar>.subside li{ display: block;  width:220px;}
+div#sidebar>.subside li a { font-size: 12px; display: block; padding: 5px 0 5px 50px; color: #37507F;list-style-type:square;background-image: url(../images/icons/bluetrans.png); background-repeat: no-repeat; background-position: 30px center;  }
+div#sidebar>.subside li a:hover {background-color: #eee; border-right: 0;padding: 5px 0 5px 50px; color: #333; }
+div#sidebar>.subside li.current a { background-color: #eee; border-right: 0; color: #333; border-top: 1px solid #a6c0de; border-bottom: 1px solid #a6c0de; }
+div#sidebar>.subside li.current a:hover { text-decoration: none; }
 
 /***MESSAGES / ALERTS***/
 .message { padding: 10px 10px 10px 45px; margin: 0 0 20px 0; -moz-border-radius: 2px; -webkit-border-radius: 2px; border-radius: 2px; position: relative; }

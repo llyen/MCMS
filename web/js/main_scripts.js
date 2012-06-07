@@ -1,6 +1,6 @@
 /***SHOW-HIDE LEFT MENU AFTER CLICK FUNCTION***/
 jQuery(document).ready(function() {
-		jQuery('#accordion h3').click(function() {
+		jQuery('#sidebar h3').click(function() {
 		if(jQuery(this).hasClass('open')) {
 			jQuery(this).removeClass('open');
 			jQuery(this).next().slideUp('fast');
