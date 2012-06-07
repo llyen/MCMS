@@ -20,35 +20,34 @@
 	<div class="tableOpt"></div><!--end table Options-->	
 		<table cellpadding="0" cellspacing="0" class="tableHead" width="100%" class="example">
 				<colgroup>
-					<col class="head1" width="5%" />
-					<col class="head0" width="35%" />
-					<col class="head1" width="25%" />
-					<col class="head0" width="25%" />
+					<col class="head1" width="8%" />
+					<col class="head0" width="34%" />
+					<col class="head1" width="24%" />
+					<col class="head0" width="24%" />
 					<col class="head1" width="10%" />					
 				</colgroup>
 				<tr>
-					<td></td>
+					<td>Akcja</td>
 					<td>Nazwa Użytkownika</td>
 					<td>Imię</td>
 					<td>Nazwisko</td>
-					<td>Aktywność</td>
-					<td>Akcja</td>  					
+					<td>Aktywność</td>				
 				</tr>
 		</table>
 	<div class="tableWrapper">
         <table cellpadding="0" cellspacing="0" class="table" class="example" width="100%">
                 <colgroup>
-                    <col class="con1" width="5%" />
-                    <col class="con0" width="35%" />
-                    <col class="con1" width="25%" />
-                    <col class="con0" width="25%" />
+                    <col class="con1" width="8%" />
+                    <col class="con0" width="34%" />
+                    <col class="con1" width="24%" />
+                    <col class="con0" width="24%" />
 					<col class="con1" width="10%" /> 					
                 </colgroup>
 
 		
 			{% for user in users %}
 				<tr>
-					<td style="text-align: center;"><a href="{{ path('user_show', { 'id': user.id }) }}"><img src="{{ asset('images/icons/edit.png') }}" /></a></td>
+					<td style="text-align: center;"><a href="{{ path('user_show', { 'id': user.id }) }}" title="Edytuj"><img src="{{ asset('images/icons/edit.png') }}" /></a><a class="profilelink" href="{{ path('user_show', { 'id': user.id }) }}" title="Szczegóły"></a></td>
 					<td>{{ user.username }}</td>
 					<td>{{ user.firstname }}</td>
 					<td>{{ user.lastname }}</td>
@@ -59,7 +58,6 @@
                             <img src="{{ asset('images/icons/error.png') }}" />
                         {% endif %}
 					</td>
-					<td><a class="profilelink" href="{{ path('user_show', { 'id': user.id }) }}" title="Zobacz szczegoly uzytkownika"></a></td>
 				</tr>
 			{% endfor %}
 
