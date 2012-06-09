@@ -1,0 +1,25 @@
+{# src/Mcms/UserBundle/Resources/views/Employee/editProfile.html.twig #}
+{% extends '::employeeDashboard.html.twig' %}
+{% form_theme form '::formErrors.html.twig' %}
+
+{% block title %}{{ app.user }} - Edycja profilu użytkownika{% endblock %}
+
+{% block content %}
+	{{ form_errors(form) }}
+	<h1 class="pageTitle">Edycja profilu użytkownika <em style="color:#4C6A98">{{app.user}}</em></h1>
+	<div class="window1">
+	<h3><span></span></h3>
+	<div class="inside">
+    <form class="fomr_default" action="{{ path('employee.updateProfile') }}" method="post" {{ form_enctype(form) }}>
+    
+    	<label>Imię:</label> {{ form_widget(form.user.firstName) }}<br />
+    	<label>Nazwisko:</label> {{ form_widget(form.user.lastName) }}<br />
+    	{{ form_rest(form) }}
+    
+   
+        <input type="submit" />
+    
+    </form>
+</div>
+</div>
+{% endblock %}

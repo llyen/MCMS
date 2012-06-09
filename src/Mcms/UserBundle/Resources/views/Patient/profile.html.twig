@@ -1,0 +1,26 @@
+{# src/Mcms/UserBundle/Resources/views/Patient/profile.html.twig #}
+{% extends '::employeeDashboard.html.twig' %}
+{% block title %}{{app.user}} - Profil użytkownika{% endblock %}
+{% block content %}
+   
+    <h1 class="pageTitle">Profil użytkownika {{app.user}}</h1>
+	<div class="window1">
+	<h3><span style="height:20px;"></span></h3>
+		<div class="inside">
+  <div class="one_half">
+    	<b>Nazwa użytkownika:</b> {{app.user.username}}<br />
+    	<b>Imię:</b> {{app.user.firstname}}<br />
+    	<b>Nazwisko:</b> {{app.user.lastname}}<br />
+    	<b>Data utworzenia konta:</b> {{app.user.createdat|date('j.m.Y')}} r.<br />
+    	<b>Data ostatniej modyfikacji:</b> {{app.user.updatedat|date('j.m.Y')}} r.  
+    </div>
+	
+		<ul class="dashboard">
+		<li><a href="{{ path('patient.editProfile') }}"><img src="{{ asset('images/icons/edit_big.png') }}"><span>Edytuj profil</span></a></li>
+		<li><a href="{{ path('patient.changePassword') }}"><img src="{{ asset('images/icons/prof_paswd.png') }}" height="40px"><span>Zmień hasło</span></a></li>
+		</ul>
+		
+		</div>
+	</div>	
+	
+{% endblock %}

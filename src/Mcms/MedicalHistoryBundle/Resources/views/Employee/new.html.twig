@@ -1,9 +1,19 @@
 {# src/Mcms/MedicalHistoryBundle/Resources/views/Employee/new.html.twig #}
 {% extends '::employeeDashboard.html.twig' %}
 
+{% block title %} Karta pacjenta - dodawanie wpisu {% endblock %}
+
 {% block content %}
-    <form class="form_default" action="{{ path('employee.medicalHistoryCreate',{ patientId: patient.Id }) }}" method="post" {{ form_enctype(form) }}>
-        {{ form_widget(form) }}
+    <h1 class="pageTitle">Dodawanie wpisu w karcie pacjenta</h1>
+	<div class="window1">
+	<h3><span style="height:20px;">Szczegóły nowego wpisu</span></h3>
+		<div class="inside">
+  		<div>
+    		<form class="form_default" action="{{ path('employee.medicalHistoryCreate',{ patientId: patient.Id }) }}" method="post" {{ form_enctype(form) }}>
+        	<label>Treść</label>{{ form_widget(form.content) }}
         <button type="submit">Utwórz</button>
     </form>
+    	</div>
+		</div>
+	</div>	
 {% endblock %}
