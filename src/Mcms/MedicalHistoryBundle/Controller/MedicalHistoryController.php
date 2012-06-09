@@ -4,6 +4,9 @@ namespace Mcms\MedicalHistoryBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
+use Mcms\MedicalHistoryBundle\Entity\Entry;
+use Mcms\MedicalHistoryBundle\Form\Type\EntryType;
+
 class MedicalHistoryController extends Controller
 {
     /**
@@ -56,7 +59,7 @@ class MedicalHistoryController extends Controller
         {
             $patient = $em->getRepository('McmsPatientBundle:Patient')->find($patientId);
             if(!$patient) {
-                throw $tnis->createNotFoundException('Unable to find patient.');
+                throw $this->createNotFoundException('Unable to find patient.');
             }
         }
 
@@ -64,6 +67,70 @@ class MedicalHistoryController extends Controller
 
         return $this->render('McmsMedicalHistoryBundle:'.$roleTheme.':show.html.twig', array(
             'entry' => $entry
+        ));
+    }
+
+    /**
+     * Displays a form to create new entry
+     * 
+     * @param integer $patientId
+     */
+    public function newAction($patientId)
+    {
+        $em = $this->getDoctrine()->getEntityManager();
+
+        $entry = new Entry();
+
+        $patient = $em->getRepository('McmsPatientBundle:Patient')->find($patientId);
+        if(!$patient) {
+            throw $this->createNotFoundException('Unable to find patient.');
+        }
+        
+        $form = $this->createForm(new EntryType(), $entry);
+        return $this->render('McmsMedicalHistoryBundle:Employee:new.html.twig', array(
+            'form' => $form->createView(),
+            'patient' => $patient
+        ));
+    }
+
+    /**
+     * Creates new entry
+     * 
+     * @param integer $patientId
+     */
+    public function createAction($patientId)
+    {
+        $em = $this->getDoctrine()->getEntityManager();
+
+        $patient = $em->getRepository('McmsPatientBundle:Patient')->find($patientId);
+        if(!$patient) {
+            throw $this->createNotFoundException('Unable to find patient.');
+        }
+
+        $user = $this->get('security.context')->getToken()->getUser();
+        $employee = $user->getEmployee();
+
+        $entry = new Entry();
+        $entry->setDoctor($employee);
+        $entry->setPatient($patient);
+
+        $request = $this->getRequest();
+        
+        $form = $this->createForm(new EntryType(), $entry);
+        $form->bindRequest($request);
+
+        if($form->isValid())
+        {
+            $em = $this->getDoctrine()->getEntityManager();
+            $em->persist($entry);
+            $em->flush();
+
+            return $this->redirect($this->generateUrl('employee.medicalHistory', array('patientId' => $patientId)));
+        }
+
+        return $this->render('McmsMedicalHistoryBundle:Employee:new.html.twig', array(
+            'form' => $form->createView(),
+            'patient' => $patient
         ));
     }
 }

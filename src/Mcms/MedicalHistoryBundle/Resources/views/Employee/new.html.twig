@@ -1,0 +1,9 @@
+{# src/Mcms/MedicalHistoryBundle/Resources/views/Employee/new.html.twig #}
+{% extends '::dashboard.html.twig' %}
+
+{% block content %}
+    <form class="form_default" action="{{ path('employee.medicalHistoryCreate',{ patientId: patient.Id }) }}" method="post" {{ form_enctype(form) }}>
+        {{ form_widget(form) }}
+        <button type="submit">Utwórz</button>
+    </form>
+{% endblock %}
