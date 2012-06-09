@@ -1,3 +1,8 @@
+#Homepage - Login Page
+Homepage:
+    pattern: /
+    defaults: { _controller: McmsUserBundle:Security:login }
+
 #Routes for administrator only.
 AdminRoutes:
     resource: "admin_routes.yml"
