@@ -23,13 +23,11 @@
     </div><!--end table Options-->	
 		<table cellpadding="0" cellspacing="0" class="tableHead" width="100%" id="example">
 				<colgroup>
-					<col class="head1" width="25%" />
-					<col class="head0" width="25%" />
+					<col class="head0" width="50%" />
 					<col class="head1" width="25%" />
 					<col class="head0" width="25%" />              
 				</colgroup>
 				<tr>
-					<td>Id</td>
 					<td>Nazwa</td>
 					<td>Cena</td>
 					<td>Akcja</td>                
@@ -38,8 +36,7 @@
 	<div class="tableWrapper">
         <table cellpadding="0" cellspacing="0" class="table" id="example" width="100%">
                 <colgroup>
-                    <col class="con1" width="25%" />
-                    <col class="con0" width="25%" />
+                    <col class="con0" width="50%" />
                     <col class="con1" width="25%" />
                     <col class="con0" width="25%" />                   
                 </colgroup>
@@ -47,7 +44,6 @@
 		
 			{% for product in products %}
 				<tr>
-					<td><a href="{{ path('admin.productShow', { 'id': product.id }) }}">{{ product.id }}</a></td>
 					<td>{{ product.name }}</td>
 					<td>{{ product.price }}</td>
 					<td><a class="profilelink" href="{{ path('admin.productShow', { 'id': product.id }) }}">{{ product.id }}</a><a class="editlink" href="{{ path('admin.productEdit', { 'id': product.id }) }}">Edytuj</a></td>

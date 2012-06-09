@@ -1,6 +1,51 @@
 {# src/Mcms/MedicalHistoryBundle/Resources/views/Patient/list.html.twig #}
 {% extends '::dashboard.html.twig' %}
 
+{% block javascripts_head %}
+	<script type="text/javascript">
+		$(document).ready(function() {
+    		$('.example').dataTable();
+		} );
+	</script>
+{% endblock %}
+
+{% block title %} Karta pacjenta - lista wpisów {% endblock %}
+
 {% block content %}
-    <h2>LISTA Z WPISAMI Z KARTY PACJETA</h2>
+<h1 class="pageTitle">Karta pacjenta</h1>
+	<div class="tableOpt">
+		<h4>Lista wpisów w karcie pacjenta <strong>{{ app.user.firstName }} {{ app.user.lastName }}</strong></h4>	
+    </div><!--end table Options-->	
+		<table cellpadding="0" cellspacing="0" class="tableHead" width="100%" id="example">
+				<colgroup>
+					<col class="head0" width="20%" />
+					<col class="head1" width="20%" />
+					<col class="head0" width="50%" />
+					<col class="head1" width="10%" />              
+				</colgroup>
+				<tr>
+					<td>Data wpisu</td>
+					<td>Lekarz dokonujący wpisu</td>
+					<td>Treść</td>
+					<td>Akcja</td>                
+				</tr>
+		</table>
+	<div class="tableWrapper">
+        <table cellpadding="0" cellspacing="0" class="table" id="example" width="100%">
+                <colgroup>
+                    <col class="con0" width="20%" />
+                    <col class="con1" width="20%" />
+                    <col class="con0" width="50%" />
+                    <col class="con1" width="10%" />                   
+                </colgroup>
+
+		
+				<tr>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+				</tr>
+		</table>		
+	</div>	
 {% endblock %}
