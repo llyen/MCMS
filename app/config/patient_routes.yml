@@ -1,21 +1,67 @@
 #Here place only patient routes!!!
+
+#PROFILE MANAGE
+patient.profile:
+    pattern:    /profile
+    defaults:   { _controller: McmsUserBundle:User:profile, roleTheme: Patient }
+
+patient.editProfile:
+    pattern:    /profile/edit
+    defaults:   { _controller: McmsUserBundle:User:editProfile, roleTheme: Patient }
+
+patient.updateProfile:
+    pattern:    /profile/update
+    defaults:   { _controller: McmsUserBundle:User:updateProfile, roleTheme: Patient }
+    requirements:
+        _method:    POST
+
+patient.changePassword:
+    pattern:    /profile/changePassword
+    defaults:   { _controller: McmsUserBundle:User:changePassword, roleTheme: Patient }
+
+patient.updatePassword:
+    pattern:    /profile/updatePassword
+    defaults:   { _controller: McmsUserBundle:User:updatePassword, roleTheme: Patient}
+
+#MEDICAL HISTORY
+patient.medicalHistory:
+    pattern: /medicalHistory
+    defaults: { _controller: McmsMedicalHistoryBundle:MedicalHistory:list, roleTheme: Patient, patientId: null }
+
+patient.medicalHistoryShow:
+    pattern: /medicalHistory/{entryId}/show
+    defaults: { _controller: McmsMedicalHistoryBundle:MedicalHistory:show, roleTheme: Patient, patientId: null }
+    requirements:
+        entryId: \d+
+
+#EMPLOYEE PART
 patient.listOfEmployees:
     pattern: /listOfEmployees
-    defaults: { _controller: McmsDashboardBundle:Patient:listOfEmployees }
+    defaults: { _controller: McmsEmployeeBundle:Employee:list, roleTheme: Patient }
 
 patient.showEmployee:
     pattern: /employee/{id}/show
-    defaults: { _controller: McmsDashboardBundle:Patient:showEmployee }
+    defaults: { _controller: McmsEmployeeBundle:Employee:show, roleTheme: Patient }
     requirements:
         id: \d+
 
-patient.timetableNew:
-    pattern: /employee/{employeeId}/timetable/{year}/{month}/new
-    defaults: { _controller: McmsTimetableBundle:Timetable:new, roleTheme: Patient, year: null, month: null, patientId: null, employeeId: null }
+patient.showEmployeeTimetable:
+    pattern: /employee/{employeeId}/timetable/{year}/{month}
+    defaults: { _controller: McmsTimetableBundle:Timetable:monthlyTimetable, roleTheme: Patient, year: null, month: null, patientId: null, employeeId: null }
     requirements:
         employeeId: \d+
         year: \d+
         month: \d+
+
+patient.timetableNew:
+    pattern: /employee/{employeeId}/timetable/{year} {month}/{hour} {minutes}/new
+    defaults: { _controller: McmsTimetableBundle:Timetable:new, roleTheme: Patient, year: null, month: null, patientId: null, employeeId: null }
+    requirements:
+        employeeId: \d+
+        year: \d{4}
+        month: \d{2}
+        hour: "(([0-1][0-9])|([2][0-3]))"
+        minutes: "([0-5][0-9])"
 
 patient.timetableCreate:
     pattern: /employee/{employeeId}/timetable/{year}/{month}/create
@@ -36,10 +82,6 @@ patient.showEmployeeTimetable:
 patient.showTimetable:
     pattern: /timetable/{year}/{month}
     defaults: { _controller: McmsTimetableBundle:Timetable:myMonthlyTimetable, roleTheme: Patient, year: null, month: null }
-
-patient.showMyAccount:
-    pattern: /myAccount
-    defaults: { _controller: McmsDashboardBundle:Patient:showMyAccount }
 
 patient.productsList:
     pattern: /product
