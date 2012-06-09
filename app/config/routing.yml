@@ -30,11 +30,12 @@ logout:
     pattern: /logout
 
 admin_dashboard:
-    pattern: /patient/new
+    pattern: /admin
+    defaults: { _controller: McmsDashboardBundle:Dashboard:index, roleTheme: Admin }
 
 patient_dashboard:
     pattern: /patient
-    defaults: { _controller: McmsDashboardBundle:Patient:index }
+    defaults: { _controller: McmsDashboardBundle:Dashboard:index, roleTheme: Patient }
 
 
 
