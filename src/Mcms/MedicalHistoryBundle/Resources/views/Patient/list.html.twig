@@ -39,13 +39,14 @@
                     <col class="con1" width="10%" />                   
                 </colgroup>
 
-		
+			{% for entry in entries %}
 				<tr>
-					<td></td>
-					<td></td>
-					<td></td>
-					<td></td>
+					<td>{{ entry.createdAt|date('Y.m.d H:i') }}</td>
+					<td>{{ entry.doctor }}</td>
+					<td>{{ entry.content }}</td>
+					<td><a class="profilelink" href="{{ path('patient.medicalHistoryShow', { 'entryId': entry.id }) }}">{{ entry.id }}</a></td>
 				</tr>
+			{% endfor %}
 		</table>		
-	</div>	
+	</div>
 {% endblock %}
