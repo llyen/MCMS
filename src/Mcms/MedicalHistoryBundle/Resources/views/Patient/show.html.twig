@@ -1,6 +1,16 @@
 {# src/Mcms/MedicalHistoryBundle/Resources/views/Patient/show.html.twig #}
 {% extends '::dashboard.html.twig' %}
 
+{% block title %} Karta pacjenta - szczegóły wpisu #{{ entry.id }} {% endblock %}
+
 {% block content %}
-    <h2>POJEDYNCZY WPIS Z KARTY PACJETA</h2>
+    <h1 class="pageTitle">Szczegóły wpisu #{{ entry.id }}</h1>
+	<div class="window1">
+	<h3><span style="height:20px;"><b>Data wpisu:</b> {{ entry.createdAt|date('Y.m.d H:i') }} (<small>Ostatnia aktualizacja: {{ entry.updatedAt|date('Y.m.d H:i') }}</small>) | <b>Lekarz dokonujący wpisu:</b> {{ entry.doctor }}</span></h3>
+		<div class="inside">
+  		<div>
+    		{{ entry.content }}
+    	</div>
+		</div>
+	</div>	
 {% endblock %}
