@@ -1,10 +1,48 @@
 {# src/Mcms/EmployeeBundle/Resources/views/Patient/list.html.twig #}
 {% extends '::patientDashboard.html.twig' %}
 
-{% block title %}Lista lekarzy{% endblock %}
+{% block javascripts_head %}
+	<script type="text/javascript">
+		$(document).ready(function() {
+    		$('.example').dataTable();
+		} );
+	</script>
+{% endblock %}
+
+{% block title %} Lista lekarzy {% endblock %}
 
 {% block content %}
-    {% for employee in employees %}
-        <p>{{ employee }} <small><a href="{{ path('patient.showEmployee', { id: employee.id }) }}">Szczegóły</a></small></p>
-    {% endfor %}   
+<h1 class="pageTitle">Lista lekarzy</h1>
+	<div class="tableOpt">
+		<h4>Lista lekarzy przyjmujących w placówce</strong></h4>	
+    </div><!--end table Options-->	
+		<table cellpadding="0" cellspacing="0" class="tableHead" width="100%" id="example">
+				<colgroup>
+					<col class="head0" width="45%" />
+					<col class="head1" width="45%" />
+					<col class="head0" width="10%" />             
+				</colgroup>
+				<tr>
+					<td>Imię i nazwisko</td>
+					<td>Specjalność</td>
+					<td>Akcja</td>                
+				</tr>
+		</table>
+	<div class="tableWrapper">
+        <table cellpadding="0" cellspacing="0" class="table" id="example" width="100%">
+                <colgroup>
+                    <col class="con0" width="45%" />
+                    <col class="con1" width="45%" />
+                    <col class="con1" width="10%" />                   
+                </colgroup>
+
+			{% for employee in employees %}
+				<tr>
+					<td>{{ employee.firstName }} {{ employee.lastName }}</td>
+					<td>{{ employee.position }}</td>
+					<td><a class="profilelink" href="{{ path('patient.showEmployee', { 'id': employee.id }) }}">{{ employee.id }}</a></td>
+				</tr>
+			{% endfor %}
+		</table>		
+	</div>
 {% endblock %}
