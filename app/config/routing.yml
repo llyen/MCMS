@@ -37,6 +37,10 @@ patient_dashboard:
     pattern: /patient
     defaults: { _controller: McmsDashboardBundle:Dashboard:index, roleTheme: Patient }
 
+employee_dashboard:
+    pattern: /employee
+    defaults: { _controller: McmsDashboardBundle:Dashboard:index, roleTheme: Employee }
+
 
 
 

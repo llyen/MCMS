@@ -12,6 +12,10 @@ class LoadEmployeeData extends AbstractFixture implements OrderedFixtureInterfac
 {
     public function load(ObjectManager  $manager)
     {
+        $employee = new Employee();
+        $employee->setUser($this->getReference('employee'));
+        $employee->setPosition('Rzeznik z Zadupia');
+
         $employee1 = new Employee();
         $employee1->setUser($this->getReference('employee1'));
         $employee1->setPosition('Lekarz Internista');
@@ -20,6 +24,7 @@ class LoadEmployeeData extends AbstractFixture implements OrderedFixtureInterfac
         $employee2->setUser($this->getReference('employee2'));
         $employee2->setPosition('Urolog od mózgu');
 
+        $manager->persist($employee);
         $manager->persist($employee1);
         $manager->persist($employee2);
         $manager->flush();
