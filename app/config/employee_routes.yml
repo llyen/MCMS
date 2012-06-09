@@ -1,1 +1,36 @@
 #Here place only employee routes!!!
+
+#PROFILE MANAGE
+employee.profile:
+    pattern:    /profile
+    defaults:   { _controller: McmsUserBundle:User:profile, roleTheme: Employee }
+
+employee.editProfile:
+    pattern:    /profile/edit
+    defaults:   { _controller: McmsUserBundle:User:editProfile, roleTheme: Employee }
+
+employee.updateProfile:
+    pattern:    /profile/update
+    defaults:   { _controller: McmsUserBundle:User:updateProfile, roleTheme: Employee }
+    requirements:
+        _method:    POST
+
+employee.changePassword:
+    pattern:    /profile/changePassword
+    defaults:   { _controller: McmsUserBundle:User:changePassword, roleTheme: Employee }
+
+employee.updatePassword:
+    pattern:    /profile/updatePassword
+    defaults:   { _controller: McmsUserBundle:User:updatePassword, roleTheme: Employee}
+
+employee.medicalHistory:
+    pattern: /patient/{patientId}/medicalHistory
+    defaults: { _controller: McmsMedicalHistoryBundle:MedicalHistory:list, roleTheme: Employee }
+    requirements:
+        patientId: \d+
+
+employee.medicalHistoryNew:
+    pattern: /patient/{patientId}/medicalHistory/new
+    defaults: { _controller: McmsMedicalHistoryBundle:MedicalHistory:new, roleTheme: Employee }
+    requirements:
+        patientId: \d+

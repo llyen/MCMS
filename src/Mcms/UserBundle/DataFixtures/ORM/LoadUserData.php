@@ -34,6 +34,15 @@ class LoadUserData extends AbstractFixture implements OrderedFixtureInterface,Co
         $admin->setPassword('admin');
         $admin->getUserRoles()->add($this->getReference('admin-role'));
 
+        $employee = new User();
+        
+        $employee->setFirstName("Eustachy");
+        $employee->setLastName("Psikuta");
+        $employee->setUsername('employee');
+        $employee->setPassword('employee');
+        $employee->getUserRoles()->add($this->getReference('employee-role'));
+        $this->addReference('employee', $employee);
+
         $patient1 = new User();
 
         $patient1->setFirstName('Tadeusz');
@@ -67,7 +76,8 @@ class LoadUserData extends AbstractFixture implements OrderedFixtureInterface,Co
         $employee2->getUserRoles()->add($this->getReference('employee-role'));
         $this->addReference('employee2', $employee2);
 
-    	$manager->persist($admin);
+        $manager->persist($admin);
+    	$manager->persist($employee);
         $manager->persist($patient1);
         $manager->persist($patient2);
         $manager->persist($patient3);

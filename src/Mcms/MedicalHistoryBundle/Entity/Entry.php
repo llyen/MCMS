@@ -135,7 +135,7 @@ class Entry
      * 
      * @return DateTime last update date and time.
      */
-    public function getUpdateAt()
+    public function getUpdatedAt()
     {
         return $this->updatedAt;
     }

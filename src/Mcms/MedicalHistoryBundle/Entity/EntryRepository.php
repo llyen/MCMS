@@ -34,7 +34,7 @@ class EntryRepository extends EntityRepository
      */
     public function findByPatientAndId(Patient $patient, $entryId)
     {
-        return $this->findBy(array(
+        return $this->findOneBy(array(
             'patient' => $patient->getId(),
             'id' => $entryId
         ));
