@@ -9,6 +9,7 @@
 .tableOpt .button:active { background: #eee; }
 .tableOpt .button span { padding: 5px 10px; display: block; }*/
 .tableOpt h4 { font-size: 12px; font-weight: normal; color: #333; }
+.tableOpt h4 strong { font-weight: bold; font-size: 14px; }
 
 .tableHead { border-collapse: collapse; }
 .tableHead td { padding: 8px 10px; color: #ccc; text-shadow: 1px 1px #444; font-size: 12px; text-transform: uppercase; border-right: 1px solid #777; }
