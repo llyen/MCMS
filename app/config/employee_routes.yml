@@ -42,3 +42,24 @@ employee.medicalHistoryCreate:
     requirements:
         patientId: \d+
         _method:    POST
+
+employee.medicalHistoryShow:
+    pattern: /patient/{patientId}/medicalHistory/{entryId}/show
+    defaults: { _controller: McmsMedicalHistoryBundle:MedicalHistory:show, roleTheme: Patient, patientId: null }
+    requirements:
+        entryId: \d+
+
+employee.medicalHistoryEdit:
+    pattern: /patient/{patientId}/medicalHistory/{entryId}/edit
+    defaults: { _controller: McmsMedicalHistoryBundle:MedicalHistory:edit, roleTheme: Employee }
+    requirements:
+        patientId: \d+
+        entryId: \d+
+
+employee.medicalHistoryUpdate:
+    pattern: /patient/{patientId}/medicalHistory/{entryId}/update
+    defaults: { _controller: McmsMedicalHistoryBundle:MedicalHistory:update, roleTheme: Employee }
+    requirements:
+        patientId: \d+
+        entryId: \d+
+        _method:    POST
