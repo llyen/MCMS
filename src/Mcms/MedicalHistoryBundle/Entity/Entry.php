@@ -141,6 +141,7 @@ class Entry
     }
 
     /**
+     * @ORM\PrePersist
      * @ORM\PreUpdate
      * 
      * Set last edit date and time.
