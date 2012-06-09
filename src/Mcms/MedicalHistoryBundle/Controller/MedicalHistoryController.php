@@ -64,6 +64,9 @@ class MedicalHistoryController extends Controller
         }
 
         $entry = $em->getRepository('McmsMedicalHistoryBundle:Entry')->findByPatientAndId($patient, $entryId);
+        if(!$entry) {
+            throw $this->createNotFoundException('Unable to find entry.');
+        }
 
         return $this->render('McmsMedicalHistoryBundle:'.$roleTheme.':show.html.twig', array(
             'entry' => $entry
@@ -121,7 +124,6 @@ class MedicalHistoryController extends Controller
 
         if($form->isValid())
         {
-            $em = $this->getDoctrine()->getEntityManager();
             $em->persist($entry);
             $em->flush();
 
@@ -131,6 +133,75 @@ class MedicalHistoryController extends Controller
         return $this->render('McmsMedicalHistoryBundle:Employee:new.html.twig', array(
             'form' => $form->createView(),
             'patient' => $patient
+        ));
+    }
+
+    /**
+     * Displays a form to edit entry
+     * 
+     * @param integer $patientId
+     * 
+     */
+    public function editAction($patientId, $entryId)
+    {
+        $em = $this->getDoctrine()->getEntityManager();
+
+        $patient = $em->getRepository('McmsPatientBundle:Patient')->find($patientId);
+        if(!$patient) {
+            throw $this->createNotFoundException('Unable to find patient.');
+        }
+
+        $entry = $em->getRepository('McmsMedicalHistoryBundle:Entry')->findByPatientAndId($patient, $entryId);
+        if(!$entry) {
+            throw $this->createNotFoundException('Unable to find entry.');
+        }
+
+        $form = $this->createForm(new EntryType(), $entry);
+
+        return $this->render('McmsMedicalHistoryBundle:Employee:edit.html.twig', array(
+            'form' => $form->createView(),
+            'patient' => $patient,
+            'entry' => $entry
+        ));
+    }
+
+    /**
+     * Updates entry details
+     * 
+     * @param integer $patientId
+     * @param integer $entryId
+     */
+    public function updateAction($patientId, $entryId)
+    {
+        $em = $this->getDoctrine()->getEntityManager();
+
+        $patient = $em->getRepository('McmsPatientBundle:Patient')->find($patientId);
+        if(!$patient) {
+            throw $this->createNotFoundException('Unable to find patient.');
+        }
+
+        $entry = $em->getRepository('McmsMedicalHistoryBundle:Entry')->findByPatientAndId($patient, $entryId);
+        if(!$entry) {
+            throw $this->createNotFoundException('Unable to find entry.');
+        }
+
+        $request = $this->getRequest();
+
+        $form = $this->createForm(new EntryType(), $entry);
+        $form->bindRequest($request);
+
+        if($form->isValid())
+        {
+            $em->persist($entry);
+            $em->flush();
+
+            return $this->redirect($this->generateUrl('employee.medicalHistory', array('patientId' => $patientId)));
+        }
+
+        return $this->render('McmsMedicalHistoryBundle:Employee:edit.html.twig', array(
+            'form' => $form->createView(),
+            'patient' => $patient,
+            'entry' => $entry
         ));
     }
 }
