@@ -78,9 +78,6 @@ class TimetableController extends Controller
 
         //if request is from AJAX call
         if($this->getRequest()->isXmlHttpRequest()) {
-            /*return $this->render('McmsTimetableBundle::showMonth.html.twig',array(
-                'entries' => $entries
-            ));*/
             $response = new \Symfony\Component\HttpFoundation\Response(json_encode($unassignedDates));
             $response->headers->set('Content-Type', 'application/json');
             return $response;
@@ -118,7 +115,7 @@ class TimetableController extends Controller
      * 
      * @param String $roleTheme Role theme name.
      */
-    public function newAction($roleTheme, $patientId = null, $employeeId = null, $year = null, $month= null)
+    public function newAction($roleTheme, $patientId = null, $employeeId = null, $year = null, $month = null, $hours = null, $minutes = null)
     {
         $user = $this->get('security.context')->getToken()->getUser();
 
@@ -153,8 +150,8 @@ class TimetableController extends Controller
 
         $form = $this->createForm(new EntryType(), $entry);
 
-        return $this->render('McmsTimetableBundle::new.html.twig', array(
-            'form' => $form->createView(),
+        return $this->render('McmsTimetableBundle:'.$roleTheme.':newEntry.html.twig', array(
+            'form' => $this->createNewEntryForm()->createView(),
             'employeeId' => $employeeId,
             'year' => $year,
             'month' => $month
@@ -221,6 +218,10 @@ class TimetableController extends Controller
             'year' => $year,
             'month' => $month
         ));
+    }
+
+    private function createNewEntryForm()
+    {
     }
 
     /**

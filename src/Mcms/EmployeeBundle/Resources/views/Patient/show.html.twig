@@ -1,0 +1,10 @@
+{# src/Mcms/EmployeeBundle/Resources/views/Patient/show.html.twig #}
+{% extends '::dashboard.html.twig' %}
+
+{% block title %}{{ employee }} - Dane{% endblock %}
+
+{% block content %}
+    <p><b>Imie: </b>{{ employee.firstname }}</p>
+    <p><b>Nazwisko: </b>{{ employee.lastname }}</p>
+    <p><a href="{{ path('patient.showEmployeeTimetable', { employeeId: employee.id }) }}">TERMINARZ</a></p>
+{% endblock %}
