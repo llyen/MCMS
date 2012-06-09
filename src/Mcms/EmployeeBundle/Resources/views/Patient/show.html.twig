@@ -1,10 +1,18 @@
 {# src/Mcms/EmployeeBundle/Resources/views/Patient/show.html.twig #}
 {% extends '::patientDashboard.html.twig' %}
 
-{% block title %}{{ employee }} - Dane{% endblock %}
+{% block title %}{{ employee }} - dane pracownika{% endblock %}
 
 {% block content %}
-    <p><b>Imie: </b>{{ employee.firstname }}</p>
-    <p><b>Nazwisko: </b>{{ employee.lastname }}</p>
-    <p><a href="{{ path('patient.showEmployeeTimetable', { employeeId: employee.id }) }}">TERMINARZ</a></p>
+    <h1 class="pageTitle">Dane pracownika</h1>
+	<div class="window1">
+	<h3><span style="height:20px;">Powiązane z pracownikiem: <a href="{{ path('patient.showEmployeeTimetable', { employeeId: employee.id }) }}"><img src="{{ asset('images/icons/calendar.png') }}" alt="Terminarz" /></a></span></h3>
+		<div class="inside">
+  		<div class="one_half">
+  			<b>Imię:</b> {{ employee.firstname }} <br />
+  			<b>Nazwisko:</b> {{ employee.lastname }} <br />
+  			<b>Specjalność:</b> {{ employee.position }} <br />
+    	</div>
+		</div>
+	</div>	
 {% endblock %}
