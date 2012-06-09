@@ -145,7 +145,7 @@ class UserController extends Controller
             $em->persist($user);
             $em->flush();
 
-            return $this->redirect($this->generateUrl('admin.profile'));
+            return $this->redirect($this->generateUrl(strtolower($roleTheme).'.profile'));
         }
 
         return $this->render('McmsUserBundle:'.$roleTheme.':changePassword.html.twig', array(
