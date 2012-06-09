@@ -1,0 +1,9 @@
+{# app/Resources/views/employeeDashboard.html.twig #}
+{% extends '::dashboard.html.twig' %}
+{% import '::helpers.html.twig' as helpers %}
+
+{% block tabmenu %}
+	<ul>
+		{{ helpers.tab('users_list', 'home', 'Strona glowna') }}
+	</ul>
+{% endblock %}
