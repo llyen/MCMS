@@ -23,6 +23,17 @@ patient.updatePassword:
     pattern:    /profile/updatePassword
     defaults:   { _controller: McmsUserBundle:User:updatePassword, roleTheme: Patient}
 
+#MEDICAL HISTORY
+patient.medicalHistory:
+    pattern: /medicalHistory
+    defaults: { _controller: McmsMedicalHistoryBundle:MedicalHistory:list, roleTheme: Patient, patientId: null }
+
+patient.medicalHistoryShow:
+    pattern: /medicalHistory/{entryId}/show
+    defaults: { _controller: McmsMedicalHistoryBundle:MedicalHistory:show, roleTheme: Patient, patientId: null }
+    requirements:
+        entryId: \d+
+
 #EMPLOYEE PART
 patient.listOfEmployees:
     pattern: /listOfEmployees

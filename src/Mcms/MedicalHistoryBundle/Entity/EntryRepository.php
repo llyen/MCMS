@@ -4,6 +4,8 @@ namespace Mcms\MedicalHistoryBundle\Entity;
 
 use Doctrine\ORM\EntityRepository;
 
+use Mcms\PatientBundle\Entity\Patient;
+
 /**
  * EntryRepository
  *
@@ -12,4 +14,29 @@ use Doctrine\ORM\EntityRepository;
  */
 class EntryRepository extends EntityRepository
 {
+    /**
+     * Finds and returns entries by Patient.
+     * 
+     * @param Patient $patient
+     */
+    public function findByPatient(Patient $patient)
+    {
+        return $this->findBy(array(
+            'patient' => $patient->getId()
+        ));
+    }
+
+    /**
+     * Finds and returns single entry by Patient and entry Id.
+     * 
+     * @param Patient $patient
+     * @param integer $entryId
+     */
+    public function findByPatientAndId(Patient $patient, $entryId)
+    {
+        return $this->findBy(array(
+            'patient' => $patient->getId(),
+            'id' => $entryId
+        ));
+    }
 }
