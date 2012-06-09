@@ -4,23 +4,23 @@
 <h3 class="open">Użytkownicy</h3>
 <div class="subside">
     <ul>
-		{{ helpers.menu('users_list', 'Dodaj użytkownika') }}
-        {{ helpers.menu('users_list', 'Lista użytkowników') }}
+		{{ helpers.menu('users_list','user_add', 'Dodaj użytkownika') }}
+        {{ helpers.menu('users_list', 'user_list', 'Lista użytkowników') }}
     </ul>
 </div>
 
 <h3 class="open">Produkty</h3>
 <div class="subside">
     <ul>
-        {{ helpers.menu('admin.productNew', 'Utwórz produkt') }}
-        {{ helpers.menu('admin.productList', 'Lista produktów') }}
+        {{ helpers.menu('admin.productNew', 'new_product', 'Utwórz produkt') }}
+        {{ helpers.menu('admin.productList', 'product_list', 'Lista produktów') }}
     </ul>
 </div>   
 
 <h3 class="open">Terminarz</h3> 
 <div class="subside">
     <ul>
-        {{ helpers.menu('admin.productNew', 'Pokaż terminarz') }}
+        {{ helpers.menu('admin.productNew', 'calendar', 'Pokaż terminarz') }}
        
     </ul>
-</div>       
+</div>
