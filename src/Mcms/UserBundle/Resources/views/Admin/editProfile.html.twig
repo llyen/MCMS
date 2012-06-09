@@ -10,7 +10,7 @@
 	<div class="window1">
 	<h3><span></span></h3>
 	<div class="inside">
-    <form class="fomr_default" action="{{ path('admin.updateProfile') }}" method="post" {{ form_enctype(form) }}>
+    <form class="form_default" action="{{ path('admin.updateProfile') }}" method="post" {{ form_enctype(form) }}>
     
     	<label>Imię:</label> {{ form_widget(form.user.firstName) }}<br />
     	<label>Nazwisko:</label> {{ form_widget(form.user.lastName) }}<br />
