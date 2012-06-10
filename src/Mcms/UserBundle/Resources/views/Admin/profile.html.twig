@@ -1,6 +1,7 @@
 {# src/Mcms/UserBundle/Resources/views/Admin/profile.html.twig #}
 {% extends '::adminDashboard.html.twig' %}
 {% block title %}{{app.user}} - Profil użytkownika{% endblock %}
+{% block sidebar %} {% include 'McmsUserBundle::sidebar.html.twig' %} {% endblock %}
 {% block content %}
    
     <h1 class="pageTitle">Profil użytkownika {{app.user}}</h1>

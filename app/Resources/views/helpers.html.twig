@@ -5,5 +5,5 @@
 {% endmacro %}
 
 {% macro menu(route, class, caption) %}
-	<li class="{{ class }}"><a href="{{ path(route) }}">{{ caption }}</a></li>
+	<li {% if app.request.attributes.get('_route') == route %} class="{{ class }} current" {% endif %}{% if app.request.attributes.get('_route') != route %} class="{{ class }}" {% endif %} ><a href="{{ path(route) }}">{{ caption }}</a></li>
 {% endmacro %}
