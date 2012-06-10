@@ -34,6 +34,16 @@ employee.patientShow:
     requirements:
         patientId: \d+
 
+employee.patientNew:
+    pattern: /patient/new
+    defaults: { _controller: McmsPatientBundle:Patient:new }
+
+employee.patientCreate:
+    pattern: /patient/create
+    defaults: { _controller: McmsPatientBundle:Patient:create }
+    requirements:
+        _method: POST
+
 #MEDICAL HISTORY
 employee.medicalHistory:
     pattern: /patient/{patientId}/medicalHistory

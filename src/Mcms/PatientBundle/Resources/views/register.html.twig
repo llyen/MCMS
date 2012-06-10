@@ -1,4 +1,4 @@
-{% extends '::base.html.twig' %}
+{% extends '::employeeDashboard.html.twig' %}
 {% form_theme form '::formErrors.html.twig' %}
 
 {% block content %}
@@ -7,7 +7,7 @@
 <div class="window1">
 	<h3><span></span></h3>
 	<div class="inside">
-   <form class="form_default" action="{{ path('createpatient')}}" method="post" {{ form_enctype(form) }}>
+   <form class="form_default" action="{{ path('employee.patientCreate')}}" method="post" {{ form_enctype(form) }}>
 	    {{ form_widget(form) }}
     <input type="submit" />
 </form>
