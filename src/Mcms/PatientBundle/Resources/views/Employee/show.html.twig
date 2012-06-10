@@ -1,0 +1,8 @@
+{# src/Mcms/PatientBundle/Resources/views/Employee/show.html.twig #}
+{% extends '::employeeDashboard.html.twig' %}
+
+{% block content %}
+    <h2>{{ patient }} Details</h2>
+    <a href="{{ path('employee.medicalHistory', { patientId: patient.id }) }}">MedicalHistory</a>
+    <p><a href="{{ path('employee.patientList') }}">Back to list</a></p>
+{% endblock %}
