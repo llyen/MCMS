@@ -28,6 +28,12 @@ employee.patientList:
     pattern: /patients
     defaults: { _controller: McmsPatientBundle:Patient:list, roleTheme: Employee }
 
+employee.patientShow:
+    pattern: /patient/{patientId}/show
+    defaults: { _controller: McmsPatientBundle:Patient:show, roleTheme: Employee }
+    requirements:
+        patientId: \d+
+
 #MEDICAL HISTORY
 employee.medicalHistory:
     pattern: /patient/{patientId}/medicalHistory

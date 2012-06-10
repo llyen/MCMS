@@ -21,4 +21,25 @@ class PatientController extends Controller
             'patients' => $patients
         ));
     }
+
+    /**
+     * Finds and display details of single patient
+     * 
+     * @param String $roleTheme Theme role switcher.
+     * @param integer $patientId Patient unique id.
+     */
+    public function showAction($roleTheme, $patientId)
+    {
+        $em = $this->getDoctrine()->getEntityManager();
+
+        $patient = $em->getRepository('McmsPatientBundle:Patient')->find($patientId);
+        
+        if(!$patient) {
+            throw $this->createNotFoundException('Unable to find Patient.');
+        }
+
+        return $this->render('McmsPatientBundle:'.$roleTheme.':show.html.twig', array(
+            'patient' => $patient
+        ));
+    }
 }

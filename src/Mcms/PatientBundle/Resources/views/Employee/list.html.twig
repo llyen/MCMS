@@ -3,6 +3,6 @@
 
 {% block content %}
     {% for patient in patients %}
-        <p>{{ patient }}</p>
+        <p>{{ patient }} <a href="{{ path('employee.patientShow', { patientId: patient.id }) }}">SHOW</a></p>
     {% endfor %}
 {% endblock %}
