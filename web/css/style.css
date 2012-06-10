@@ -70,14 +70,18 @@ div#header div#tabmenu ul li a:hover { text-decoration: none; }
 div#header div#tabmenu ul li a span { display: block; padding: 9px 15px 9px 40px; text-transform: uppercase; font-size: 12px; text-shadow: 1px 1px #224e82; }
 div#header div#tabmenu ul li.current { background: #eee; text-shadow: 1px 1px #fff; }
 div#header div#tabmenu ul li.current a { color: #333; background: none; }
-div#header div#tabmenu ul li a.home span { background: url(../images/icons/home.png) no-repeat 10px 10px; background-size:22px 17px; }
-div#header div#tabmenu ul li.current a.home span { background: url(../images/icons/home.png) no-repeat 10px 10px;background-size:22px 17px;}
-div#header div#tabmenu ul li a.users span { background: url(../images/icons/user_list.png) no-repeat 10px 10px;background-size:22px 17px;}
-div#header div#tabmenu ul li.current a.users span { background: url(../images/icons/user_list.png) no-repeat 10px 10px; background-size:22px 17px;}
-div#header div#tabmenu ul li a.products span { background: url(../images/icons/product.png) no-repeat 10px 10px;background-size:22px 17px;}
-div#header div#tabmenu ul li.current a.products span { background: url(../images/icons/product.png) no-repeat 10px 10px;background-size:22px 17px; }
-div#header div#tabmenu ul li a.calendar span { background: url(../images/icons/calendar.png) no-repeat 10px 10px;background-size:22px 17px;}
-div#header div#tabmenu ul li.current a.calendar span { background: url(../images/icons/calendar.png) no-repeat 10px 10px; background-size:22px 17px;}
+div#header div#tabmenu ul li a.home span { background: url(../images/icons/home.png) no-repeat 6px -29px; }
+div#header div#tabmenu ul li a.home span:hover { background: url(../images/icons/home.png) no-repeat 6px 9px; }
+div#header div#tabmenu ul li.current a.home span { background: url(../images/icons/home.png) no-repeat 6px 9px;}
+div#header div#tabmenu ul li a.users span { background: url(../images/icons/user_list_1.png) no-repeat 6px -26px;}
+div#header div#tabmenu ul li a.users span:hover { background: url(../images/icons/user_list_1.png) no-repeat 6px 10px;}
+div#header div#tabmenu ul li.current a.users span { background: url(../images/icons/user_list_1.png) no-repeat 6px 10px;}
+div#header div#tabmenu ul li a.products span { background: url(../images/icons/product.png) no-repeat 6px -25px;}
+div#header div#tabmenu ul li a.products span:hover { background: url(../images/icons/product.png) no-repeat 6px 9px;}
+div#header div#tabmenu ul li.current a.products span { background: url(../images/icons/product.png) no-repeat 6px 9px; }
+div#header div#tabmenu ul li a.calendar span { background: url(../images/icons/calendar_1.png) no-repeat 6px -22px;}
+div#header div#tabmenu ul li a.calendar span:hover { background: url(../images/icons/calendar_1.png) no-repeat 6px 9px;}
+div#header div#tabmenu ul li.current a.calendar span { background: url(../images/icons/calendar_1.png) no-repeat 6px 9px; }
 
 div#header div#tabmenu ul li.current a span { text-shadow: 1px 1px #fcfcfc; }
 
@@ -96,11 +100,15 @@ div#sidebar>.subside li.current a { background-color: #eee; border-right: 0; col
 div#sidebar>.subside li.current a:hover { text-decoration: none; }
 
 div#sidebar>.subside li.user_add a{background-image: url(../images/icons/user_add.png); background-repeat: no-repeat; background-position: 30px center; background-size:20px 15px;   }
+div#sidebar>.subside li.user_add .current a {background-image: url(../images/icons/user_add.png); background-repeat: no-repeat; background-position: 30px center; background-size:20px 15px;   background-color: #eee; border-right: 0; color: #333; border-top: 1px solid #a6c0de; border-bottom: 1px solid #a6c0de; }
 div#sidebar>.subside li.user_list a{background-image: url(../images/icons/user_list.png); background-repeat: no-repeat; background-position: 30px center; background-size:20px 15px;  }
+div#sidebar>.subside li.user_list .current a {background-image: url(../images/icons/user_add.png); background-repeat: no-repeat; background-position: 30px center; background-size:20px 15px;   background-color: #eee; border-right: 0; color: #333; border-top: 1px solid #a6c0de; border-bottom: 1px solid #a6c0de; }
 div#sidebar>.subside li.new_product a{ background-image: url(../images/icons/product_add.png); background-repeat: no-repeat; background-position: 30px center; background-size:20px 15px; }
+div#sidebar>.subside li.new_product .current a {background-image: url(../images/icons/user_add.png); background-repeat: no-repeat; background-position: 30px center; background-size:20px 15px;   background-color: #eee; border-right: 0; color: #333; border-top: 1px solid #a6c0de; border-bottom: 1px solid #a6c0de; }
 div#sidebar>.subside li.product_list a{ background-image: url(../images/icons/product_list.png); background-repeat: no-repeat; background-position: 30px center; background-size:20px 15px; }
+div#sidebar>.subside li.prodyct_list .current a {background-image: url(../images/icons/user_add.png); background-repeat: no-repeat; background-position: 30px center; background-size:20px 15px;   background-color: #eee; border-right: 0; color: #333; border-top: 1px solid #a6c0de; border-bottom: 1px solid #a6c0de; }
 div#sidebar>.subside li.calendar a{ background-image: url(../images/icons/calendar.png); background-repeat: no-repeat; background-position: 30px center; background-size:20px 15px; }
-
+div#sidebar>.subside li.calendar .current a {background-image: url(../images/icons/user_add.png); background-repeat: no-repeat; background-position: 30px center; background-size:20px 15px;   background-color: #eee; border-right: 0; color: #333; border-top: 1px solid #a6c0de; border-bottom: 1px solid #a6c0de; }
 
 /***MESSAGES / ALERTS***/
 .message { padding: 10px 10px 10px 45px; margin: 0 0 20px 0; -moz-border-radius: 2px; -webkit-border-radius: 2px; border-radius: 2px; position: relative; }

@@ -1,6 +1,10 @@
 #Here place only admin routes!!!
 
 #PROFILE MANAGE
+admin.admin:
+    pattern:    /
+    defaults:   { _controller: McmsDashboardBundle:Dashboard:index, roleTheme: Admin}
+
 admin.profile:
     pattern:    /profile
     defaults:   { _controller: McmsUserBundle:User:profile, roleTheme: Admin }
