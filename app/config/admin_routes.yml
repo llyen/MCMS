@@ -69,7 +69,7 @@ admin.productDelete:
         id:   \d+
 
 #EMPLOYEES
-admin.emploeeyList:
+admin.employeeList:
     pattern: /employees
     defaults: { _controller: McmsEmployeeBundle:Employee:list, roleTheme: Admin }
 
