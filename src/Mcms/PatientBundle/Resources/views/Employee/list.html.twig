@@ -1,8 +1,52 @@
 {# src/Mcms/PatientBundle/Resources/views/Employee/list.html.twig #}
 {% extends '::employeeDashboard.html.twig' %}
 
+{% block javascripts_head %}
+	<script type="text/javascript">
+		$(document).ready(function() {
+    		$('.example').dataTable();
+		} );
+	</script>
+{% endblock %}
+
+{% block title %} Lista pacjentów {% endblock %}
+
 {% block content %}
-    {% for patient in patients %}
-        <p>{{ patient }} <a href="{{ path('employee.patientShow', { patientId: patient.id }) }}">SHOW</a></p>
-    {% endfor %}
+<h1 class="pageTitle">Lista pacjentów</h1>
+	<div class="tableOpt">
+		<h4>Lista pacjentów przychodni</strong></h4>	
+    </div><!--end table Options-->	
+		<table cellpadding="0" cellspacing="0" class="tableHead" width="100%" id="example">
+				<colgroup>
+					<col class="head0" width="35%" />
+					<col class="head1" width="15%" />
+					<col class="head0" width="40%" />
+					<col class="head0" width="10%" />             
+				</colgroup>
+				<tr>
+					<td>Imię i nazwisko</td>
+					<td>Pesel</td>
+					<td>Adres</td>
+					<td>Akcja</td>                
+				</tr>
+		</table>
+	<div class="tableWrapper">
+        <table cellpadding="0" cellspacing="0" class="table" id="example" width="100%">
+                <colgroup>
+                    <col class="con0" width="35%" />
+                    <col class="con1" width="15%" />
+                    <col class="con0" width="40%" />
+                    <col class="con1" width="10%" />                   
+                </colgroup>
+
+			{% for patient in patients %}
+				<tr>
+					<td>{{ patient }}</td>
+					<td>{{ patient.pesel }}</td>
+					<td>{{ patient.address1 }} {{ patient.address2 }}<br />{{ patient.postalCode }} {{ patient.city }}</td>
+					<td><a class="profilelink" href="{{ path('employee.patientShow', { 'patientId': patient.id }) }}">{{ patient.id }}</a></td>
+				</tr>
+			{% endfor %}
+		</table>		
+	</div>
 {% endblock %}
