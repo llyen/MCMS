@@ -40,10 +40,10 @@ patient.listOfEmployees:
     defaults: { _controller: McmsEmployeeBundle:Employee:list, roleTheme: Patient }
 
 patient.showEmployee:
-    pattern: /employee/{id}/show
+    pattern: /employee/{employeeId}/show
     defaults: { _controller: McmsEmployeeBundle:Employee:show, roleTheme: Patient }
     requirements:
-        id: \d+
+        employeeId: \d+
 
 patient.showEmployeeTimetable:
     pattern: /employee/{employeeId}/timetable/{year}/{month}
