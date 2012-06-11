@@ -40,7 +40,7 @@
 				<tr>
 					<td>{{ employee.firstName }} {{ employee.lastName }}</td>
 					<td>{{ employee.position }}</td>
-					<td><a class="profilelink" href="{{ path('patient.showEmployee', { 'id': employee.id }) }}">{{ employee.id }}</a></td>
+					<td><a class="profilelink" href="{{ path('patient.showEmployee', { 'employeeId': employee.id }) }}">{{ employee.id }}</a></td>
 				</tr>
 			{% endfor %}
 		</table>		
