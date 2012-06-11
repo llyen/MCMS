@@ -100,6 +100,19 @@ user_show:
     requirements:
         id: \d+
 
+admin.userEdit:
+    pattern: /user/{userId}/edit
+    defaults: { _controller: McmsUserBundle:User:edit }
+    requirements:
+        userId: \d+
+
+admin.userUpdate:
+    pattern: /user/{userId}/update
+    defaults: { _controller: McmsUserBundle:User:update }
+    requirements:
+        userId: \d+
+        _method: POST
+
 user_password_reset:
     pattern: /user/{id}/password_reset
     defaults: { _controller: McmsUserBundle:Manage:userPasswordReset }
