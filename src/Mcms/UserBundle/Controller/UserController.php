@@ -50,6 +50,63 @@ class UserController extends Controller
     }
 
     /**
+     * Display form to edit User account
+     * 
+     * @param integer $userId User unique id.
+     */
+    public function editAction($userId)
+    {
+        $em = $this->getDoctrine()->getEntityManager();
+
+        $user = $em->getRepository('McmsUserBundle:User')->find($userId);
+
+        if(!$user) {
+            throw $this->createNotFoundException('Unable to find user.');
+        }
+
+        $form = $this->createEditProfileForm($user);
+
+        return $this->render('McmsUserBundle:Admin:edit.html.twig', array(
+            'form' => $form->createView()
+        ));
+    }
+
+    /**
+     * Updates User account details.
+     * 
+     * @param integer $userId User unique id.
+     */
+    public function updateAction($userId)
+    {
+        $em = $this->getDoctrine()->getEntityManager();
+
+        $user = $em->getRepository('McmsUserBundle:User')->find($userId);
+
+        if(!$user) {
+            throw $this->createNotFoundException('Unable to find user.');
+        }
+
+        $request = $this->getRequest();
+
+        $form = $this->createEditProfileForm($user);
+        $form->bindRequest($reqest);
+
+        if($form->isValid())
+        {
+            $em = $this->getDoctrine()->getEntityManager();
+
+            $em->persist($user);
+            $em->flush();
+
+            return $this->redirect($this->generateUrl('user_show', array('id' => $userId)));
+        }
+
+        return $this->render('McmsUserBundle:Admin:edit.html.twig', array(
+            'form' => $form->createView()
+        ));
+    }
+
+    /**
      * Displays user profile
      * 
      * @param String $roleTheme Role theme name.
