@@ -68,6 +68,26 @@ admin.productDelete:
         _method:  POST
         id:   \d+
 
+#EMPLOYEES
+admin.emploeeList:
+    pattern: /employees
+    defaults: { _controller: McmsEmployeeBundle:Employee:list, roleTheme: Admin }
+
+admin.employeeShow:
+    pattern: /employee/{employeeId}/show
+    defaults: { _controller: McmsEmployeeBundle:Employee:show, roleTheme: Admin }
+    requirements:
+        employeeId: \d+
+
+admin.employeeNew:
+    pattern: /employee/new
+    defaults: { _controller: McmsEmployeeBundle:Employee:new }
+
+admin.employeeCreate:
+    pattern: /employee/create
+    defaults: { _controller: McmsEmployeeBundle:Employee:create }
+    requirements:
+        _method: POST
 
 #MANAGE USERS
 users_list:
