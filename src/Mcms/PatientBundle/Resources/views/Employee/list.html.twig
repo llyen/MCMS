@@ -43,7 +43,7 @@
 				<tr>
 					<td>{{ patient }}</td>
 					<td>{{ patient.pesel }}</td>
-					<td>{{ patient.address1 }} {{ patient.address2 }}<br />{{ patient.postalCode }} {{ patient.city }}</td>
+					<td>{{ patient.address1 }}{% if patient.address2 %}/{% endif %}{{ patient.address2 }}<br />{{ patient.postalCode }} {{ patient.city }}</td>
 					<td><a class="profilelink" href="{{ path('employee.patientShow', { 'patientId': patient.id }) }}">{{ patient.id }}</a></td>
 				</tr>
 			{% endfor %}
