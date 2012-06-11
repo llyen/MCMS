@@ -1,0 +1,52 @@
+{# src/Mcms/MedicalHistoryBundle/Resources/views/Employee/list.html.twig #}
+{% extends '::employeeDashboard.html.twig' %}
+
+{% block javascripts_head %}
+	<script type="text/javascript">
+		$(document).ready(function() {
+    		$('.example').dataTable();
+		} );
+	</script>
+{% endblock %}
+
+{% block title %} Karta pacjenta - lista wpisów {% endblock %}
+
+{% block content %}
+<h1 class="pageTitle">Karta pacjenta</h1>
+	<div class="tableOpt">
+		<h4>Lista wpisów w karcie pacjenta <a href="{{ path('employee.medicalHistoryNew', { 'patientId': entries[1].patient.id }) }}"><button class="button button_blue" type="submit" style="float:right">Utwórz wpis w karcie</button></a></h4>	
+    </div><!--end table Options-->	
+		<table cellpadding="0" cellspacing="0" class="tableHead" width="100%" id="example">
+				<colgroup>
+					<col class="head0" width="20%" />
+					<col class="head1" width="20%" />
+					<col class="head0" width="50%" />
+					<col class="head1" width="10%" />              
+				</colgroup>
+				<tr>
+					<td>Data wpisu</td>
+					<td>Lekarz dokonujący wpisu</td>
+					<td>Treść</td>
+					<td>Akcja</td>                
+				</tr>
+		</table>
+	<div class="tableWrapper">
+        <table cellpadding="0" cellspacing="0" class="table" id="example" width="100%">
+                <colgroup>
+                    <col class="con0" width="20%" />
+                    <col class="con1" width="20%" />
+                    <col class="con0" width="50%" />
+                    <col class="con1" width="10%" />                   
+                </colgroup>
+
+			{% for entry in entries %}
+				<tr>
+					<td>{{ entry.createdAt|date('Y.m.d H:i') }}</td>
+					<td>{{ entry.doctor }}</td>
+					<td>{{ entry.content|slice(0, 200) }}...</td>
+					<td><a class="profilelink" href="{{ path('employee.medicalHistoryShow', { 'patientId': entry.patient.id, 'entryId': entry.id }) }}">{{ entry.id }}</a></td>
+				</tr>
+			{% endfor %}
+		</table>		
+	</div>
+{% endblock %}
