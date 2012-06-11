@@ -238,7 +238,7 @@ class TimetableController extends Controller
         $firstOfMonth = date('Y-m-d',strtotime($year.'-'.$month.'-01 00:00:00'));
         $lastOfMonth = date('Y-m-d', strtotime('-1 second',strtotime('+1 month',strtotime($year.'-'.$month.'-01 00:00:00'))));
         
-        $dateRangeIntervalArr = $this->createDateRangeIntervalArray($firstOfMonth, '08:00', $lastOfMonth, '10:00', '+15 minutes');
+        $dateRangeIntervalArr = $this->createDateRangeIntervalArray($firstOfMonth, '08:00', $lastOfMonth, '18:00', '+15 minutes');
 
         foreach ($entries as $entry) {
             $key=$this->array_search($entry->getDate()->format('Y-m-d H:i'), $dateRangeIntervalArr);

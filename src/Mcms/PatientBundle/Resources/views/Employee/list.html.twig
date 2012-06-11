@@ -1,0 +1,8 @@
+{# src/Mcms/PatientBundle/Resources/views/Employee/list.html.twig #}
+{% extends '::employeeDashboard.html.twig' %}
+
+{% block content %}
+    {% for patient in patients %}
+        <p>{{ patient }} <a href="{{ path('employee.patientShow', { patientId: patient.id }) }}">SHOW</a></p>
+    {% endfor %}
+{% endblock %}
