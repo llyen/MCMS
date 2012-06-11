@@ -6,12 +6,11 @@
 {% block content %}
     <h1 class="pageTitle">Dodawanie wpisu w karcie pacjenta</h1>
 	<div class="window1">
-	<h3><span style="height:20px;">Szczegóły nowego wpisu</span></h3>
+        <form class="form_default" action="{{ path('employee.medicalHistoryCreate',{ patientId: patient.Id }) }}" method="post" {{ form_enctype(form) }}>
+	<div class="tableOpt" style="border-bottom: 1px solid #bbb"><h4>Szczegóły nowego wpisu<button class="button button_blue" style="float: right;" type="submit">Utwórz</button></h4></div>
 		<div class="inside">
   		<div>
-    		<form class="form_default" action="{{ path('employee.medicalHistoryCreate',{ patientId: patient.Id }) }}" method="post" {{ form_enctype(form) }}>
-        	<label>Treść</label>{{ form_widget(form.content) }}
-        <button type="submit">Utwórz</button>
+        	{{ form_widget(form.content) }}
     </form>
     	</div>
 		</div>

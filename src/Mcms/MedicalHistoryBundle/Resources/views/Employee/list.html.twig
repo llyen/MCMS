@@ -14,7 +14,7 @@
 {% block content %}
 <h1 class="pageTitle">Karta pacjenta</h1>
 	<div class="tableOpt">
-		<h4>Lista wpisów w karcie pacjenta <a href="{{ path('employee.medicalHistoryNew', { 'patientId': entries[1].patient.id }) }}"><button class="button button_blue" type="submit" style="float:right">Utwórz wpis w karcie</button></a></h4>	
+		<h4>Lista wpisów w karcie pacjenta <strong>{{ patient }}</strong> <a href="{{ path('employee.medicalHistoryNew', { 'patientId': patient.id }) }}"><button class="button button_blue" type="submit" style="float:right">Utwórz wpis w karcie</button></a></h4>	
     </div><!--end table Options-->	
 		<table cellpadding="0" cellspacing="0" class="tableHead" width="100%" id="example">
 				<colgroup>
@@ -44,7 +44,7 @@
 					<td>{{ entry.createdAt|date('Y.m.d H:i') }}</td>
 					<td>{{ entry.doctor }}</td>
 					<td>{{ entry.content|slice(0, 200) }}...</td>
-					<td><a class="profilelink" href="{{ path('employee.medicalHistoryShow', { 'patientId': entry.patient.id, 'entryId': entry.id }) }}">{{ entry.id }}</a></td>
+					<td><a class="profilelink" href="{{ path('employee.medicalHistoryShow', { 'patientId': patient.id, 'entryId': entry.id }) }}">{{ entry.id }}</a></td>
 				</tr>
 			{% endfor %}
 		</table>		

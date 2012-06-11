@@ -35,7 +35,8 @@ class MedicalHistoryController extends Controller
         $entries = $em->getRepository('McmsMedicalHistoryBundle:Entry')->findByPatient($patient);
 
         return $this->render('McmsMedicalHistoryBundle:'.$roleTheme.':list.html.twig', array(
-            'entries' => $entries
+            'entries' => $entries,
+            'patient' => $patient
         ));
     }
 

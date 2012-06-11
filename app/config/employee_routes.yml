@@ -66,8 +66,9 @@ employee.medicalHistoryCreate:
 
 employee.medicalHistoryShow:
     pattern: /patient/{patientId}/medicalHistory/{entryId}/show
-    defaults: { _controller: McmsMedicalHistoryBundle:MedicalHistory:show, roleTheme: Patient, patientId: null }
+    defaults: { _controller: McmsMedicalHistoryBundle:MedicalHistory:show, roleTheme: Employee }
     requirements:
+        patientId: \d+
         entryId: \d+
 
 employee.medicalHistoryEdit:
