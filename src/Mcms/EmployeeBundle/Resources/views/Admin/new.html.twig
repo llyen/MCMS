@@ -1,0 +1,21 @@
+{# src/Mcms/EmployeeBundle/Resources/views/Admin/new.html.twig #}
+{% extends '::adminDashboard.html.twig' %}
+{% form_theme form '::formErrors.html.twig' %}
+
+{% block title %}Dodawanie pracownika{% endblock %}
+
+{% block content %}
+	{{ form_errors(form) }}
+	<h1 class="pageTitle">Dodawanie pracownika</h1>
+	<div class="window1">
+	<form class="form_default" action="{{ path('admin.employeeCreate') }}" method="post" {{ form_enctype(form) }}>
+    <div class="tableOpt" style="border-bottom: 1px solid #bbb"><h4>Szczegóły<button class="button button_blue" style="float: right;" type="submit">Utwórz</button></h4></div>
+    <div class="inside">
+    	<label>Imię:</label> {{ form_widget(form.user.firstName) }}<br />
+        <label>Nazwisko:</label> {{ form_widget(form.user.lastName) }}<br />
+        <label>Specjalność:</label> {{ form_widget(form.employee.position) }}
+    	{{ form_rest(form) }}
+    </form>
+</div>
+</div>
+{% endblock %}

@@ -1,0 +1,18 @@
+{# src/Mcms/EmployeeBundle/Resources/views/Admin/show.html.twig #}
+{% extends '::adminDashboard.html.twig' %}
+
+{% block title %} {{ employee }} - dane pracownika{% endblock %}
+
+{% block content %}
+    <h1 class="pageTitle">Dane pracownika</h1>
+    <div class="window1">
+    <h3><span style="height:20px;"></span></h3>
+        <div class="inside">
+        <div class="one_half">
+            <b>Imię:</b> {{ employee.firstname }} <br />
+            <b>Nazwisko:</b> {{ employee.lastname }} <br />
+            <b>Specjalność:</b> {{ employee.position }} <br />
+        </div>
+        </div>
+    </div>  
+{% endblock %}

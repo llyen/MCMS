@@ -1,0 +1,48 @@
+{# src/Mcms/EmployeeBundle/Resources/views/Admin/list.html.twig #}
+{% extends '::adminDashboard.html.twig' %}
+
+{% block javascripts_head %}
+	<script type="text/javascript">
+		$(document).ready(function() {
+    		$('.example').dataTable();
+		} );
+	</script>
+{% endblock %}
+
+{% block title %} Lista lekarzy {% endblock %}
+
+{% block content %}
+<h1 class="pageTitle">Lista lekarzy</h1>
+	<div class="tableOpt">
+		<h4>Lista lekarzy przyjmujących w placówce</strong><a href="{{ path('admin.employeeNew') }}"><button class="button button_blue" type="submit" style="float:right">Utwórz</button></a></h4>	
+    </div><!--end table Options-->	
+		<table cellpadding="0" cellspacing="0" class="tableHead" width="100%" id="example">
+				<colgroup>
+					<col class="head0" width="45%" />
+					<col class="head1" width="45%" />
+					<col class="head0" width="10%" />             
+				</colgroup>
+				<tr>
+					<td>Imię i nazwisko</td>
+					<td>Specjalność</td>
+					<td>Akcja</td>                
+				</tr>
+		</table>
+	<div class="tableWrapper">
+        <table cellpadding="0" cellspacing="0" class="table" id="example" width="100%">
+                <colgroup>
+                    <col class="con0" width="45%" />
+                    <col class="con1" width="45%" />
+                    <col class="con0" width="10%" />                   
+                </colgroup>
+
+			{% for employee in employees %}
+				<tr>
+					<td>{{ employee.firstName }} {{ employee.lastName }}</td>
+					<td>{{ employee.position }}</td>
+					<td><a class="profilelink" href="{{ path('admin.employeeShow', { 'employeeId': employee.id }) }}">{{ employee.id }}</a></td>
+				</tr>
+			{% endfor %}
+		</table>		
+	</div>
+{% endblock %}
