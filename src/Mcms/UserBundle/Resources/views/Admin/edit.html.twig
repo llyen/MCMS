@@ -1,0 +1,21 @@
+{# src/Mcms/UserBundle/Resources/views/Admin/edit.html.twig #}
+{% extends '::adminDashboard.html.twig' %}
+{% form_theme form '::formErrors.html.twig' %}
+
+{% block title %}Edycja danych pracownika{% endblock %}
+
+{% block content %}
+	{{ form_errors(form) }}
+	<h1 class="pageTitle">Edycja danych pracownika</h1>
+	<div class="window1">
+	<form class="form_default" action="" method="post" {{ form_enctype(form) }}>
+    <div class="tableOpt" style="border-bottom: 1px solid #bbb"><h4>Szczegóły<button class="button button_blue" style="float: right;" type="submit">Edytuj</button></h4></div>
+    <div class="inside">
+    	<label>Imię:</label> {{ form_widget(form.user.firstName) }}<br />
+        <label>Nazwisko:</label> {{ form_widget(form.user.lastName) }}<br />
+        <label>Specjalność:</label> {{ form_widget(form.employee.position) }}
+    	{{ form_rest(form) }}
+    </form>
+</div>
+</div>
+{% endblock %}
