@@ -1,6 +1,8 @@
 {# src/Mcms/DashboardBundle/Resources/views/Admin/index.html.twig #}
 {% extends '::adminDashboard.html.twig' %}
 
+{% block sidebar %} {% include 'McmsUserBundle::sidebar.html.twig' %} {% endblock %}
+
 {% block content %}
     Admin dashboard content
 {% endblock %}
