@@ -65,9 +65,13 @@
         function markHours(arr){
             $('#hour_table table tbody tr').each(function(index) {
                 if($.inArray($(this).attr('id'), arr)!=-1) {
-                    $(this).children(".cont").html('WOLNE');
+                    $(this).children(".cont").html('WOLNY TERMIN');
+					$('.cont').css({"background":"#aff9af","font-weight":"bold","border-bottom":"1px dotted white"});
+					
                 }else{
-                    $(this).children(".cont").html('ZAJETE');
+                    $(this).children(".cont").html('ZAJETY TERMIN');
+					$('.cont').css({"background":"#ff5555","color":"white", "font-weight":"bold","border-bottom":"1px dotted white"});					
+					
                 }
             });
         }

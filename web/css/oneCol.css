@@ -10,7 +10,7 @@ div#content > .error p { width: 630px; background: #eee; text-align: center; pad
 div#footer { background: none; position: relative; }
 
 /* log in */
-div#login-logo { float: left; margin: 60px 0 0 0; }
+div#login-logo { float: left; margin: 20px 0 0 0; }
 
 div#login-form { width:300px; float:right; margin:70px 30px 0 0; }
 div#login-form button[type=submit] { background: #4b6592 url("../images/buttonbg3.png") repeat-x top left; color: #fff; padding: 7px 20px; cursor: pointer; -moz-border-radius: 3px; -webkit-border-radius: 3px; border-radius: 3px; border: 1px solid #395380; font-size: 12px; text-transform: uppercase; text-shadow: 1px 1px #395380; font-family: Arial; -moz-box-shadow: 1px 1px 2px #999; -webkit-box-shadow: 1px 1px 2px #999; box-shadow: 1px 1px 2px #999; margin: 15px 150px; }
