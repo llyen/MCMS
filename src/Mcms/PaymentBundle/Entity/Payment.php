@@ -40,11 +40,7 @@ class Payment
     /**
      * @var ArrayColection $products
      * 
-     * @ORM\ManyToMany(targetEntity="Mcms\ProductBundle\Entity\Product")
-     * @ORM\JoinTable(name="payments_products",
-     *      joinColumns={@ORM\JoinColumn(name="payment_id", referencedColumnName="id")},
-     *      inverseJoinColumns={@ORM\JoinColumn(name="product_id", referencedColumnName="id")}
-     * )
+     * @ORM\ManyToMany(targetEntity="PaymentProduct", mappedBy="order", cascade={"persist"})
      */
     private $products;
 
@@ -106,5 +102,28 @@ class Payment
     public function getProducts()
     {
         return $this->products;
+    }
+
+    public function setProducts($products)
+    {
+        foreach ($products as $product) {
+            $product->setPayment($this);
+        }
+
+        $this->products = $products;
+    }
+    public function __construct()
+    {
+        $this->products = new ArrayCollection();
+    }
+    
+    /**
+     * Add products
+     *
+     * @param Mcms\PaymentBundle\Entity\PaymentProduct $products
+     */
+    public function addPaymentProduct(\Mcms\PaymentBundle\Entity\PaymentProduct $products)
+    {
+        $this->products[] = $products;
     }
 }

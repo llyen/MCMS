@@ -85,3 +85,14 @@ employee.medicalHistoryUpdate:
         patientId: \d+
         entryId: \d+
         _method:    POST
+
+#PAYMENTS
+employee.paymentNew:
+    pattern: /payment/new
+    defaults: { _controller: McmsPaymentBundle:Payment:new }
+
+employee.paymentCreate:
+    pattern: /payment/create
+    defaults: { _controller: McmsPaymentBundle:Payment:create }
+    requirements:
+        _method:    POST
