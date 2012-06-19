@@ -6,14 +6,65 @@
 {% block content %}
     <h1 class="pageTitle">Dodawanie wpisu w karcie pacjenta</h1>
 	<div class="window1">
-        <form class="form_default" action="{{ path('employee.medicalHistoryCreate',{ patientId: patient.Id }) }}" method="post" {{ form_enctype(form) }}>
+        <form class="form_default" action="{{ path('employee.medicalHistoryCreate',{ patientId: patient.Id }) }}" method="post" {{ form_enctype(entryForm) }}>
 	<div class="tableOpt" style="border-bottom: 1px solid #bbb"><h4>Szczegóły nowego wpisu<button class="button button_blue" style="float: right;" type="submit">Utwórz</button></h4></div>
 		<div class="inside">
   		<div>
-        	{{ form_widget(form.content) }}
-            {{ form_rest(form) }}
+        	{{ form_widget(entryForm.content) }}
+            {{ form_rest(entryForm) }}
+            </br>
+            <h2>PLATNOSCI<h2><hr>
+            <ul class="products" data-prototype="{{ form_widget(paymentForm.products.get('prototype')) | e }}">
+                {% for product in paymentForm.products %}
+                    <li>{{ form_widget(product) }}</li>
+                {% endfor %}                
+            {{ form_row(paymentForm._token) }}
+            </ul>
     </form>
     	</div>
 		</div>
 	</div>	
+{% endblock %}
+
+{% block javascripts_body %}
+    {{ parent() }}
+<script type="text/javascript">
+    var collectionHolder = $('ul.products');
+
+    var $addProductLink = $('<a href="#" class="add_product_link">Add a product</a>');
+    var $newLinkLi = $('<p></p>').append($addProductLink);
+
+    jQuery(document).ready(function() {
+        collectionHolder.append($newLinkLi);
+
+        $addProductLink.on('click', function(e) {
+            e.preventDefault();
+            addProductForm(collectionHolder, $newLinkLi);
+        });
+
+        collectionHolder.find('li').each(function() {
+            addTagFormDeleteLink($(this));
+        });
+    });
+
+    function addProductForm(collectionHolder, $newLinkLi) {
+        var prototype = collectionHolder.attr('data-prototype');
+        console.log(prototype);
+        var newForm = prototype.replace(/\$\$name\$\$/g, collectionHolder.children().length);
+        var $newFormLi = $('<p></p>').append(newForm);
+        addTagFormDeleteLink($newFormLi);
+        $newLinkLi.before($newFormLi);
+    }
+
+    function addTagFormDeleteLink($productFormLi) {
+        var $removeFormA = $('<a href="#">delete this product</a>');
+        $productFormLi.append($removeFormA);
+
+        $removeFormA.on('click', function(e) {
+            e.preventDefault();
+
+            $productFormLi.remove();
+    });
+}
+</script>
 {% endblock %}
