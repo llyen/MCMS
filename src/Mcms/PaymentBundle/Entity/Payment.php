@@ -31,6 +31,13 @@ class Payment
     private $patient;
 
     /**
+     * @var integer $entry
+     * 
+     * @ORM\OneToOne(targetEntity="Mcms\MedicalHistoryBundle\Entity\Entry", inversedBy="payment")
+     */
+    private $entry;
+
+    /**
      * @var boolean $isPaid
      * 
      * @ORM\Column(name="isPaid", type="boolean")
@@ -40,7 +47,7 @@ class Payment
     /**
      * @var ArrayColection $products
      * 
-     * @ORM\ManyToMany(targetEntity="PaymentProduct", mappedBy="order", cascade={"persist"})
+     * @ORM\OneToMany(targetEntity="PaymentProduct", mappedBy="payment", cascade={"persist"})
      */
     private $products;
 
@@ -125,5 +132,25 @@ class Payment
     public function addPaymentProduct(\Mcms\PaymentBundle\Entity\PaymentProduct $products)
     {
         $this->products[] = $products;
+    }
+
+    /**
+     * Set entry
+     *
+     * @param Mcms\MedicalHistoryBundle\Entity\Entry $entry
+     */
+    public function setEntry(\Mcms\MedicalHistoryBundle\Entity\Entry $entry)
+    {
+        $this->entry = $entry;
+    }
+
+    /**
+     * Get entry
+     *
+     * @return Mcms\MedicalHistoryBundle\Entity\Entry 
+     */
+    public function getEntry()
+    {
+        return $this->entry;
     }
 }

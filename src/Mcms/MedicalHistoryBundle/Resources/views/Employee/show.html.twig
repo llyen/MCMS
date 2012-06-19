@@ -12,5 +12,6 @@
     		{{ entry.content }}
     	</div>
 		</div>
+		<a href="{{ path('employee.paymentShow', { patientId: entry.patient.id, paymentId: entry.payment.id }) }}">PLATNOSC</a>
 	</div>	
 {% endblock %}
