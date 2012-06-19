@@ -143,6 +143,8 @@ class MedicalHistoryController extends Controller
             $em->persist($entry);
             $em->flush();
 
+            $payment->setEntry($entry);
+
             if(sizeof($paymentForm->getData()->getProducts()->toArray())!=0)
                 return $this->forward('McmsPaymentBundle:Payment:create',array('payment'=>$payment, 'patient'=>$patient));
             else

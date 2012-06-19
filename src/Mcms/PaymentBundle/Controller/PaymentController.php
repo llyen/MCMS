@@ -51,4 +51,18 @@ class PaymentController extends Controller
             
         }
 	}
+
+	public function showAction($paymentId)
+	{
+		$em = $this->getDoctrine()->getEntityManager();
+
+		$payment = $em->getRepository('McmsPaymentBundle:Payment')->find($paymentId);
+		if(!$payment) {
+            throw $this->createNotFoundException('Unable to find payment.');
+        }
+
+        return $this->render('McmsPaymentBundle:Employee:show.html.twig', array(
+            'payment' => $payment
+        ));
+	}
 }
