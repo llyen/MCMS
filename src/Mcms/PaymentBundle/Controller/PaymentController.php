@@ -6,7 +6,6 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 use Mcms\PaymentBundle\Entity\Payment;
 use Mcms\PaymentBundle\Form\Type\PaymentType;
-
 /**
  * Payment controller
  */
@@ -36,9 +35,9 @@ class PaymentController extends Controller
 		));
 	}
 
-	public function createAction()
+	public function createAction($payment, $patient)
 	{
-		$payment = new Payment();
+		$patient=$patient;
 		$request = $this->getRequest();
         $form = $this->createForm(new PaymentType(), $payment);
         $form->bindRequest($request);
@@ -48,12 +47,8 @@ class PaymentController extends Controller
             $em->persist($payment);
             $em->flush();
 
-            return $this->redirect($this->generateUrl('employee.paymentNew'));
+            return $this->redirect($this->generateUrl('employee.medicalHistory', array('patientId' => $patient->getId())));
             
         }
-
-        return $this->render('McmsPaymentBundle:Employee:new.html.twig', array(
-			'form' => $form->createView()
-		));
 	}
 }

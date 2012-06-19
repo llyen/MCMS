@@ -10,7 +10,6 @@ class PaymentType extends AbstractType
     public function buildForm(FormBuilder $builder, array $options)
     {
         $builder
-            ->add('isPaid')
             ->add('products', 'collection', array(
                 'type' => new PaymentProductType(),
                 'allow_add' => true,
