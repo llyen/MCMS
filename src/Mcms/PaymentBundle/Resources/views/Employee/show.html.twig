@@ -1,0 +1,12 @@
+{% extends '::employeeDashboard.html.twig' %}
+
+{% block content %}
+    <p>ID Platnosci: {{ payment.id }}</p>
+    <p>Produkty:
+    	<ul>
+	    		{% for paymentItem in payment.products %}
+	    		    <li>{{ paymentItem.product.name ~'	ILOSC:'~paymentItem.count }}</li>
+	    		{% endfor %}
+    	</ul>
+    </p>
+{% endblock %}
