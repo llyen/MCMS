@@ -39,6 +39,13 @@ class Entry
     private $doctor;
 
     /**
+     * @var integer $payment
+     * 
+     * @ORM\OneToOne(targetEntity="Mcms\PaymentBundle\Entity\Payment", mappedBy="entry")
+     */
+    private $payment;
+
+    /**
      * @var datetime $createdAt
      * 
      * @ORM\Column(name="createdAt", type="datetime")
@@ -170,5 +177,25 @@ class Entry
     public function setContent($value)
     {
         $this->content = $value;
+    }
+
+    /**
+     * Set payment
+     *
+     * @param Mcms\PaymentBundle\Entity\Payment $payment
+     */
+    public function setPayment(\Mcms\PaymentBundle\Entity\Payment $payment)
+    {
+        $this->payment = $payment;
+    }
+
+    /**
+     * Get payment
+     *
+     * @return Mcms\PaymentBundle\Entity\payment 
+     */
+    public function getPayment()
+    {
+        return $this->payment;
     }
 }
