@@ -93,6 +93,14 @@ class PaymentProduct
     }
 
     /**
+     * Remove payment
+     */
+    public function removePayment()
+    {
+        $this->payment = null;
+    }
+
+    /**
      * Set product
      *
      * @param Mcms\ProductBundle\Entity\Product $product

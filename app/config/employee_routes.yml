@@ -93,3 +93,18 @@ employee.paymentShow:
     requirements:
         patientId: \d+
         paymentId: \d+
+
+employee.paymentEdit:
+    pattern: /patient/{patientId}/payments/{paymentId}/edit
+    defaults: { _controller: McmsPaymentBundle:Payment:edit }
+    requirements:
+        patientId: \d+
+        paymentId: \d+
+
+employee.paymentUpdate:
+    pattern: /patient/{patientId}/payments/{paymentId}/update
+    defaults: { _controller: McmsPaymentBundle:Payment:update }
+    requirements:
+        patientId: \d+
+        paymentId: \d+
+        _method: POST
