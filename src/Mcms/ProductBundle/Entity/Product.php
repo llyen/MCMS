@@ -32,11 +32,16 @@ class Product
     /**
      * @var float $price
      * 
-     * @ORM\Column(name="price", type="decimal", scale=2)
+     * @ORM\Column(name="price", type="float")
      * @Assert\Type(type="float", message="Wartość {{ value }} powinna być typu {{ type }}.")
      * @Assert\Min(limit="0", message="Wartość w polu cena nie może być ujemna")
      */
     private $price;
+
+    /**
+     * @ORM\OneToMany(targetEntity="Mcms\PaymentBundle\Entity\PaymentProduct", mappedBy="product")
+     */
+    private $payments;
 
     /**
      * Get id
@@ -86,5 +91,10 @@ class Product
     public function setName($value)
     {
         $this->name = $value;
+    }
+
+    public function __toString()
+    {
+        return $this->name;
     }
 }

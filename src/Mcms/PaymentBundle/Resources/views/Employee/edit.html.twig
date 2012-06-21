@@ -1,29 +1,24 @@
-{# src/Mcms/MedicalHistoryBundle/Resources/views/Employee/new.html.twig #}
 {% extends '::employeeDashboard.html.twig' %}
 
-{% block title %} Karta pacjenta - dodawanie wpisu {% endblock %}
-
 {% block content %}
-    <h1 class="pageTitle">Dodawanie wpisu w karcie pacjenta</h1>
+	{{ form_errors(form) }}
+	<h1 class="pageTitle">Edytuj platnosc</h1>
 	<div class="window1">
-        <form class="form_default" action="{{ path('employee.medicalHistoryCreate',{ patientId: patient.Id }) }}" method="post" {{ form_enctype(entryForm) }}>
-	<div class="tableOpt" style="border-bottom: 1px solid #bbb"><h4>Szczegóły nowego wpisu<button class="button button_blue" style="float: right;" type="submit">Utwórz</button></h4></div>
-		<div class="inside">
-  		<div>
-        	{{ form_widget(entryForm.content) }}
-            {{ form_rest(entryForm) }}
-            </br>
-            <h2>PLATNOSCI<h2><hr>
-            <ul class="products" data-prototype="{{ form_widget(paymentForm.products.get('prototype')) | e }}">
-                {% for product in paymentForm.products %}
-                    <li>{{ form_widget(product) }}</li>
-                {% endfor %}                
-            {{ form_row(paymentForm._token) }}
-            </ul>
-    </form>
+	    <h3><span></span></h3>
+	    <div class="inside">
+			<form action="{{ path('employee.paymentUpdate', { 'paymentId': payment.id, 'patientId': payment.patient.id }) }}" method="post" class="form_default" {{ form_enctype(form) }}>
+				{{ form_row(form._token) }} 
+				<ul class="products" data-prototype="{{ form_widget(form.products.get('prototype')) | e }}">
+					{% for product in form.products %}
+                    	<li>{{ form_widget(product) }}</li>
+                	{% endfor %}
+				</ul>
+				<p>
+					<button type="submit">Utwórz</button>
+				</p>
+    		</form>
     	</div>
-		</div>
-	</div>	
+    </div>
 {% endblock %}
 
 {% block javascripts_body %}

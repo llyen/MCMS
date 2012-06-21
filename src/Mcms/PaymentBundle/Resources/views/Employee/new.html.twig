@@ -1,0 +1,49 @@
+{% extends '::employeeDashboard.html.twig' %}
+
+{% block content %}
+	{{ form_errors(form) }}
+	<h1 class="pageTitle">Utwórz nową platność</h1>
+	<div class="window1">
+	    <h3><span></span></h3>
+	    <div class="inside">
+			<form action="{{ path('employee.paymentCreate') }}" method="post" class="form_default" {{ form_enctype(form) }}>
+				{{ form_row(form._token) }} 
+    			<p>
+					<label>Zaplacone:</label>  {{ form_widget(form.isPaid) }}</br></br>
+					
+				</p>
+				<ul class="products" data-prototype="{{ form_widget(form.products.get('prototype')) | e }}"></ul>
+				<p>
+					<button type="submit">Utwórz</button>
+				</p>
+    		</form>
+    	</div>
+    </div>
+{% endblock %}
+
+{% block javascripts_body %}
+	{{ parent() }}
+<script type="text/javascript">
+	var collectionHolder = $('ul.products');
+
+	var $addProductLink = $('<a href="#" class="add_product_link">Add a product</a>');
+	var $newLinkLi = $('<p></p>').append($addProductLink);
+
+	jQuery(document).ready(function() {
+		collectionHolder.append($newLinkLi);
+
+		$addProductLink.on('click', function(e) {
+			e.preventDefault();
+			addProductForm(collectionHolder, $newLinkLi);
+		});
+	});
+
+	function addProductForm(collectionHolder, $newLinkLi) {
+	    var prototype = collectionHolder.attr('data-prototype');
+	    console.log(prototype);
+	    var newForm = prototype.replace(/\$\$name\$\$/g, collectionHolder.children().length);
+	    var $newFormLi = $('<p></p>').append(newForm);
+    	$newLinkLi.before($newFormLi);
+    }
+</script>
+{% endblock %}	
