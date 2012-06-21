@@ -12,6 +12,8 @@
     		{{ entry.content }}
     	</div>
 		</div>
+		{% if entry.payment %}
 		<a href="{{ path('employee.paymentShow', { patientId: entry.patient.id, paymentId: entry.payment.id }) }}">PLATNOSC</a>
+		{% endif %}
 	</div>	
 {% endblock %}
