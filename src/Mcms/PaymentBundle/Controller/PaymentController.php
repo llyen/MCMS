@@ -111,6 +111,7 @@ class PaymentController extends Controller
 	 */
 	public function updateAction($paymentId, $patientId)
 	{
+		$originalProducts = array();
 		$em = $this->getDoctrine()->getEntityManager();
 
 		$payment = $em->getRepository('McmsPaymentBundle:Payment')->find($paymentId);
@@ -127,6 +128,8 @@ class PaymentController extends Controller
 		$form = $this->createForm(new PaymentType(), $payment);
 		$form->bindRequest($request);
 
+
+
 		if($form->isValid()) {
 
 			foreach ($payment->getProducts() as $product) {
@@ -138,19 +141,21 @@ class PaymentController extends Controller
             }
 
             foreach ($originalProducts as $product) {
-                 $em->remove($product);
+                $em->remove($product);
             }
 
+            //echo count($payment->getProducts()).'<br>';exit();
 
-			$em->persist($payment);
+            if(count($payment->getProducts())==0)
+            	$em->remove($payment);
+            else
+            	$em->persist($payment);
+
             $em->flush();
 
-            return $this->redirect($this->generateUrl('employee.paymentShow', array('patientId' => $patientId, 'paymentId' => $paymentId)));
+            return $this->redirect($this->generateUrl('employee.medicalHistory', array('patientId' => $patientId)));
 		}
 
-		return $this->render('McmsPaymentBundle:Employee:edit.html.twig', array(
-            'form' => $form->createView(),
-            'payment' => $payment
-        ));
+		return $this->redirect($this->generateUrl('employee.medicalHistoryEdit', array('patientId' => $patientId, 'entryId' => $payment->getEntry())));
 	}
 }
