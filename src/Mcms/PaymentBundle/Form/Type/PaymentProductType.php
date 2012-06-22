@@ -10,8 +10,10 @@ class PaymentProductType extends AbstractType
     public function buildForm(FormBuilder $builder, array $options)
     {
         $builder
-            ->add('count')
+            ->add('count','integer',array(
+                'label' => 'Ilość'))
             ->add('product','entity', array(
+                'label' => 'Produkt',
                 'class' => 'McmsProductBundle:Product'
             ))
         ;
