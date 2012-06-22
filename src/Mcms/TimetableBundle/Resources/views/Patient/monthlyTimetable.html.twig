@@ -6,6 +6,12 @@
 {% endblock %}
 
 {% block content %}
+    {% if app.session.hasFlash('notice') %}
+        <div class="flash-notice">
+            {{ app.session.flash('notice') }}
+        </div>
+    {% endif %}
+    
     <div id="calendar"></div>
 	<div id="hour_table">
 	<table>
@@ -40,6 +46,7 @@
         }
 
         $('#calendar').datepicker({
+            setDate: new Date(2008,9,03),
             inline: true,
             firstDay: 0,
             showOtherMonths: false,
