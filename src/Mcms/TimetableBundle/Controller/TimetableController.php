@@ -10,6 +10,35 @@ use Mcms\TimetableBundle\Entity\Entry;
 
 class TimetableController extends Controller
 {
+
+    /**
+     * Finds and displays list of all entries
+     */
+    public function listAction($roleTheme)
+    {
+        $user = $this->get('security.context')->getToken()->getUser();
+
+        if($roleTheme==='Patient') {
+            $patient = $user->getPatient();
+            $employee = null;
+        } else {
+            $patient = null;
+            $employee = $user->getEmployee();
+        }
+
+        $em = $this->getDoctrine()->getEntityManager();
+
+        $entriesList = $em->getRepository('McmsTimetableBundle:Entry')->listAll($employee, $patient);
+        $paginator = $this->get('knp_paginator');
+        $request = $this->getRequest();
+
+        $entries = $paginator->paginate($entriesList, $request->get('page'), 10);
+
+        return $this->render('McmsTimetableBundle:'.$roleTheme.':list.html.twig',array(
+            'entries' => $entries
+        ));
+
+    }
     /**
      * Finds and renders monthly timetable for curent logged in user
      * 

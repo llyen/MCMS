@@ -108,3 +108,10 @@ employee.paymentUpdate:
         patientId: \d+
         paymentId: \d+
         _method: POST
+
+#TIMETABLE
+employee.timetableList:
+    pattern: /timetable/{page}
+    defaults: { _controller: McmsTimetableBundle:Timetable:list, roleTheme: Employee, page: 1 }
+    requirements:
+        page: \d+

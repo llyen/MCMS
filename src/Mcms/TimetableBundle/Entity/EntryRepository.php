@@ -105,4 +105,26 @@ class EntryRepository extends EntityRepository
 
         return $qb->getQuery()->getResult();
     }
+
+    /**
+     * Finds and returns all entries based on user; With descendand date order
+     */
+    public function listAll($employee, $patient)
+    {
+        $qb = $this->createQueryBuilder('e')->select('e');
+
+        if($patient) {
+            $qb->andWhere('e.patient = :patient');
+            $qb->setParameter('patient', $patient->getId());
+        }
+
+        if($employee) {
+            $qb->andWhere('e.employee = :employee');
+            $qb->setParameter('employee',$employee->getId());
+        }
+
+        $qb->orderBy('e.date', 'desc');
+
+        return $qb->getQuery()->getResult();
+    }
 }
