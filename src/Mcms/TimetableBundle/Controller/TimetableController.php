@@ -142,8 +142,19 @@ class TimetableController extends Controller
             }
         }
 
+        $entries = $em->getRepository('McmsTimetableBundle:Entry')->findByMonth($year, $month, $employee, $patient);
+        $unassignedDates = $this->removeTakenDates($entries, $month, $year);
+        if(!in_array("$hours:$minutes", $unassignedDates["$year-$month-$day"])){
+             $this->get('session')->setFlash('notice', 'Date already taken');
 
-
+            return $this->redirect($this->generateUrl('patient.showEmployeeTimetable', array(
+                'employeeId' => $employeeId,
+                'year' => $year,
+                'month' => $month
+                )
+            ));
+        }
+            
         $entry = new Entry();
 
         $form = $this->createForm(new EntryType(), $entry);
@@ -187,6 +198,20 @@ class TimetableController extends Controller
             if(!$patient) {
                 throw $this->createNotFoundException('Unable to find patient.');
             }
+        }
+
+
+        $entries = $em->getRepository('McmsTimetableBundle:Entry')->findByMonth($year, $month, $employee, $patient);
+        $unassignedDates = $this->removeTakenDates($entries, $month, $year);
+        if(!in_array("$hours:$minutes", $unassignedDates["$year-$month-$day"])) {
+            $this->get('session')->setFlash('notice', 'Date already taken');
+
+            return $this->redirect($this->generateUrl('patient.showEmployeeTimetable', array(
+                'employeeId' => $employeeId,
+                'year' => $year,
+                'month' => $month
+                )
+            ));
         }
 
         $entry = new Entry();
