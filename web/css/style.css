@@ -34,6 +34,10 @@ blockquote, q { quotes: "" ""; }
 /***GENERAL***/
 body { background: #eee url("../images/leftbg.png") repeat-y top left; line-height: 21px; font-family: Arial; font-size: 12px; }
 input, select, textarea, button { border: 1px solid #ccc; padding: 5px; outline: none; font-family: Arial; font-size: 12px; }
+input#payment_products_2_count{ font-size: 12px; padding: 8px 5px; border: 1px solid #ccc; background: #fcfcfc; outline: none; }
+input#payment_products_2_count{ -moz-box-shadow: inset 1px 1px 3px #ccc; -webkit-box-shadow: inset 1px 1px 3px #ccc; box-shadow: inset 1px 1px 3px #ccc; }
+input#payment_products_2_count{ -moz-border-radius: 3px; -webkit-border-radius: 3px; border-radius: 3px; margin-right: 10px; }
+input#payment_products_2_count{ width: 20%; height: 12px; margin:0 0 20px 0; }
 
 input[type=text] { font-size: 12px; padding: 8px 80px 8px 5px; border: 1px solid #ccc; background: #fcfcfc; outline: none; }
 input[type=text] { -moz-box-shadow: inset 1px 1px 3px #ccc; -webkit-box-shadow: inset 1px 1px 3px #ccc; box-shadow: inset 1px 1px 3px #ccc; }
@@ -42,7 +46,7 @@ input[type=text]:focus, textarea:focus { background: #fff; }
 
 label { width: 150px; float: left; text-align: right; padding-top: 5px; margin:5px 10px; }
 a { text-decoration: none; outline: none; color: #069; }
-a:hover { text-decoration: underline; }
+a:hover { text-decoration: none; }
 button { margin: 0; outline: 0; }
 small { font-size: 11px; line-height: 12px; }
 
@@ -203,7 +207,7 @@ input[type=radio], input[type=checkbox] { margin: 0; padding: 0; vertical-align:
 
 .form_default select { font-size: 12px; padding: 5px; border: 1px solid #ccc; background: #fcfcfc; outline: none; }
 .form_default select { -moz-box-shadow: inset 1px 1px 3px #ccc; -webkit-box-shadow: inset 1px 1px 3px #ccc; box-shadow: inset 1px 1px 3px #ccc; }
-.form_default select { -moz-border-radius: 3px; -webkit-border-radius: 3px; border-radius: 3px; margin-right: 10px; }
+.form_default select { width:21%;-moz-border-radius: 3px; -webkit-border-radius: 3px; border-radius: 3px; margin-right: 10px; }
 
 .form_default button { background: #4b6592 url(../images/buttonbg3.png) repeat-x top left; color: #fff; padding: 7px 20px; cursor: pointer; }
 .form_default button { -moz-border-radius: 3px; -webkit-border-radius: 3px; border-radius: 3px; border: 1px solid #395380; font-size: 12px; }
@@ -211,6 +215,13 @@ input[type=radio], input[type=checkbox] { margin: 0; padding: 0; vertical-align:
 .form_default button { -moz-box-shadow: 1px 1px 2px #999; -webkit-box-shadow: 1px 1px 2px #999; box-shadow: 1px 1px 2px #999; }
 .form_default button:hover { background: #005681 url(../images/buttonbg3.png) repeat-x 0 -36px; }
 .form_default button:active { -moz-box-shadow: inset 2px 2px 2px #12274c; -webkit-box-shadow: inset 2px 2px 2px #12274c; box-shadow: inset 2px 2px 2px #12274c; }
+
+.form_default button.red { background: red url(../images/button_red.png) repeat-x top left; color: #fff; padding: 7px 20px; cursor: pointer; }
+.form_default button.red { -moz-border-radius: 3px; -webkit-border-radius: 3px; border-radius: 3px; border: 1px solid red; font-size: 12px; }
+.form_default button.red { text-transform: uppercase; text-shadow: 1px 1px #395380; margin-left: 152px; font-family:Arial;}
+.form_default button.red { -moz-box-shadow: 1px 1px 2px #999; -webkit-box-shadow: 1px 1px 2px #999; box-shadow: 1px 1px 2px #999; }
+.form_default button.red:hover { background: #005681 url(../images/button_red.png) repeat-x 0 -40px; }
+.form_default button.red:active { -moz-box-shadow: inset 2px 2px 2px #12274c; -webkit-box-shadow: inset 2px 2px 2px #12274c; box-shadow: inset 2px 2px 2px #12274c; }
 
 .inside input[type=submit] { background: #4b6592 url(../images/buttonbg3.png) repeat-x top left; color: #fff; padding: 7px 20px; cursor: pointer; }
 .inside  input[type=submit] { -moz-border-radius: 3px; -webkit-border-radius: 3px; border-radius: 3px; border: 1px solid #395380; font-size: 12px; }
@@ -235,6 +246,9 @@ button.button_blue  { text-transform: uppercase; text-shadow: 1px 1px #395380; m
 button.button_blue  { -moz-box-shadow: 1px 1px 2px #999; -webkit-box-shadow: 1px 1px 2px #999; box-shadow: 1px 1px 2px #999; }
 button.button_blue:hover { background: #005681 url(../images/buttonbg3.png) repeat-x 0 -36px; }
 button.button_blue:active { -moz-box-shadow: inset 2px 2px 2px #12274c; -webkit-box-shadow: inset 2px 2px 2px #12274c; box-shadow: inset 2px 2px 2px #12274c; }
+
+.button_red { border: 1px solid #b22407; background: #333 url(../images/button_red.png) repeat-x top left; text-shadow: 1px 1px #b22407; color: #fff; }
+.button_red:active { -moz-box-shadow: inset 2px 2px 2px #b22407; -webkit-box-shadow: inset 2px 2px 2px #b22407; box-shadow: inset 2px 2px 2px #b22407; }
 
 /***COLUMNS***/
 .one_half{ width:48%; }
