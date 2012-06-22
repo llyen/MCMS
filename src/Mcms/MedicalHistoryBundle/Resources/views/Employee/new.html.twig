@@ -31,7 +31,7 @@
 <script type="text/javascript">
     var collectionHolder = $('ul.products');
 
-    var $addProductLink = $('<a href="#" class="add_product_link"><button class="button button_blue" type="submit">Add a product</button></a>');
+    var $addProductLink = $('<a href="#" class="add_product_link"><button class="button button_blue" type="submit">Dodaj produkt</button></a>');
     var $newLinkLi = $('<p></p>').append($addProductLink);
 
     jQuery(document).ready(function() {
@@ -57,7 +57,7 @@
     }
 
     function addTagFormDeleteLink($productFormLi) {
-        var $removeFormA = $('<a href="#"><button class="red" type="submit" style="margin:10px 0 0 0">delete this product</button></a>');
+        var $removeFormA = $('<a href="#"><button class="red" type="submit" style="margin:10px 0 0 0">Usuń produkt</button></a>');
         $productFormLi.append($removeFormA);
 
         $removeFormA.on('click', function(e) {

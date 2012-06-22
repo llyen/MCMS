@@ -2,20 +2,19 @@
 
 {% block content %}
 	{{ form_errors(form) }}
-	<h1 class="pageTitle">Edytuj platnosc</h1>
+	<h1 class="pageTitle">Edytuj płatność</h1>
 	<div class="window1">
-	    <h3><span></span></h3>
+	    <form action="{{ path('employee.paymentUpdate', { 'paymentId': payment.id, 'patientId': payment.patient.id }) }}" method="post" class="form_default" {{ form_enctype(form) }}>
+        <h3><span style="height: 30px; text-align: right;"><button type="submit">Edytuj</button></span></h3>
 	    <div class="inside">
-			<form action="{{ path('employee.paymentUpdate', { 'paymentId': payment.id, 'patientId': payment.patient.id }) }}" method="post" class="form_default" {{ form_enctype(form) }}>
+			
 				{{ form_row(form._token) }} 
 				<ul class="products" data-prototype="{{ form_widget(form.products.get('prototype')) | e }}">
 					{% for product in form.products %}
                     	<li>{{ form_widget(product) }}</li>
                 	{% endfor %}
-				</ul>
-				<p>
-					<button type="submit">Utwórz</button>
-				</p>
+				</ul>		
+				
     		</form>
     	</div>
     </div>
@@ -26,7 +25,7 @@
 <script type="text/javascript">
     var collectionHolder = $('ul.products');
 
-    var $addProductLink = $('<a href="#" class="add_product_link">Add a product</a>');
+    var $addProductLink = $('<a href="#" class="add_product_link"><button class="button button_blue" type="submit">Dodaj produkt</button></a>');
     var $newLinkLi = $('<p></p>').append($addProductLink);
 
     jQuery(document).ready(function() {
@@ -52,7 +51,7 @@
     }
 
     function addTagFormDeleteLink($productFormLi) {
-        var $removeFormA = $('<a href="#">delete this product</a>');
+        var $removeFormA = $('<a href="#"><button class="red" type="submit" style="margin:10px 0 0 0">Usuń produkt</button></a>');
         $productFormLi.append($removeFormA);
 
         $removeFormA.on('click', function(e) {
