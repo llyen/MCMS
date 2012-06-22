@@ -91,8 +91,8 @@ admin.employeeCreate:
 
 #MANAGE USERS
 users_list:
-    pattern: /users
-    defaults: { _controller: McmsUserBundle:Manage:usersList }
+    pattern: /users/{page}
+    defaults: { _controller: McmsUserBundle:User:list, roleTheme: null, page: 1 }
 
 user_show:
     pattern: /user/{id}/show
