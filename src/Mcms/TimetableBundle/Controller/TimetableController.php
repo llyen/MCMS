@@ -207,9 +207,7 @@ class TimetableController extends Controller
             $this->get('session')->setFlash('notice', 'Date already taken');
 
             return $this->redirect($this->generateUrl('patient.showEmployeeTimetable', array(
-                'employeeId' => $employeeId,
-                'year' => $year,
-                'month' => $month
+                'employeeId' => $employeeId
                 )
             ));
         }
