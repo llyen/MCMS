@@ -16,7 +16,7 @@
 	<div id="hour_table">
 	<table>
 	<thead>
-		<tr><td class="hour_head">Godziny</td><td class="cont_head">Tresc</td></tr>
+		<tr><td class="hour_head">Godziny</td><td class="cont_head">Treść</td></tr>
 	</thead>
     <tbody>
 	</tbody>	
@@ -57,7 +57,7 @@
             beforeShowDay: disableDays,
             onSelect: function(dateText, inst){
                 console.log(disabledDays[dateText]);
-                markHours(disabledDays[dateText]);
+                markHours(disabledDays[dateText], dateText.replace(/\-/g, ''));
             },
             onChangeMonthYear: function(year, month, inst){
                 $.ajax({
@@ -69,10 +69,10 @@
             }
         });
 
-        function markHours(arr){
+        function markHours(arr, date){
             $('#hour_table table tbody tr').each(function(index) {
                 if($.inArray($(this).attr('id'), arr)!=-1) {
-                    $(this).children(".cont").html('WOLNY TERMIN');
+                    $(this).children(".cont").html('<a href="./timetable/'+date+'/'+arr[index].replace(/:/g, '')+'/new">WOLNY TERMIN</a>');
 					$('.cont').css({"background":"#aff9af","font-weight":"bold","border-bottom":"1px dotted white"});
 					
                 }else{

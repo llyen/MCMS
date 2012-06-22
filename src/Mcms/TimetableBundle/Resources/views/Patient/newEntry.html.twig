@@ -1,6 +1,21 @@
 {# src/Mcms/TimetableBundle/Resources/views/Patient/newEntry.html.twig #}
+{% extends '::patientDashboard.html.twig' %}
 
-<form class="form_default" action="{{ path('patient.timetableCreate', { employeeId: employeeId, month: month, year: year, day: day, hours: hours, minutes: minutes })|replace({" ": ""}) }}" method="post" {{ form_enctype(form) }}>
-{{ form_widget(form) }}
+{% block title %}Rezerwacja terminu wizyty{% endblock %}
 
-<button type="submit">send</button>
+{% block content %}
+
+<h1 class="pageTitle">Rezerwacja terminu wizyty</h1>
+	<div class="window1">
+        <form class="form_default" action="{{ path('patient.timetableCreate', { employeeId: employeeId, month: month, year: year, day: day, hours: hours, minutes: minutes })|replace({" ": ""}) }}" method="post" {{ form_enctype(form) }}>
+	<div class="tableOpt" style="border-bottom: 1px solid #bbb"><h4>Uwagi<button class="button button_blue" style="float: right;" type="submit">Rezerwuj</button></h4></div>
+		<div class="inside">
+  		<div>
+        	{{ form_widget(form.comment) }}
+            {{ form_rest(form) }}
+    	</form>
+    	</div>
+		</div>
+	</div>
+
+{% endblock %}
