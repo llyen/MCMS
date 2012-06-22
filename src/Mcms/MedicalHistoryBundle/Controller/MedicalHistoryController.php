@@ -178,10 +178,14 @@ class MedicalHistoryController extends Controller
             throw $this->createNotFoundException('Unable to find entry.');
         }
 
-        $form = $this->createForm(new EntryType(), $entry);
+        $payment = $entry->getPayment();
+
+        $entryForm = $this->createForm(new EntryType(), $entry);
+        $paymentForm = $this->createForm(new PaymentType(), $payment);
 
         return $this->render('McmsMedicalHistoryBundle:Employee:edit.html.twig', array(
-            'form' => $form->createView(),
+            'entryForm' => $entryForm->createView(),
+            'paymentForm' => $paymentForm->createView(),
             'patient' => $patient,
             'entry' => $entry
         ));
@@ -207,21 +211,39 @@ class MedicalHistoryController extends Controller
             throw $this->createNotFoundException('Unable to find entry.');
         }
 
+        $payment = $entry->getPayment();
+        if(!$payment) {
+            $payment = new Payment();
+            $payment->setEntry($entry);
+            $payment->setPatient($patient);
+
+            $em->persist($payment);
+            $em->flush();
+        } else {
+            $payment->setPatient($patient);
+        }
+
+
+        $entryForm = $this->createForm(new EntryType(), $entry);
+        $paymentForm = $this->createForm(new PaymentType(), new Payment());
+        
         $request = $this->getRequest();
 
-        $form = $this->createForm(new EntryType(), $entry);
-        $form->bindRequest($request);
+        $entryForm->bindRequest($request);
+        $paymentForm->bindRequest($request);
 
-        if($form->isValid())
+        if($entryForm->isValid() && $paymentForm->isValid())
         {
             $em->persist($entry);
             $em->flush();
-
-            return $this->redirect($this->generateUrl('employee.medicalHistory', array('patientId' => $patientId)));
+            
+            return $this->forward('McmsPaymentBundle:Payment:update',array('paymentId'=>$payment->getId(), 'patientId'=>$patient->getId()));
+                //return $this->redirect($this->generateUrl('employee.medicalHistory', array('patientId' => $patientId)));
         }
 
         return $this->render('McmsMedicalHistoryBundle:Employee:edit.html.twig', array(
-            'form' => $form->createView(),
+            'entryForm' => $entryForm->createView(),
+            'paymentForm' => $paymentForm->createView(),
             'patient' => $patient,
             'entry' => $entry
         ));
