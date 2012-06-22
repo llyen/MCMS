@@ -13,6 +13,7 @@
         	{{ form_widget(entryForm.content) }}
             {{ form_rest(entryForm) }}
             </br>
+            <a href="{{ path('employee.patientShow', { 'patientId': patient.id }) }}"><button class="red" type="submit" style="float:right">Anuluj</button></a>
             <h1 class="pageTitle">Płatności<h1><hr>
             <ul class="products" data-prototype="{{ form_widget(paymentForm.products.get('prototype')) | e }}">
                 {% for product in paymentForm.products %}
