@@ -22,7 +22,12 @@ class UserController extends Controller
     {
         $em = $this->getDoctrine()->getEntityManager();
 
-        $users = $em->getRepostory('McmsUserBundle:User')->findAll();
+        $usersList = $em->getRepository('McmsUserBundle:User')->findAll();
+
+        $paginator = $this->get('knp_paginator');
+        $request = $this->getRequest();
+
+        $users = $paginator->paginate($usersList, $request->get('page'), 10);
 
         return $this->render('McmsUserBundle:'.$roleTheme.':list.html.twig',array(
             'users' => $users
