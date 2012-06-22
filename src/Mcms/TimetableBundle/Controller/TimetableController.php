@@ -115,7 +115,7 @@ class TimetableController extends Controller
      * 
      * @param String $roleTheme Role theme name.
      */
-    public function newAction($roleTheme, $patientId = null, $employeeId = null, $year = null, $month = null, $hours = null, $minutes = null)
+    public function newAction($roleTheme, $patientId = null, $employeeId = null, $year, $month, $day, $hours, $minutes)
     {
         $user = $this->get('security.context')->getToken()->getUser();
 
@@ -145,16 +145,17 @@ class TimetableController extends Controller
 
 
         $entry = new Entry();
-        $entry->setPatient($patient);
-        $entry->setEmployee($employee);
 
         $form = $this->createForm(new EntryType(), $entry);
 
         return $this->render('McmsTimetableBundle:'.$roleTheme.':newEntry.html.twig', array(
-            'form' => $this->createNewEntryForm()->createView(),
+            'form' => $form->createView(),
             'employeeId' => $employeeId,
             'year' => $year,
-            'month' => $month
+            'month' => $month,
+            'day' => $day,
+            'hours' => $hours,
+            'minutes' => $minutes
         ));
     }
 
@@ -163,7 +164,7 @@ class TimetableController extends Controller
      * 
      * @param String $roleTheme Role theme name.
      */
-    public function createAction($roleTheme, $patientId = null, $employeeId = null, $year = null, $month= null)
+    public function createAction($roleTheme, $patientId = null, $employeeId = null, $year, $month, $day, $hours, $minutes)
     {
         $user = $this->get('security.context')->getToken()->getUser();
 
@@ -189,6 +190,8 @@ class TimetableController extends Controller
         }
 
         $entry = new Entry();
+
+        $entryDate = new \DateTime("$year-$month-$day $hours:$minutes");
 
         $request = $this->getRequest();
 
@@ -199,6 +202,7 @@ class TimetableController extends Controller
         {
             $entry->setPatient($patient);
             $entry->setEmployee($employee);
+            $entry->setDate($entryDate);
 
             $em = $this->getDoctrine()->getEntityManager();
             $em->persist($entry);
@@ -212,16 +216,15 @@ class TimetableController extends Controller
             ));
         }
 
-        return $this->render('McmsTimetableBundle::new.html.twig', array(
+        return $this->render('McmsTimetableBundle:'.$roleTheme.':newEntry.html.twig', array(
             'form' => $form->createView(),
             'employeeId' => $employeeId,
             'year' => $year,
-            'month' => $month
+            'month' => $month,
+            'day' => $day,
+            'hours' => $hours,
+            'minutes' => $minutes
         ));
-    }
-
-    private function createNewEntryForm()
-    {
     }
 
     /**

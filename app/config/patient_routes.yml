@@ -54,22 +54,27 @@ patient.showEmployeeTimetable:
         month: \d+
 
 patient.timetableNew:
-    pattern: /employee/{employeeId}/timetable/{year} {month}/{hour} {minutes}/new
-    defaults: { _controller: McmsTimetableBundle:Timetable:new, roleTheme: Patient, year: null, month: null, patientId: null, employeeId: null }
+    pattern: /employee/{employeeId}/timetable/{year} {month} {day}/{hours} {minutes}/new
+    defaults: { _controller: McmsTimetableBundle:Timetable:new, roleTheme: Patient, year: null, month: null, day: null, hours: null, minutes: null, patientId: null, employeeId: null }
     requirements:
         employeeId: \d+
         year: \d{4}
         month: \d{2}
-        hour: "(([0-1][0-9])|([2][0-3]))"
+        day: "([0-2][0-9]|3[01])"
+        hours: "(([0-1][0-9])|([2][0-3]))"
         minutes: "([0-5][0-9])"
 
 patient.timetableCreate:
-    pattern: /employee/{employeeId}/timetable/{year}/{month}/create
-    defaults: { _controller: McmsTimetableBundle:Timetable:create, roleTheme: Patient, year: null, month: null, patientId: null }
+    pattern: /employee/{employeeId}/timetable/{year} {month} {day}/{hours} {minutes}/create
+    defaults: { _controller: McmsTimetableBundle:Timetable:create, roleTheme: Patient, year: null, month: null, day: null, hours: null, minutes: null, patientId: null, employeeId: null }
     requirements:
         employeeId: \d+
-        year: \d+
-        month: \d+
+        year: \d{4}
+        month: \d{2}
+        day: "([0-2][0-9]|3[01])"
+        hours: "(([0-1][0-9])|([2][0-3]))"
+        minutes: "([0-5][0-9])"
+        _method: POST
 
 patient.showEmployeeTimetable:
     pattern: /employee/{employeeId}/timetable/{year}/{month}
