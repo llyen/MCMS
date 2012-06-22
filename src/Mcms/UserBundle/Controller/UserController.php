@@ -198,6 +198,9 @@ class UserController extends Controller
 
             $user->setPassword($newPassword);
 
+            if($user->getIsActive()==false)
+                $user->setIsActive(true);
+
             $em = $this->getDoctrine()->getEntityManager();
             $em->persist($user);
             $em->flush();
