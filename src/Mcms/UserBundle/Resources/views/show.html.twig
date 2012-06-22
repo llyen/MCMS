@@ -13,11 +13,16 @@
 	<h1 class="pageTitle">Szczegóły użytkownika</h1>
 		
 	<div class="window1">
-			<h3><span style="height:20px;">
-				<a href="{{ path('users_list') }}">
-				<button class="button button_blue" style="float:right; margin:-6px 0 0 0;" type="submit">Wróć do listy użytkowników</button>
-				</a>
-			</span></h3>
+		<h3>
+			<span style="height:20px;">
+				{% if app.session.hasFlash('notice') %}
+    				<div class="flash-notice">
+        				{{ app.session.flash('notice') }}
+    				</div>
+				{% endif %}
+				<a href="{{ path('users_list') }}"><button class="button button_blue" style="float:right; margin:-6px 0 0 0;" type="submit">Wróć do listy użytkowników</button></a>
+			</span>
+		</h3>
 		<div class="inside">
 			<div class="one_third"><p><b>Id użytkownika:</b></p>
 				<p><b>Imię:</b></p>
@@ -37,9 +42,10 @@
                         {% endif %}</p>
 			</div>
 			<div class="one_third lastt">
-					<form action="{{ path('user_password_reset', { 'id': user.id } )}}" method="post">
+					<form action="{{ path('admin.resetPassword', { 'userId': user.id } )}}" method="post">
 					{{ form_widget(password_reset_form) }}
 					<a href="" class="resetlink"  onClick="return confirm('Na pewno chcesz zresetować hasło?')" title="Resetuj hasło">Resetuj hasło</a>
+					<input type="submit">
 				</form>
 			</div>     
 		</div>

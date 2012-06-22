@@ -113,12 +113,11 @@ admin.userUpdate:
         userId: \d+
         _method: POST
 
-user_password_reset:
-    pattern: /user/{id}/password_reset
-    defaults: { _controller: McmsUserBundle:Manage:userPasswordReset }
+admin.resetPassword:
+    pattern: /user/{userId}/resetPassword
+    defaults: { _controller: McmsUserBundle:User:resetPassword }
     requirements:
-        _method: POST
-        id: \d+
+        userId: \d+
 
 admin.myTimetable:
     pattern: /myTimetable
