@@ -6,14 +6,16 @@
 {% block content %}
     <h1 class="pageTitle">Dane pacjenta</h1>
 	<div class="window1">
-	<h3><span style="height:20px;"><a href="{{ path('employee.medicalHistory', { patientId: patient.id }) }}"><img src="{{ asset('images/icons/calendar.png') }}" alt="Karta pacjenta" /></a></span></h3>
+	<h3><span style="height:20px;"><a href="{{ path('employee.medicalHistory', { patientId: patient.id }) }}" title="Zobacz kartę pacjenta"><img src="{{ asset('images/icons/calendar.png') }}" alt="Karta pacjenta" /></a>
+	<a href="{{ path('employee.patientList') }}"><button class="button button_blue" type="submit" style="float:right; margin:-5px 0 0 0;">Powrót do listy pacjentów</button></a>
+	</span></h3>
 		<div class="inside">
   		<div class="one_half">
   			<b>Imię i nazwisko:</b> {{ patient }} <br />
   			<b>Pesel:</b> {{ patient.pesel }} <br />
   			<b>Adres:</b> {{ patient.address1 }}{% if patient.address2 %}/{% endif %}{{ patient.address2 }} <br />
   			{{ patient.postalCode }} {{ patient.city }}
-    	<p><a href="{{ path('employee.patientList') }}">Powrót do listy pacjentów</a></p>
+    	
     	</div>
 		</div>
 	</div>	

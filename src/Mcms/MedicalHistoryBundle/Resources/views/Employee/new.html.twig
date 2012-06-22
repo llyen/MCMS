@@ -13,7 +13,7 @@
         	{{ form_widget(entryForm.content) }}
             {{ form_rest(entryForm) }}
             </br>
-            <h2>PLATNOSCI<h2><hr>
+            <h1 class="pageTitle">Płatności<h1><hr>
             <ul class="products" data-prototype="{{ form_widget(paymentForm.products.get('prototype')) | e }}">
                 {% for product in paymentForm.products %}
                     <li>{{ form_widget(product) }}</li>
@@ -31,7 +31,7 @@
 <script type="text/javascript">
     var collectionHolder = $('ul.products');
 
-    var $addProductLink = $('<a href="#" class="add_product_link">Add a product</a>');
+    var $addProductLink = $('<a href="#" class="add_product_link"><button class="button button_blue" type="submit">Add a product</button></a>');
     var $newLinkLi = $('<p></p>').append($addProductLink);
 
     jQuery(document).ready(function() {
@@ -57,7 +57,7 @@
     }
 
     function addTagFormDeleteLink($productFormLi) {
-        var $removeFormA = $('<a href="#">delete this product</a>');
+        var $removeFormA = $('<a href="#"><button class="red" type="submit" style="margin:10px 0 0 0">delete this product</button></a>');
         $productFormLi.append($removeFormA);
 
         $removeFormA.on('click', function(e) {

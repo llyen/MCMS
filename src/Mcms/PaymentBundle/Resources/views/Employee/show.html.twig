@@ -1,12 +1,42 @@
 {% extends '::employeeDashboard.html.twig' %}
 
-{% block content %}
-    <p>ID Platnosci: {{ payment.id }}</p>
-    <p>Produkty:
-    	<ul>
-	    		{% for paymentItem in payment.products %}
-	    		    <li>{{ paymentItem.product.name ~'	ILOSC:'~paymentItem.count }}</li>
-	    		{% endfor %}
-    	</ul>
-    </p>
+{% block content %}	
+	
+	<h1 class="pageTitle">Platnosci pacjenta</h1>
+	<div class="tableOpt">
+		<h4>Lista</h4>	
+    </div><!--end table Options-->	
+		<table cellpadding="0" cellspacing="0" class="tableHead" width="100%" id="example">
+				<colgroup>
+					<col class="head0" width="20%" />
+					<col class="head1" width="60%" />
+					<col class="head1" width="20%" />
+					            
+				</colgroup>
+				<tr>
+					<td>ID platnosci</td>
+					<td>Produkty</td>
+					<td>Ilosc</td>					
+				</tr>
+		</table>
+	<div class="tableWrapper">
+        <table cellpadding="0" cellspacing="0" class="table" id="example" width="100%">
+                <colgroup>
+                    <col class="con0" width="20%" />
+                    <col class="con1" width="60%" />
+					<col class="con1" width="20%" />
+                                      
+                </colgroup>
+
+			
+				<tr>
+					<td>{{ payment.id }}</td>
+					<td>{% for paymentItem in payment.products %}
+	    		    <li style="list-style-type:square; margin:0 0 0 20px;"><b>{{ paymentItem.product.name }}</b></li>
+	    		{% endfor %}</td>
+<td>{% for paymentItem in payment.products %}<b><li>{{ paymentItem.count }}</li>	{% endfor %}</td>		
+				</tr>
+			
+		</table>		
+	</div>
 {% endblock %}
