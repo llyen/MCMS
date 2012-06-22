@@ -54,6 +54,7 @@ class SecurityListener
 				$session->set('roleTheme', 'Admin');
 				if($isActive==0)
 					$this->redirect = "admin.changePassword";
+				else
 				$this->redirect = "admin_dashboard";
 			}
 
@@ -62,7 +63,7 @@ class SecurityListener
 				$session->set('roleTheme', 'Patient');
 				if($isActive==0)
 					$this->redirect = "patient.changePassword";
-
+				else
 				$this->redirect = "patient_dashboard";
 			}
 
@@ -71,6 +72,7 @@ class SecurityListener
 				$session->set('roleTheme', 'Employee');
 				if($isActive==0)
 					$this->redirect = "employee.changePassword";
+				else
 				$this->redirect = "employee_dashboard";
 			}
 		}

@@ -44,8 +44,11 @@ class UserController extends Controller
             throw $this->createNotFoundException('Unable to find user.');
         }
 
+        $passwordResetForm = $this->createSimpleForm($id);
+
         return $this->render('McmsUserBundle:'.$roleTheme.':show.html.twig',array(
-            'user' => $user
+            'user' => $user,
+            'password_reset_form' => $passwordResetForm->createView()
         ));
     }
 
@@ -214,6 +217,47 @@ class UserController extends Controller
     }
 
     /**
+     * Generates new random user password
+     * 
+     * @param integer $id User id.
+     */
+    public function resetPasswordAction($userId)
+    {
+        $request = $this->getRequest();
+        $form = $this->createSimpleForm($userId);
+        $form->bindRequest($request);
+
+        if($form->isValid())
+        {
+            $em = $this->getDoctrine()->getEntityManager();
+
+            $user = $em->getRepository('McmsUserBundle:User')->find($userId);
+
+            if(!$user)
+            {
+                throw $this->createNotFoundException('Unable to find User.');
+            }
+
+            $factory = $this->container->get('security.encoder_factory');
+            $encoder = $factory->getEncoder($user);
+
+            $newPassword = $encoder->encodePassword($user->getUsername(), $user->getSalt());
+
+            $user->setPassword($newPassword);
+                $user->setIsActive(false);
+            
+            $em->persist($user);
+            $em->flush();
+
+            $this->get('session')->setFlash('notice', 'Password reset SUCCESS');
+            return $this->redirect($this->generateUrl('user_show', array('id' => $userId)));
+            
+        }     
+
+        return $this->redirect($this->generateUrl('user_show', array('id' => $userId)));
+    }
+
+    /**
      * Creates and returns form to edit own profile
      * 
      * @param User $user Current logged it user object
@@ -234,5 +278,18 @@ class UserController extends Controller
             $form->add('employee', new EmployeeType());
 
         return $form->getForm();
+    }
+
+    /**
+     * Creates and returns simple form object
+     * 
+     * @param integer $id User id.
+     * @return Form The delete formobject.
+     */
+    private function createSimpleForm($id)
+    {
+        return $this->createFormBuilder(array('id' => $id))
+            ->add('id', 'hidden')
+            ->getForm();
     }
 }
