@@ -10,10 +10,7 @@ class EntryType extends AbstractType
     public function buildForm(FormBuilder $builder, array $options)
     {
         $builder
-            ->add('date')
-            ->add('comment')
-            ->add('patient')
-            ->add('employee')
+            ->add('comment', 'textarea')
         ;
     }
 
