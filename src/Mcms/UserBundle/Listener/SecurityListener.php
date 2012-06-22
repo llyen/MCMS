@@ -42,6 +42,8 @@ class SecurityListener
 	{
 		$request = $event->getRequest();
 		$session = $request->getSession();
+		$user = $this->security->getToken()->getUser();
+		$isActive = $user->getIsActive();
 
 		$target_path = $session->get('_security.target_path');
 
@@ -50,18 +52,25 @@ class SecurityListener
 			if($this->security->isGranted('ROLE_ADMIN'))
 			{
 				$session->set('roleTheme', 'Admin');
+				if($isActive==0)
+					$this->redirect = "admin.changePassword";
 				$this->redirect = "admin_dashboard";
 			}
 
 			if($this->security->isGranted('ROLE_PATIENT'))
 			{
 				$session->set('roleTheme', 'Patient');
+				if($isActive==0)
+					$this->redirect = "patient.changePassword";
+
 				$this->redirect = "patient_dashboard";
 			}
 
 			if($this->security->isGranted('ROLE_EMPLOYEE'))
 			{
 				$session->set('roleTheme', 'Employee');
+				if($isActive==0)
+					$this->redirect = "employee.changePassword";
 				$this->redirect = "employee_dashboard";
 			}
 		}
