@@ -1,16 +1,6 @@
 {# src/Mcms/TimetableBundle/Resources/views/Patient/newEntry.html.twig #}
 
-{% form_theme form _self %}
-
-{% block _mcms_timetablebundle_entrytype_employee_widget %}
-        {{ block('hidden_widget') }}
-{% endblock %}
-
-{% block _mcms_timetablebundle_entrytype_patient_widget %}
-        {{ block('hidden_widget') }}
-{% endblock %}
-{{ employeeId }}
-<form class="form_default" action="{{ path('patient.timetableCreate', { employeeId: employeeId, month: month, year: year }) }}" method="post" {{ form_enctype(form) }}>
+<form class="form_default" action="{{ path('patient.timetableCreate', { employeeId: employeeId, month: month, year: year, day: day, hours: hours, minutes: minutes })|replace({" ": ""}) }}" method="post" {{ form_enctype(form) }}>
 {{ form_widget(form) }}
 
 <button type="submit">send</button>
