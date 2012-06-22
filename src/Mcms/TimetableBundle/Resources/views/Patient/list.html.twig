@@ -1,5 +1,5 @@
-{# src/Mcms/TimetableBundle/Resources/views/Employee/list.html.twig #}
-{% extends '::employeeDashboard.html.twig' %}
+{# src/Mcms/TimetableBundle/Resources/views/Patient/list.html.twig #}
+{% extends '::patientDashboard.html.twig' %}
 
 {% block title %}Lista umówionych wizyt{% endblock %}
 
@@ -16,7 +16,7 @@
 				</colgroup>
 				<tr>
 					<td>Data i godzina wizyty</td>
-					<td>Pacjent</td>
+					<td>Lekarz</td>
 					<td>Uwagi</td>
 				</tr>
 		</table>
@@ -31,7 +31,7 @@
 			{% for entry in entries %}
 				<tr>
 					<td>{{ entry.date|date('Y.m.d H:i') }}</td>
-					<td><a href="{{ path('employee.medicalHistory', {'patientId': entry.patient.id}) }}">{{ entry.patient }}</a></td>
+					<td><a href="{{ path('patient.showEmployeeTimetable', {'employeeId': entry.employee.id}) }}">{{ entry.employee }}</a></td>
 					<td>{{ entry.comment }}</td>
 				</tr>
 			{% endfor %}

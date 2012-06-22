@@ -34,6 +34,13 @@ patient.medicalHistoryShow:
     requirements:
         entryId: \d+
 
+#TIMETABLE
+patient.timetableList:
+    pattern: /timetable/{page}
+    defaults: { _controller: McmsTimetableBundle:Timetable:list, roleTheme: Patient, page: 1 }
+    requirements:
+        page: \d+
+
 #EMPLOYEE PART
 patient.listOfEmployees:
     pattern: /listOfEmployees
@@ -92,9 +99,4 @@ patient.productsList:
     pattern: /product
     defaults: { _controller: McmsProductBundle:Product:list, roleTheme: Patient }
 
-#TIMETABLE
-patient.timetableList:
-    pattern: /timetable/{page}
-    defaults: { _controller: McmsTimetableBundle:Timetable:list, roleTheme: Patient, page: 1 }
-    requirements:
-        page: \d+
+
