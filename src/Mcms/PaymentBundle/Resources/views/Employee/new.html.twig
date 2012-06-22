@@ -9,7 +9,7 @@
 			<form action="{{ path('employee.paymentCreate') }}" method="post" class="form_default" {{ form_enctype(form) }}>
 				{{ form_row(form._token) }} 
     			<p>
-					<label>Zaplacone:</label>  {{ form_widget(form.isPaid) }}</br></br>
+					<label>Zapłacone:</label>  {{ form_widget(form.isPaid) }}</br></br>
 					
 				</p>
 				<ul class="products" data-prototype="{{ form_widget(form.products.get('prototype')) | e }}"></ul>

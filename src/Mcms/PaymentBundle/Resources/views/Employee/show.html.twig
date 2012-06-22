@@ -2,41 +2,38 @@
 
 {% block content %}	
 	
-	<h1 class="pageTitle">Platnosci pacjenta</h1>
+	<h1 class="pageTitle">Płatności pacjenta</h1>
 	<div class="tableOpt">
-		<h4>Lista</h4>	
+		<h4>Lista<a href="{{ path('employee.paymentEdit', { 'paymentId': payment.id, 'patientId': payment.patient.id }) }}"><button class="button button_blue" type="submit" style="float:right">Edytuj płatność</button></a></h4>
     </div><!--end table Options-->	
 		<table cellpadding="0" cellspacing="0" class="tableHead" width="100%" id="example">
 				<colgroup>
-					<col class="head0" width="20%" />
-					<col class="head1" width="60%" />
-					<col class="head1" width="20%" />
+					<col class="head1" width="70%" />
+					<col class="head0" width="15%" />
+					<col class="head1" width="15%" />
 					            
 				</colgroup>
 				<tr>
-					<td>ID platnosci</td>
 					<td>Produkty</td>
-					<td>Ilosc</td>					
+					<td>Ilość</td>
+					<td>Cena</td>					
 				</tr>
 		</table>
 	<div class="tableWrapper">
         <table cellpadding="0" cellspacing="0" class="table" id="example" width="100%">
                 <colgroup>
-                    <col class="con0" width="20%" />
-                    <col class="con1" width="60%" />
-					<col class="con1" width="20%" />
-                                      
+                    <col class="con1" width="70%" />
+                    <col class="con0" width="15%" />
+					<col class="con1" width="15%" />                 
                 </colgroup>
 
-			
+			{% for paymentItem in payment.products %}
 				<tr>
-					<td>{{ payment.id }}</td>
-					<td>{% for paymentItem in payment.products %}
-	    		    <li style="list-style-type:square; margin:0 0 0 20px;"><b>{{ paymentItem.product.name }}</b></li>
-	    		{% endfor %}</td>
-<td>{% for paymentItem in payment.products %}<b><li>{{ paymentItem.count }}</li>	{% endfor %}</td>		
+					<td>{{ paymentItem.product.name }}</td>
+					<td>{{ paymentItem.count }}</td>
+					<td>{{ paymentItem.count * paymentItem.product.price }} zł</td>		
 				</tr>
-			
+			{% endfor %}
 		</table>		
 	</div>
 {% endblock %}
