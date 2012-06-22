@@ -7,7 +7,7 @@
     <h1 class="pageTitle">Szczegóły wpisu #{{ entry.id }}</h1>
 	<div class="window1">
 	<h3><span style="height:20px;"><b>Data wpisu:</b> {{ entry.createdAt|date('Y.m.d H:i') }} (<small>Ostatnia aktualizacja: {{ entry.updatedAt|date('Y.m.d H:i') }}</small>) | <b>Lekarz dokonujący wpisu:</b> {{ entry.doctor }}
-	 {% if entry.payment %} <a href="{{ path('employee.paymentShow', { patientId: entry.patient.id, paymentId: entry.payment.id }) }}"><button class="button button_blue" type="submit" style="float:right; margin:-4px 0 0 0;">PLATNOSC</button></a>{% endif %}
+	 {% if entry.payment %} <a href="{{ path('employee.paymentShow', { patientId: entry.patient.id, paymentId: entry.payment.id }) }}"><button class="button button_blue" type="submit" style="float:right; margin:-4px 0 0 0;">PŁATNOŚĆ</button></a>{% endif %}
 	</span></h3>
 		<div class="inside">
   		<div>
