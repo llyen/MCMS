@@ -30,7 +30,7 @@
 			{% for entry in entries %}
 				<tr>
 					<td>{{ entry.date|date('Y.m.d H:i') }}</td>
-					<td>{{ entry.patient }}</td>
+					<td><a href="{{ path('employee.medicalHistory', {'patientId': entry.patient.id}) }}">{{ entry.patient }}</a></td>
 					<td>{{ entry.comment }}</td>
 				</tr>
 			{% endfor %}
