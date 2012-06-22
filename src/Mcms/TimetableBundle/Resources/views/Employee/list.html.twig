@@ -1,3 +1,39 @@
-{% for entry in entries %}
-    {{ entry.date|date("d-m-Y") }}
-{% endfor %}
+{% extends '::employeeDashboard.html.twig' %}
+
+{% block title %}Lista umówionych wizyt{% endblock %}
+
+{% block content %}
+<h1 class="pageTitle">Umówione wizyty</h1>
+	<div class="tableOpt">
+		<h4>Lista umówionych wizyt</h4>	
+    </div><!--end table Options-->	
+		<table cellpadding="0" cellspacing="0" class="tableHead" width="100%" id="example">
+				<colgroup>
+					<col class="head0" width="25%" />
+					<col class="head1" width="25%" />
+					<col class="head0" width="50%" />
+				</colgroup>
+				<tr>
+					<td>Data i godzina wizyty</td>
+					<td>Pacjent</td>
+					<td>Uwagi</td>
+				</tr>
+		</table>
+	<div class="tableWrapper">
+        <table cellpadding="0" cellspacing="0" class="table" id="example" width="100%">
+                <colgroup>
+                    <col class="con0" width="25%" />
+                    <col class="con1" width="25%" />
+                    <col class="con0" width="50%" />
+                </colgroup>
+
+			{% for entry in entries %}
+				<tr>
+					<td>{{ entry.date|date('Y.m.d H:i') }}</td>
+					<td>{{ entry.patient }}</td>
+					<td>{{ entry.comment }}</td>
+				</tr>
+			{% endfor %}
+		</table>		
+	</div>
+{% endblock %}
